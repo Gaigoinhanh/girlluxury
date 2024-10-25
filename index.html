@@ -3414,48 +3414,54 @@ border-radius: 5px; /* Bo góc ảnh */
 <body>
 
 
-    <script>
-        let online = 451;  // Số người online ban đầu
-let vipMembers = 1596;  // Tổng VIP Members ban đầu
-let visitCount = 64243;  // Tổng lượt truy cập ban đầu
+<script>
+    let online = 451;  // Số người online ban đầu
+    let vipMembers = 1596;  // Tổng VIP Members ban đầu
+    let visitCount = 64243;  // Tổng lượt truy cập ban đầu
 
-function updateOnline() {
-    // Tạo số ngẫu nhiên từ -100 đến 150 để thay đổi số người online
-    let change = Math.floor(Math.random() * 401) - 200;
-    online = Math.max(351, Math.min(600, online + change)); // Giới hạn số online từ 351 đến 600
-    document.getElementById("online").innerText = online;
-}
-
-function updateVipMembers() {
-    // Cộng thêm 1 vào tổng số VIP Members sau mỗi 10 phút
-    vipMembers += 1;
-    document.getElementById("vipMembers").innerText = vipMembers;
-}
-
-function updatevisitCount() {
-    // Tăng lượt truy cập ngẫu nhiên
-    visitCount += Math.floor(Math.random() * 50); // Tăng ngẫu nhiên từ 1 đến 50 lượt truy cập
-    document.getElementById("visitCount").innerText = visitCount;
-}
-
-// Cập nhật số người online mỗi 1 giây
-setInterval(function() {
-    updateOnline();
-}, 1000);
-
-// Cập nhật số VIP Members mỗi 10 phút (600000 ms)
-setInterval(function() {
-    updateVipMembers();
-}, 600000);
-
-// Cập nhật tổng lượt truy cập mỗi 5 giây
-setInterval(function() {
-    updatevisitCount();
-}, 5000);
-
+    function updateOnline() {
+        // Chọn ngẫu nhiên mức thay đổi là 5, 13, 24, 32, 45, 41, 32, hoặc 11
+        const changes = [5, 13, 24, 32, 45, 41, 32, 11];
+        let change = changes[Math.floor(Math.random() * changes.length)];
         
+        // Xác định tăng hoặc giảm
+        if (Math.random() < 0.5) {
+            change = -change; // 50% cơ hội để giảm thay vì tăng
+        }
 
-    </script>
+        // Cập nhật số online trong giới hạn từ 347 đến 612
+        online = Math.max(347, Math.min(612, online + change));
+        document.getElementById("online").innerText = online;
+    }
+
+    function updateVipMembers() {
+        // Cộng thêm 1 vào tổng số VIP Members sau mỗi 10 phút
+        vipMembers += 1;
+        document.getElementById("vipMembers").innerText = vipMembers;
+    }
+
+    function updatevisitCount() {
+        // Tăng lượt truy cập ngẫu nhiên
+        visitCount += Math.floor(Math.random() * 50); // Tăng ngẫu nhiên từ 1 đến 50 lượt truy cập
+        document.getElementById("visitCount").innerText = visitCount;
+    }
+
+    // Cập nhật số người online mỗi 1 giây
+    setInterval(function() {
+        updateOnline();
+    }, 1000);
+
+    // Cập nhật số VIP Members mỗi 10 phút (600000 ms)
+    setInterval(function() {
+        updateVipMembers();
+    }, 600000);
+
+    // Cập nhật tổng lượt truy cập mỗi 5 giây
+    setInterval(function() {
+        updatevisitCount();
+    }, 5000);
+</script>
+
 
 </body>
 </html>
