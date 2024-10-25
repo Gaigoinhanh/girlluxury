@@ -3420,8 +3420,8 @@ border-radius: 5px; /* Bo góc ảnh */
     let visitCount = 64243;  // Tổng lượt truy cập ban đầu
 
     function updateOnline() {
-        // Chọn ngẫu nhiên mức thay đổi là 5, 13, 24, 32, 45, 41, 32, hoặc 11
-        const changes = [5, 13, 24, 32, 45, 41, 32, 11];
+        // Chọn ngẫu nhiên mức thay đổi từ mảng
+        const changes = [5, 13, 24, 32, 45, 41, 32, 11, 15, 17, 5, 17, 4, 19, 22, 12, 15, 29, 7, 12, 22, 11, 7, 12];
         let change = changes[Math.floor(Math.random() * changes.length)];
         
         // Xác định tăng hoặc giảm
@@ -3461,6 +3461,7 @@ border-radius: 5px; /* Bo góc ảnh */
         updatevisitCount();
     }, 5000);
 </script>
+
 
 
 </body>
