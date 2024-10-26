@@ -59,7 +59,7 @@
 
 
         h1 {
-          <h1 style="display: inline-block;">DIAMOND CLUB</h1>
+          <h1 style="display: inline-block;">LUXURY GIRL</h1>
           <img src="https://i.imgur.com/mjq8Nzg.png" alt="Logo" style="width: 100px; height: auto;">
           font-size: 48px;
     font-weight: bold;
@@ -202,52 +202,103 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1> LUXURY GIRL 🎀 </h1>
-            <img src="https://i.ibb.co/QHzkM79/taoanhdep-lam-net-anh-83770-removebg-preview.png" alt="Logo lớn" style="width:200px; height:auto;"">
-            <div class="login-btns">
-              <button id="login-btn" class="submit-btn">Đăng nhập</button>
-              <button id="register-btn" class="register-btn">Đăng ký</button>
+    
+ <html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>LUXURY GIRL 🎀</title>
+        <style>
+            .register-btn {
+                padding: 5px 10px;
+                background-color: #000000;
+                color: rgb(255, 255, 255);
+                margin-left: -5px;
+                margin-right: 5px;
+                border-radius: -10px;
+                text-decoration: none;
+                transition: background-color 0.3s ease;
+                border: 1px solid #00ff22;
+                box-shadow: 0 4px 8px #00ff22;
+                margin: 4px 8px;
+            }
+    
+            .register-btn:hover {
+                background-color: #00ff22;
+            }
+    
+            .login-btns a {
+                padding: 3px 7px;
+                background-color: #e48585;
+                color: rgb(255, 255, 255);
+                margin-left: -5px;
+                margin-right: 10px;
+                top: -20px;
+                border-radius: -10px;
+                text-decoration: none;
+                transition: background-color 0.3s ease;
+                border: 1px solid #ffb6c1;
+                box-shadow: 0 4px 8px #ffb6c1;
+                margin: 4px 8px;
+            }
+    
+            .login-btns a:nth-child(2) {
+                background-color: #ff7d7d;
+            }
+    
+            .login-btns a:hover {
+                background-color: #ff6699;
+            }
+    
+            .login-btns a:nth-child(2):hover {
+                background-color: #ff6699;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>LUXURY GIRL 🎀</h1>
+                <img src="https://i.ibb.co/cb5m9T3/Untitled-design-4-removebg-preview.png" alt="Logo lớn" style="width:340px; height:auto;">
+                <div class="login-btns">
+                    <button id="login-btn" class="submit-btn">Đăng nhập</button>
+                    <button id="register-btn" class="register-btn">Đăng ký</button>
+                </div>
             </div>
         </div>
-    </div>
-
-    <script>
-    // Xử lý nút Đăng ký
-    document.getElementById('register-btn').addEventListener('click', function() {
-        // Hiển thị hộp thoại để nhập mã giới thiệu
-        const code = prompt("Không tạo nhiều tài khoản ảo. Vui lòng nhập mã giới thiệu:");
         
-        // Kiểm tra mã giới thiệu
-        if (code === "369268") { // Mã giới thiệu hợp lệ
-            alert("Mã hợp lệ! Bạn có thể tiếp tục đăng ký.");
-            // Chuyển hướng đến trang đăng ký
-            window.location.href = 'https://girlluxury.club/#/Register'; // Đường dẫn đến trang đăng ký
-        } else if (code === null || code === '') {
-            alert("Bạn chưa nhập mã giới thiệu.");
-        } else {
-            alert("Mã giới thiệu không hợp lệ. Vui lòng thử lại.");
-        }
-    });
-
-    // Xử lý nút Đăng nhập
-    document.getElementById('login-btn').addEventListener('click', function() {
-        // Hiển thị hộp thoại để nhập mã giới thiệu
-        const code = prompt("Nhập mã dành cho Member VIP tại đây ạ 💎 ");
-        
-        // Kiểm tra mã giới thiệu
-        if (code === "369268") { // Mã giới thiệu hợp lệ
-            alert("Mã hợp lệ! Bạn có thể tiếp tục đăng nhập.");
-            // Chuyển hướng đến trang đăng nhập
-            window.location.href = 'https://girlluxury.club/#/Login'; // Đường dẫn đến trang đăng nhập
-        } else if (code === null || code === '') {
-            alert("Bạn chưa nhập mã giới thiệu.");
-        } else {
-            alert("Mã giới thiệu không hợp lệ. Vui lòng thử lại.");
-        }
-    });
-    </script>
+        <script>
+            // Xử lý nút Đăng ký với mã giới thiệu
+            document.getElementById('register-btn').addEventListener('click', function() {
+                const code = prompt("Không tạo nhiều tài khoản ảo các anh nha. Nhập mã giới thiệu để đăng kí ạ:");
+    
+                if (code === "369268") { // Mã giới thiệu hợp lệ
+                    alert("Mã hợp lệ rồi! Anh yêu tiến hành đăng ký nhé");
+                    window.location.href = 'https://girlluxury.club/#/Register';
+                } else if (code === null || code === '') {
+                    alert("Anh yêu ơi mình chưa nhập mã giới thiệu");
+                } else {
+                    alert("Mã giới thiệu không đúng rồi anh. Anh liên hệ các bé hỗ trợ anh nhé");
+                }
+            });
+    
+            // Xử lý nút Đăng nhập với mã VIP
+            document.getElementById('login-btn').addEventListener('click', function() {
+                const code = prompt("Anh yêu nhập mã VIP 💎 vào đây nhé:");
+    
+                if (code === "VIP2024") { // Mã VIP hợp lệ
+                    alert("Mã VIP hợp lệ! Anh yêu vào lựa chọn các bé xinh tươi nhé");
+                    window.location.href = 'https://gaigoitocdo.github.io/profile/';
+                } else if (code === null || code === '') {
+                    alert("Anh yêu ơi mình chưa nhập mã VIP. Liên hệ hỗ trợ nha anh");
+                } else {
+                    alert("Mã VIP không không đúng ạ. Anh liên hệ các bé hỗ trợ anh nhé");
+                }
+            });
+        </script>
+    </body>
+    </html>
 </body>
 </html>
 <style>
