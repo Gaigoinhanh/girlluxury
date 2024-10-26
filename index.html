@@ -352,9 +352,9 @@
     <div class="statistics-widget">
         <h4>Thống kê truy cập</h4>
         <ul>
-            <li>Online: <strong id="online">451</strong></li>
-            <li>VIP Members: <strong id="vipMembers">1596</strong></li>
-            <li>Tổng lượt truy cập: <strong id="visitCount">66243</strong></li>
+            <li>Online: <strong id="online">251</strong></li>
+            <li>VIP Members: <strong id="vipMembers">1693</strong></li>
+            <li>Tổng lượt truy cập: <strong id="visitCount">73243</strong></li>
         </ul>
     </div>
 
@@ -3654,13 +3654,13 @@ border-radius: 5px; /* Bo góc ảnh */
 
 
 <script>
-    let online = 451;  // Số người online ban đầu
-    let vipMembers = 1596;  // Tổng VIP Members ban đầu
-    let visitCount = 64243;  // Tổng lượt truy cập ban đầu
+    let online = 251;  // Số người online ban đầu
+    let vipMembers = 1693;  // Tổng VIP Members ban đầu
+    let visitCount = 73243;  // Tổng lượt truy cập ban đầu
 
     function updateOnline() {
         // Chọn ngẫu nhiên mức thay đổi từ mảng
-        const changes = [5, 13, 24, 32, 45, 41, 32, 11, 15, 17, 5, 17, 4, 19, 22, 12, 15, 29, 7, 12, 22, 11, 7, 12];
+        const changes = [5, 13, 24, 32, 15, 11, 22, 11, 15, 17, 5, 17, 4, 19, 22, 12, 15, 29, 7, 12, 22, 11, 7, 12];
         let change = changes[Math.floor(Math.random() * changes.length)];
         
         // Xác định tăng hoặc giảm
@@ -3669,7 +3669,7 @@ border-radius: 5px; /* Bo góc ảnh */
         }
 
         // Cập nhật số online trong giới hạn từ 347 đến 612
-        online = Math.max(347, Math.min(612, online + change));
+        online = Math.max(147, Math.min(212, online + change));
         document.getElementById("online").innerText = online;
     }
 
@@ -3688,7 +3688,7 @@ border-radius: 5px; /* Bo góc ảnh */
     // Cập nhật số người online mỗi 1 giây
     setInterval(function() {
         updateOnline();
-    }, 1000);
+    }, 3000);
 
     // Cập nhật số VIP Members mỗi 10 phút (600000 ms)
     setInterval(function() {
