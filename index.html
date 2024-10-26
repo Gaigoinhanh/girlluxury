@@ -1307,7 +1307,107 @@
     </div>
 </div>
 
-        
+  <!-- Modal nhập mã đặt lịch -->
+<div id="bookingModal" class="modal">
+    <div class="modal-content">
+        <h4>Đặt Lịch</h4>
+        <p>Mã xác nhận đặt lịch của anh là (Không chia sẻ cho bất cứ ai):</p>
+        <input type="text" id="bookingCodeInput" placeholder="Nhập mã đặt lịch">
+        <button onclick="submitBookingCode()">Xác nhận</button>
+    </div>
+</div>
+
+<!-- Thông báo thành công -->
+<div id="successNotification" class="success-notification">
+    <i class="fas fa-check-circle"></i>
+    Đặt lịch thành công!
+</div>
+
+<script>
+    // Mã đặt lịch chính xác áp dụng cho tất cả
+    const correctBookingCode = "OKBON";
+
+    // Mở modal nhập mã đặt lịch
+    function openBookingModal(character) {
+        document.getElementById("bookingModal").style.display = "flex";
+        // Đặt nhân vật hiện tại vào data attribute để dùng sau
+        document.getElementById("bookingModal").dataset.character = character;
+    }
+
+    // Xác nhận mã đặt lịch
+    function submitBookingCode() {
+        const bookingCode = document.getElementById("bookingCodeInput").value;
+
+        if (bookingCode === correctBookingCode) {
+            closeModal();
+            showSuccessNotification();
+        } else {
+            alert("Mã đặt lịch không chính xác. Vui lòng thử lại.");
+        }
+    }
+
+    // Hiển thị thông báo thành công
+    function showSuccessNotification() {
+        const notification = document.getElementById("successNotification");
+        notification.classList.add("show");
+
+        // Ẩn thông báo sau 3 giây
+        setTimeout(() => {
+            notification.classList.remove("show");
+        }, 3000);
+    }
+
+    // Đóng modal
+    function closeModal() {
+        document.getElementById("bookingModal").style.display = "none";
+        document.getElementById("bookingCodeInput").value = ""; // Xóa mã đã nhập
+    }
+
+    // Đóng modal khi nhấp bên ngoài
+    window.onclick = function(event) {
+        const modal = document.getElementById("bookingModal");
+        if (event.target === modal) {
+            closeModal();
+        }
+    }
+</script>
+
+<style>
+    /* CSS cơ bản cho modal và thông báo thành công */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.5);
+        justify-content: center;
+        align-items: center;
+    }
+    .modal-content {
+        background: #000000;
+        padding: 20px;
+        border-radius: 5px;
+        width: 300px;
+        text-align: center;
+        border: 2px solid #ffffff; /* Viền trắng */
+       
+    }
+    .success-notification {
+        display: none;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #000000;
+        color: rgb(30, 255, 0);
+        padding: 15px;
+        border-radius: 10px;
+        border: 2px solid #ffffff; /* Viền trắng */
+        font-weight: bold; /* Chữ đậm */
+    }
+    .success-notification.show {
+        display: block;
+    }
+</style>    
+  
 <!-- Thông tin chi tiết cho từng bé -->
         <div id="details-container">
             <!-- Chi tiết JULY -->
@@ -1320,8 +1420,7 @@
                   <button class="info-button" onclick="toggleContent('JULY', 'images')">
                       <i class="fas fa-images"></i> Hình ảnh
                   </button>
-                  <button class="info-button" onclick="toggleContent('JULY', 'bookings')">
-                      <i class="fas fa-book"></i> Đặt lịch
+                    <button onclick="openBookingModal('JULY')">Đặt lịch</button>
                   </button>
               </div>
           
@@ -1541,8 +1640,7 @@
                   <button class="info-button" onclick="toggleContent('YUMI', 'images')">
                       <i class="fas fa-images"></i> Hình ảnh
                   </button>
-                  <button class="info-button" onclick="toggleContent('YUMI', 'bookings')">
-                      <i class="fas fa-book"></i> Đặt lịch
+                <button onclick="openBookingModal('YUMI')">Đặt lịch</button>
                   </button>
               </div>
           
@@ -1753,8 +1851,7 @@
                 <button class="info-button" onclick="toggleContent('SUMY', 'images')">
                     <i class="fas fa-images"></i> Hình ảnh
                 </button>
-                <button class="info-button" onclick="toggleContent('SUMY', 'bookings')">
-                    <i class="fas fa-book"></i> Đặt lịch
+               <button onclick="openBookingModal('SUMY')">Đặt lịch</button>
                 </button>
             </div>
         
@@ -1949,10 +2046,9 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
             <button class="info-button" onclick="toggleContent('AMY', 'images')">
                 <i class="fas fa-images"></i> Hình ảnh
             </button>
-            <button class="info-button" onclick="toggleContent('AMY', 'bookings')">
-                <i class="fas fa-book"></i> Đặt lịch
-            </button>
-        </div>
+             <button onclick="openBookingModal('AMY')">Đặt lịch</button>
+        </button>
+    </div>
               
                    <!-- Thông tin chi tiết -->
         <div id="info-AMY" style="display: none;">
@@ -2156,10 +2252,10 @@ font-weight: bold;
                   <button class="info-button" onclick="toggleContent('ANNA', 'images')">
                       <i class="fas fa-images"></i> Hình ảnh
                   </button>
-                  <button class="info-button" onclick="toggleContent('ANNA', 'bookings')">
-                      <i class="fas fa-book"></i> Đặt lịch
-                  </button>
-              </div>
+                         <button onclick="openBookingModal('ANNA')">Đặt lịch</button>
+                </button>
+            </div>
+          
           
               <!-- Thông tin chi tiết -->
               <div id="info-ANNA" style="display: none">
@@ -2351,10 +2447,10 @@ font-weight: bold;
                   <button class="info-button" onclick="toggleContent('MINA', 'images')">
                       <i class="fas fa-images"></i> Hình ảnh
                   </button>
-                  <button class="info-button" onclick="toggleContent('MINA', 'bookings')">
-                      <i class="fas fa-book"></i> Đặt lịch
-                  </button>
-              </div>
+                    <button onclick="openBookingModal('MINA')">Đặt lịch</button>
+                </button>
+            </div>
+          
           
               <!-- Thông tin chi tiết -->
               <div id="info-MINA" style="display: none">
@@ -2553,11 +2649,9 @@ font-weight: bold;
         <button class="info-button" onclick="toggleContent('LUCY', 'images')">
             <i class="fas fa-images"></i> Hình ảnh
         </button>
-        <button class="info-button" onclick="toggleContent('LUCY', 'bookings')">
-            <i class="fas fa-book"></i> Đặt lịch
-        </button>
-    </div>
-
+          <button onclick="openBookingModal('LUCY')">Đặt lịch</button>
+    </button>
+</div>
     <!-- Thông tin chi tiết -->
     <div id="info-LUCY" style="display: none">
         <h4>Thông tin</h4>
@@ -2754,10 +2848,10 @@ font-weight: bold;
         <button class="info-button" onclick="toggleContent('SHISHI', 'images')">
             <i class="fas fa-images"></i> Hình ảnh
         </button>
-        <button class="info-button" onclick="toggleContent('SHISHI', 'bookings')">
-            <i class="fas fa-book"></i> Đặt lịch
-        </button>
-    </div>
+          <button onclick="openBookingModal('SHISHI')">Đặt lịch</button>
+    </button>
+</div>
+
 
     <!-- Thông tin chi tiết -->
     <div id="info-SHISHI" style="display: none">
