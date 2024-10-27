@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> LUXURY GIRL 🎀 </title>
+    <title> Chào mừng đến với LUXURY GIRL 🎀 </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Josefin Sans:wght@500&display=swap" rel="stylesheet">
 
@@ -49,7 +49,7 @@
 
             .title {
     display: inline-block; /* Để logo và tiêu đề trên cùng dòng */
-    font-size: 36px; /* Kích thước tiêu đề */
+    font-size: 33px; /* Kích thước tiêu đề */
     font-weight: bold;
     color: #ff69b4; /* Màu hồng đậm cho tiêu đề */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Đổ bóng cho tiêu đề */
@@ -59,9 +59,9 @@
 
 
         h1 {
-          <h1 style="display: inline-block;">LUXURY GIRL</h1>
+          <h1 style="display: inline-block;">Chào mừng đến với LUXURY GIRL 🎀</h1>
           <img src="https://i.imgur.com/mjq8Nzg.png" alt="Logo" style="width: 100px; height: auto;">
-          font-size: 48px;
+          font-size: 42px;
     font-weight: bold;
     text-align: center;
     background: linear-gradient(45deg, #ff79a1, #ebca12);
@@ -162,7 +162,7 @@
     border-radius: 5px;
     margin: 1px;
     cursor: pointer;
-    font-size: 13px; /* Điều chỉnh kích thước chữ */
+    font-size: 14px; /* Điều chỉnh kích thước chữ */
     width: 115px; /* Điều chỉnh chiều rộng của nút */
     height: 30px; /* Điều chỉnh chiều cao của nút */
     transition: background-color 0.3s ease;
@@ -207,7 +207,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>LUXURY GIRL 🎀</title>
+        <title>Chào mừng đến với LUXURY GIRL 🎀</title>
         <style>
             .register-btn {
                 padding: 5px 10px;
@@ -253,52 +253,120 @@
             .login-btns a:nth-child(2):hover {
                 background-color: #ff6699;
             }
+        .button {
+            background-color: #000000;
+            color: #ffffff;
+            font-size: 15px;
+            padding: 10px 20px;
+            margin: 10px 5px;
+            border: 1px solid #00f048;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px #00f048;
+            font-weight: 700; /* Chữ đậm nhưng không quá nặng */
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #00f048;
+            
+            }
+             .toggle-link {
+            color: #FFD700;
+            cursor: pointer;
+            display: block;
+            margin-top: 15px;
+        }
             
         </style>
     </head>
     <body>
         <div class="container">
             <div class="header">
-                <h1>LUXURY GIRL 🎀</h1>
+                <h1>Chào mừng bạn đến với LUXURY GIRL 🎀</h1>
+               
                 <img src="https://i.ibb.co/cb5m9T3/Untitled-design-4-removebg-preview.png" alt="Logo lớn" style="width:340px; height:auto;">
-                <div class="login-btns">
-                    <button id="login-btn" class="submit-btn">Đăng nhập</button>
-                    <button id="register-btn" class="register-btn">Đăng ký</button>
-                </div>
+                <div id="registerForm" class="form-container" style="display: none;">
+                  
+</div>
+
+
+<div class="container">
+    <button class="button" onclick="redirectToProfile()">Check Info</button>
+</div>
+
+<script>
+    function redirectToProfile() {
+        window.location.href = "https://gaigoitocdo.github.io/profile/";
+    }
+</script>
             </div>
         </div>
         
         <script>
-            // Xử lý nút Đăng ký với mã giới thiệu
-            document.getElementById('register-btn').addEventListener('click', function() {
-                const code = prompt("Không tạo nhiều tài khoản ảo các anh nha. Nhập mã giới thiệu để đăng kí ạ:");
-    
-                if (code === "369268") { // Mã giới thiệu hợp lệ
-                    alert("Mã hợp lệ rồi! Anh yêu tiến hành đăng ký nhé");
-                    window.location.href = 'https://girlluxury.club/#/Register';
-                } else if (code === null || code === '') {
-                    alert("Anh yêu ơi mình chưa nhập mã giới thiệu");
-                } else {
-                    alert("Mã giới thiệu không đúng rồi anh. Anh liên hệ các bé hỗ trợ anh nhé");
-                }
-            });
-    
-            // Xử lý nút Đăng nhập với mã VIP
-            document.getElementById('login-btn').addEventListener('click', function() {
-                const code = prompt("Anh yêu nhập mã VIP 💎 vào đây nhé:");
-    
-                if (code === "LXRVIP") { // Mã VIP hợp lệ
-                    alert("Mã VIP hợp lệ! Anh yêu vào lựa chọn các bé xinh tươi nhé");
-                    window.location.href = 'https://gaigoitocdo.github.io/profile/';
-                } else if (code === null || code === '') {
-                    alert("Anh yêu ơi mình chưa nhập mã VIP. Liên hệ hỗ trợ nha anh");
-                } else {
-                    alert("Mã VIP không không đúng ạ. Anh liên hệ các bé hỗ trợ anh nhé");
-                }
-            });
-        </script>
-    </body>
-    </html>
+          // Chuyển đổi giữa form đăng ký và đăng nhập
+          function toggleForms() {
+            const registerForm = document.getElementById("registerForm");
+            const loginForm = document.getElementById("loginForm");
+            registerForm.style.display = registerForm.style.display === "none" ? "block" : "none";
+            loginForm.style.display = loginForm.style.display === "none" ? "block" : "none";
+        }
+
+        // Xử lý đăng ký người dùng
+        function register() {
+            const username = document.getElementById("registerUsername").value;
+            const password = document.getElementById("registerPassword").value;
+
+            if (username && password) {
+                const user = { username: username, password: password };
+                localStorage.setItem("user", JSON.stringify(user));
+                alert("Đăng ký thành công!");
+                toggleForms(); // Chuyển sang form đăng nhập
+            } else {
+                alert("Vui lòng nhập đầy đủ thông tin.");
+            }
+        }
+
+        // Xử lý đăng nhập người dùng
+        function login() {
+            const username = document.getElementById("loginUsername").value;
+            const password = document.getElementById("loginPassword").value;
+            const storedUser = JSON.parse(localStorage.getItem("user"));
+
+            if (storedUser && storedUser.username === username && storedUser.password === password) {
+                alert("Đăng nhập thành công!");
+                displayUserInfo();
+            } else {
+                alert("Tên tài khoản hoặc mật khẩu không đúng.");
+            }
+        }
+
+        // Hiển thị thông tin tài khoản người dùng
+        function displayUserInfo() {
+            const storedUser = JSON.parse(localStorage.getItem("user"));
+            if (storedUser) {
+                document.getElementById("displayUsername").textContent = storedUser.username;
+                document.getElementById("registerForm").style.display = "none";
+                document.getElementById("loginForm").style.display = "none";
+                document.getElementById("accountInfo").style.display = "block";
+            }
+        }
+
+        // Xử lý đăng xuất người dùng
+        function logout() {
+            localStorage.removeItem("user");
+            alert("Bạn đã đăng xuất!");
+            document.getElementById("accountInfo").style.display = "none";
+            document.getElementById("loginForm").style.display = "block";
+        }
+
+        // Kiểm tra trạng thái đăng nhập khi tải trang
+        document.addEventListener("DOMContentLoaded", function() {
+            const storedUser = JSON.parse(localStorage.getItem("user"));
+            if (storedUser) {
+                displayUserInfo();
+            }
+        });
+    </script>
 </body>
 </html>
 <style>
@@ -460,7 +528,8 @@
         gap: 10px;
     }
     .phim-btn {
-        padding: 5px 10px;
+        font-size: 13px;
+        padding: 5px 9px;
         background-color: #000000;
         color: rgb(255, 253, 253);
         border: none;
@@ -614,7 +683,7 @@
     
     <!-- Các phần nội dung hiển thị khi bấm vào nút -->
     <div id="upcoming" class="image-content" style="display:none;">
-        <p>- Đăng nhập để được xem đầy đủ !</p>
+        <p>💎 VIP3 mới có thể xem đầy đủ nội dung này !</p>
         <img src="https://i.ibb.co/RcJCBVD/photo-3-2024-10-23-11-52-30.jpg" alt="Hàng Sắp Lên Sóng" style="width:150px; height:auto; margin:10px;">
     </div>
 
@@ -1098,7 +1167,7 @@
     </div>
 
     <div id="asian-girls" class="image-content" style="display:none;">
-        <p>- Đăng nhập để được xem đầy đủ !</p>
+        <p>💎 VIP3 mới có thể xem đầy đủ nội dung này !</p>
          <img src="https://i.ibb.co/7XC0YLX/photo-2022-10-08-18-52-42.jpg" alt="Image 1" style="width:150px; height:auto; margin:10px;">
 <img src="https://i.ibb.co/VNmggsG/photo-2022-10-08-18-52-46.jpg" alt="Image 2" style="width:150px; height:auto; margin:10px;">
 <img src="https://i.ibb.co/6nkzCXY/photo-2022-10-08-18-52-45.jpg" alt="Image 3" style="width:150px; height:auto; margin:10px;">
@@ -1220,7 +1289,7 @@
     </div>
 
     <div id="stolen-photos" class="image-content" style="display:none;">
-        <p>- Đăng nhập để được xem đầy đủ !</p>
+        <p>💎 VIP3 mới có thể xem đầy đủ nội dung này !</p>
     </div>
 
 </div>
@@ -1314,7 +1383,7 @@
 <script>
   // Hàm hiển thị thông báo khi người dùng bấm vào một khu vực
   function showAlert(region) {
-      alert(`Anh yêu ơi hãy đăng nhập trước mới vào xem được nhé anh  💎 `);
+      alert(`💎 VIP3 mới có thể xem đầy đủ nội dung này ! `);
   }
 
   function toggleContent(region, type) {
@@ -1376,7 +1445,7 @@
 
 <script>
     // Mã đặt lịch chính xác áp dụng cho tất cả
-    const correctBookingCode = "LXRVIP";
+    const correctBookingCode = "OKBON";
 
     // Mở modal nhập mã đặt lịch
     function openBookingModal(character) {
@@ -1424,7 +1493,9 @@
 </script>
 
 <style>
-    /* CSS cơ bản cho modal và thông báo thành công */
+    
+    /* 
+    CSS cơ bản cho modal và thông báo thành công */
     .modal {
         display: none;
         position: fixed;
@@ -3346,7 +3417,7 @@ border-radius: 5px; /* Bo góc ảnh */
 }
 
 {
-    font-size: 32px; /* Kích thước chữ của tiêu đề */
+    font-size: 30px; /* Kích thước chữ của tiêu đề */
     background: linear-gradient(45deg, #ff79a1, #ffdd40); /* Hiệu ứng gradient từ hồng sang vàng */
     -webkit-background-clip: text; /* Hiển thị gradient trên văn bản */
     
@@ -3610,7 +3681,7 @@ border-radius: 5px; /* Bo góc ảnh */
 }
 
 {
-    font-size:33px; /* Kích thước chữ của tiêu đề */
+    font-size:30px; /* Kích thước chữ của tiêu đề */
     background: linear-gradient(45deg, #ff79a1, #ffdd40); /* Hiệu ứng gradient từ hồng sang vàng */
     -webkit-background-clip: text; /* Hiển thị gradient trên văn bản */
     -webkit-text-fill-color: transparent; /* Đặt màu văn bản trong suốt để hiển thị gradient */
@@ -3828,18 +3899,19 @@ h1, h2, h3 {
 button {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    background-color: #000000; /* Màu cam nổi bật */
-    color: #ffffff; /* Màu chữ sáng */
+    font-size: 18px;
+    background-color: #02f723; /* Màu cam nổi bật */
+    color: #000000; /* Màu chữ sáng */
     padding: 5px 10px;
-    border: 1px solid #af677f;
-    box-shadow: 0 4px 8px #ffb6c1; /* Hiệu ứng đổ bóng */
+    border: 1px solid #ffffff;
+    box-shadow: 0 4px 8px #02f723; /* Hiệu ứng đổ bóng */
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease; /* Hiệu ứng khi nhấn */
 }
 
 button:hover {
-    background-color: #af677f; /* Đổi màu khi hover */
+    background-color: #ff0000; /* Đổi màu khi hover */
     transform: translateY(-5px); /* Hiệu ứng di chuyển nhẹ */
 }
 
@@ -3941,7 +4013,7 @@ img:hover {
 
 h1 {
     font-family: 'Raleway', sans-serif; /* Chọn font Raleway siêu đậm */
-    font-size: 32px; /* Kích thước chữ lớn */
+    font-size: 25px; /* Kích thước chữ lớn */
     color: #fdfdfd /* Màu hồng đậm */
     text-transform: uppercase; /* In hoa tất cả chữ */
     letter-spacing: 2px; /* Khoảng cách giữa các chữ cái */
@@ -3989,9 +4061,9 @@ input[type="file"] {
       display: block;
       margin: 20px auto;
       padding: 10px;
-      background-color: #ffffff;
-      color: rgb(0, 0, 0);
-      border: none;
+      background-color: #000000;
+      color: rgb(255, 255, 255);
+      border: #00ff37;
       border-radius: 5px;
       cursor: pointer;
     }
@@ -4043,7 +4115,8 @@ body {
 
 
     #toggle-chat-btn:hover {
-      background-color: #ff69b4;
+      background-color: #00ff37;
+      border: #00ff37;
     }
   </style>
 </head>
@@ -4194,7 +4267,7 @@ console.log(region, type); // In giá trị của region và type
     
             #clock {
             font-size: 15px;
-            color: #ffb6c1;
+            color: #00ff15;
             text-align: center;
             font-family: 'Roboto Mono', monospace;
             background-color: #100c0c
@@ -4205,7 +4278,7 @@ console.log(region, type); // In giá trị của region và type
             top: 10px;        /* Căn cách lề trên */
             left: 20px;       /* Căn cách lề trái */
             z-index: 9999; 
-            border: 1px solid #ffb6c1;
+            border: 1px solid #00ff15;
             border-radius: -10px; /* Bo tròn góc nút */ 
  
               
@@ -4229,7 +4302,7 @@ console.log(region, type); // In giá trị của region và type
 </head>
 <body>
     <div class="copyright-section">
-        <p>© Bản quyền thuộc về Ayshb 15/02/2021
+        <p>© Bản quyền thuộc về Luxury girl họat động 15/02/2021
         </p>
     </div>
 
@@ -4273,7 +4346,7 @@ document.getElementById('timezone').innerHTML = "Múi giờ: Asia/Seoul";
     color: #ccc; /* Màu chữ sáng hơn để tạo sự tương phản */
     text-align: center; /* Canh giữa nội dung */
     padding: 10px; /* Khoảng cách trong khung */
-    font-size: 20px; /* Kích thước chữ nhỏ vừa */
+    font-size: 7px; /* Kích thước chữ nhỏ vừa */
     margin-top: 20px; /* Khoảng cách phía trên */
     font-family: Arial, sans-serif; /* Đặt font đơn giản */
     border-radius: 10px; /* Bo tròn góc nút */ 
@@ -4298,7 +4371,7 @@ document.getElementById('timezone').innerHTML = "Múi giờ: Asia/Seoul";
             border-radius: 5px;
             padding: 10px;
             width: 250px; /* Chiều rộng của khung thông báo */
-            height: 170px; /* Tự động thay đổi chiều cao tùy vào nội dung */
+            height: 140px; /* Tự động thay đổi chiều cao tùy vào nội dung */
             z-index: 1000;
             display: none;
             font-family: 'Roboto', sans-serif; /* Sử dụng font Roboto */
@@ -4321,7 +4394,7 @@ document.getElementById('timezone').innerHTML = "Múi giờ: Asia/Seoul";
             var notificationContent = document.getElementById('notification-content');
 
             // Đảm bảo rằng nội dung được cập nhật đúng cách
-            notificationContent.innerHTML = "Hân hạnh được phục vụ Anh yêu. Đây là giao diện dành cho VIP Member 💎. Nhanh chóng trở thành VIP Member 💎 nhé anh ";
+            notificationContent.innerHTML = "Hân hạnh được phục vụ các anh. Nhanh tay kiếm cho mình một đối tác vừa ý nhé 💎 ";
 
             // Hiển thị thông báo
             notification.style.display = 'block';
@@ -4329,7 +4402,7 @@ document.getElementById('timezone').innerHTML = "Múi giờ: Asia/Seoul";
             // Ẩn thông báo sau 5 giây
             setTimeout(function() {
                 notification.style.display = 'none';
-            }, 5000);
+            }, 4000);
         });
     </script>
 
