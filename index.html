@@ -1427,10 +1427,31 @@
     </div>
 </div>
 
-  <!-- Modal nhập mã đặt lịch -->
-<div id="bookingModal" class="modal">
+ div id="bookingInfoModal" class="modal" style="display: none;">
     <div class="modal-content">
         <h4>Đặt Lịch</h4>
+        <label for="timeInput">Thời gian:</label>
+        <input type="datetime-local" id="timeInput">
+        
+        <label for="locationInput">Địa điểm:</label>
+        <input type="text" id="locationInput" placeholder="Nhập địa điểm">
+        
+        <label for="servicePackage">Gói dịch vụ:</label>
+<select id="servicePackage">
+    <option value="basic">Thường</option>
+    <option value="vip">VIP</option>
+    <option value="luxury">Luxury</option>
+    <option value="vip-tour">VIP Tour</option>
+</select>
+        
+        <button onclick="confirmBookingInfo()">Xác nhận</button>
+    </div>
+</div>
+
+<!-- Modal nhập mã đặt lịch -->
+<div id="bookingCodeModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <h4>Nhập Mã Đặt Lịch</h4>
         <p>Mã xác nhận đặt lịch của anh là (Không chia sẻ cho bất cứ ai):</p>
         <input type="text" id="bookingCodeInput" placeholder="Nhập mã đặt lịch">
         <button onclick="submitBookingCode()">Xác nhận</button>
@@ -1438,20 +1459,37 @@
 </div>
 
 <!-- Thông báo thành công -->
-<div id="successNotification" class="success-notification">
+<div id="successNotification" class="success-notification" style="display: none;">
     <i class="fas fa-check-circle"></i>
     Đặt lịch thành công!
 </div>
 
 <script>
-    // Mã đặt lịch chính xác áp dụng cho tất cả
     const correctBookingCode = "OKBON";
 
-    // Mở modal nhập mã đặt lịch
+    // Mở modal nhập thông tin đặt lịch
     function openBookingModal(character) {
-        document.getElementById("bookingModal").style.display = "flex";
-        // Đặt nhân vật hiện tại vào data attribute để dùng sau
-        document.getElementById("bookingModal").dataset.character = character;
+        document.getElementById("bookingInfoModal").style.display = "flex";
+        document.getElementById("bookingInfoModal").dataset.character = character;
+    }
+
+    // Đóng modal
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+    }
+
+    // Xác nhận thông tin đặt lịch và chuyển qua nhập mã đặt lịch
+    function confirmBookingInfo() {
+        const time = document.getElementById("timeInput").value;
+        const location = document.getElementById("locationInput").value;
+        const package = document.getElementById("servicePackage").value;
+
+        if (time && location && package) {
+            closeModal("bookingInfoModal");
+            document.getElementById("bookingCodeModal").style.display = "flex";
+        } else {
+            alert("Vui lòng nhập đầy đủ thông tin.");
+        }
     }
 
     // Xác nhận mã đặt lịch
@@ -1459,7 +1497,7 @@
         const bookingCode = document.getElementById("bookingCodeInput").value;
 
         if (bookingCode === correctBookingCode) {
-            closeModal();
+            closeModal("bookingCodeModal");
             showSuccessNotification();
         } else {
             alert("Mã đặt lịch không chính xác. Vui lòng thử lại.");
@@ -1469,32 +1507,22 @@
     // Hiển thị thông báo thành công
     function showSuccessNotification() {
         const notification = document.getElementById("successNotification");
-        notification.classList.add("show");
+        notification.style.display = "block";
 
-        // Ẩn thông báo sau 3 giây
         setTimeout(() => {
-            notification.classList.remove("show");
+            notification.style.display = "none";
         }, 3000);
-    }
-
-    // Đóng modal
-    function closeModal() {
-        document.getElementById("bookingModal").style.display = "none";
-        document.getElementById("bookingCodeInput").value = ""; // Xóa mã đã nhập
-    }
-
-    // Đóng modal khi nhấp bên ngoài
-    window.onclick = function(event) {
-        const modal = document.getElementById("bookingModal");
-        if (event.target === modal) {
-            closeModal();
-        }
     }
 </script>
 
 <style>
-    
-    /* 
+     #bookingInfoModal .modal-content label {
+        font-family: 'Roboto', sans-serif; /* Thay đổi thành font khác nếu cần */
+        font-size: 15px;
+        font-weight: 10
+        color: #ffffff; /* Màu chữ */
+    }
+    /*  
     CSS cơ bản cho modal và thông báo thành công */
     .modal {
         display: none;
@@ -1505,17 +1533,23 @@
         align-items: center;
     }
     .modal-content {
-        background: #000000;
+        background-color: #000;
         padding: 20px;
-        border-radius: 5px;
-        width: 300px;
-        text-align: center;
-        border: 2px solid #ffffff; /* Viền trắng */
-       
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        width: 400px; /* Điều chỉnh chiều rộng phù hợp */
+        color: white;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        border: 2px solid #00cc00
     }
+       
+    
     .success-notification {
         display: none;
         position: fixed;
+        width: 400px;
         top: 20px;
         right: 20px;
         background-color: #000000;
@@ -1531,7 +1565,7 @@
     .success-notification.show {
         display: block;
     }
-</style>    
+</style>       
   
 <!-- Thông tin chi tiết cho từng bé -->
         <div id="details-container">
