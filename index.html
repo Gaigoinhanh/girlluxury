@@ -1411,8 +1411,8 @@
         <div class="region-btn" onclick="showDetails('AMY')">
             <i class="fas fa-female"></i> AMY (에이미) 
         </div>
-        <div class="region-btn" onclick="showDetails('ANNA')">
-            <i class="fas fa-female"></i> ANNA (안나)
+         <div class="region-btn" onclick="showDetails('HaMy')">
+          <i class="fas fa-female"></i> Hà My
         </div>
         <div class="region-btn" onclick="showDetails('MINA')">
             <i class="fas fa-female"></i> MINA (미나)
@@ -2392,200 +2392,209 @@ font-weight: bold;
 
           
 
-            <!-- Chi tiết ANNA -->
-            <div id="detail-ANNA" class="detail-info">
-              <h3>ANNA</h3>
-              <div class="button-container">
-                  <button class="info-button" onclick="toggleContent('ANNA', 'info')">
-                      <i class="fas fa-info-circle"></i> Info
-                  </button>
-                  <button class="info-button" onclick="toggleContent('ANNA', 'images')">
-                      <i class="fas fa-images"></i> Hình ảnh
-                  </button>
-                         <button onclick="openBookingModal('ANNA')">Đặt lịch</button>
-                </button>
-            </div>
-          
-          
-              <!-- Thông tin chi tiết -->
-              <div id="info-ANNA" style="display: none">
-                  <h4>Thông tin</h4>
-                  <div class="info-content">
-                    <img src="https://i.ibb.co/1ZVthy7/Untitled-design-19.png" alt="Image New 41" class="info-image" style="height: 330px;">
+           <!-- Chi tiết Hà My -->
+<div id="detail-HaMy" class="detail-info">
+    <h3>Hà My</h3>
+    <div class="button-container">
+        <button class="info-button" onclick="toggleContent('HaMy', 'info')">
+            <i class="fas fa-info-circle"></i> Info
+        </button>
+        <button class="info-button" onclick="toggleContent('HaMy', 'images')">
+            <i class="fas fa-images"></i> Hình ảnh
+        </button>
+        <button onclick="openBookingModal('HaMy')">Đặt lịch</button>
+    </div>
 
-                      <div class="info-text">
-                          <p><i class="fas fa-money-bill-wave"></i> <strong>Giá tiền 값:</strong> 105.000 원/2Shot (60 phút)</p>
-                          <p><i class="fas fa-phone"></i> <strong>SDT:</strong> +82 10 8349 57**</p>
-                          <p><i class="fas fa-map-marker-alt"></i> <strong>Vị trí:</strong> <span class="location-info" id="location-range-ANNA">Đang tải...</span></p>
-                          
-                          <style>
-                          /* styles.css */
-.location-info {
-    font-size: 17px;
-    color: #00ff00; /* Màu xanh lá */
-    font-weight: bold;
-}
-</style>
-                          <script>
-                          function updateLocationRange(memberId) {
-                            let currentValue = 5.5;  // Giá trị ban đầu
-                            let direction = "up";    // Hướng ban đầu là tăng
-                            const step = 0.1;        // Bước nhảy mỗi lần tăng/giảm
-                            const min = 0.3;         // Giá trị nhỏ nhất
-                            const max = 9.5;         // Giá trị lớn nhất
+    <!-- Thông tin chi tiết -->
+    <div id="info-HaMy" style="display: none">
+        <h4>Thông tin</h4>
+        <div class="info-content">
+            <img src="https://i.ibb.co/bHLbVdD/455691559-122111257202434651-6263614150393024155-n.jpg" alt="Image 8" class="info-image" style="height: 330px;">
+
+
+            <div class="info-text">
+                <p><i class="fas fa-money-bill-wave"></i> <strong>Giá tiền 값:</strong> 109.000 원/2Shot (60 phút)</p>
+                <p><i class="fas fa-map-marker-alt"></i> <strong>Vị trí:</strong> <span class="location-info" id="location-range-HaMy">Trong phạm vi 6.3 km</span></p>
+                
+                <style>
+                    /* styles.css */
+                    .location-info {
+                        font-size: 17px;
+                        color: #00ff00; /* Màu xanh lá */
+                        font-weight: bold;
+                    }
+                </style>
+                <script>
+                    function updateLocationRange(memberId) {
+                        let currentValue = 5.5;  // Giá trị ban đầu
+                        let direction = "up";    // Hướng ban đầu là tăng
+                        const step = 0.1;        // Bước nhảy mỗi lần tăng/giảm
+                        const min = 0.3;         // Giá trị nhỏ nhất
+                        const max = 9.5;         // Giá trị lớn nhất
                         
-                            // Kiểm tra xem có giá trị lưu trong localStorage cho memberId không
-                            const lastValue = localStorage.getItem(`lastValue_${memberId}`);
-                            if (lastValue) {
-                                currentValue = parseFloat(lastValue);
-                            }
-                        
-                            const locationElement = document.getElementById(`location-range-${memberId}`);
-                            locationElement.textContent = "Đang tải..."; // Hiển thị "Đang tải..." khi trang vừa tải
-                        
-                            // Hàm để cập nhật vị trí
-                            function adjustRange() {
-                                if (!locationElement) return;
-                        
-                                // Nếu đang tăng
-                                if (direction === "up") {
-                                    currentValue += step;
-                                    if (currentValue >= max || currentValue >= 7.7) {
-                                        direction = "down";
-                                    }
-                                } 
-                                // Nếu đang giảm
-                                else if (direction === "down") {
-                                    currentValue -= step;
-                                    if (currentValue <= min || currentValue <= 3.2) {
-                                        direction = "up";
-                                    }
-                                }
-                        
-                                // Cập nhật nội dung số liệu sau khi tải xong
-                                locationElement.textContent = `Trong phạm vi ${currentValue.toFixed(1)} km`;
-                        
-                                // Lưu giá trị cuối cùng vào localStorage cho memberId
-                                localStorage.setItem(`lastValue_${memberId}`, currentValue.toFixed(1));
-                            }
-                        
-                            // Cập nhật số liệu mỗi 20 giây
-                            setInterval(adjustRange, 20000);
-                        
-                            // Hiển thị giá trị ban đầu ngay khi trang được tải
-                            adjustRange();
+                        // Kiểm tra xem có giá trị lưu trong localStorage cho memberId không
+                        const lastValue = localStorage.getItem(`lastValue_${memberId}`);
+                        if (lastValue) {
+                            currentValue = parseFloat(lastValue);
                         }
                         
-                        // Gọi hàm cho mỗi thành viên cần cập nhật vị trí
-                        document.addEventListener("DOMContentLoaded", function () {
-                            updateLocationRange("ANNA"); // Thay "JULY" bằng ID của từng thành viên khác khi cần
-                        });
+                        const locationElement = document.getElementById(`location-range-${memberId}`);
+                        locationElement.textContent = "Đang tải..."; // Hiển thị "Đang tải..." khi trang vừa tải
                         
-    </script>
+                        // Hàm để cập nhật vị trí
+                        function adjustRange() {
+                            if (!locationElement) return;
 
-</body>
-</html>
-                          <button onclick="showInputBox('ANNA', 'phone')">SDT</button>
-                <button onclick="showInputBox('ANNA', 'address')">Địa chỉ</button>
-                <button onclick="showInputBox('ANNA', 'telegram')">Telegram</button>
-                          <p><i class="fas fa-clock"></i> <strong>Thời gian gia nhập:</strong> 12/07/2024 12:03</p>
-                          <i class="fas fa-user"></i> Hoạt động: <span class="active-status">Đang hoạt động</span>
-                        </p>
-                      </div>
-                  </div>
-                  <h4>Giới thiệu</h4>
-                  <p>
-                    Một cô gái mới lớn ngoan ngoãn, xinh đẹp. Với gu thời trang cực kỳ quyến rũ và sexy, da trắng, body gợi cảm, chân dài thuôn trắng, váy ren bó ôm hông em xuất hiện thật nổi bật, làm tan chảy mọi ánh mắt, điêu đứng con tim
+                            // Nếu đang tăng
+                            if (direction === "up") {
+                                currentValue += step;
+                                if (currentValue >= max || currentValue >= 7.7) {
+                                    direction = "down";
+                                }
+                            } 
+                            // Nếu đang giảm
+                            else if (direction === "down") {
+                                currentValue -= step;
+                                if (currentValue <= min || currentValue <= 3.2) {
+                                    direction = "up";
+                                }
+                            }
 
-                    Em có một dáng người nhỏ nhắn mềm mại muốn ôm mãi không thôi. Gương mặt dễ thương, ngây thơ đáng yêu cực, ngực to và trắng, đầu ti hồng hào nghịch khá thích. Còn bím thì non tơ được cắt tỉa gọn gàng, để nhúm lông rất đẹp mắt gợi tình, hàng này vét đã lắm anh em ạ, thơm tho, nước ra lênh láng, tiếng rên bẽn lẽn đáng yêu, khoản này chắc ae thích nhất rồi phải không
+                            // Cập nhật nội dung số liệu sau khi tải xong
+                            locationElement.textContent = `Trong phạm vi ${currentValue.toFixed(1)} km`;
+
+                            // Lưu giá trị cuối cùng vào localStorage cho memberId
+                            localStorage.setItem(`lastValue_${memberId}`, currentValue.toFixed(1));
+                        }
+                        
+                        // Cập nhật số liệu mỗi 20 giây
+                        setInterval(adjustRange, 20000);
+                        
+                        // Hiển thị giá trị ban đầu ngay khi trang được tải
+                        adjustRange();
+                    }
                     
-                    Kết: em còn chút ngại ngùng khi nói chuyện, nhưng thái độ lúc lâm trận rất nhiệt tình, chịu khó học hỏi, phối hợp các tư thế
-                  </p>
-                  <p><i class="fas fa-birthday-cake"></i> <strong>Năm sinh:</strong> 2003</p>
-                  <p><i class="fas fa-ruler-vertical"></i> <strong>Cao (cm):</strong> 161</p>
-                  <p><i class="fas fa-weight-hanging"></i> <strong>Nặng (kg):</strong> 45</p>
-                  <p><i class="fas fa-tape"></i> <strong>Vòng 1 (cm):</strong> 84</p>
-                  <p><i class="fas fa-tape"></i> <strong>Vòng 2 (cm):</strong> 60</p>
-                  <p><i class="fas fa-tape"></i> <strong>Vòng 3 (cm):</strong> 88</p>
-                 <p><i class="fas fa-scissors"></i> <strong>Lông bím:</strong> Gọn gàng</p>
-                  <p><i class="fas fa-smile"></i> <strong>Mặt:</strong> Xinh đẹp, thân thiện</p>
-                  <p><i class="fas fa-concierge-bell"></i> <strong>Service:</strong> Hôn môi, Hôn vú, Vét máng, HJ, BJ, Bóp vú, Qua đêm</p>
-                  <p><i class="fas fa-eye"></i> <strong>Nhận dạng:</strong> gái non ,xinh, nhìn rất đáng yêu                  </p>
-                <p><i class="fas fa-clock"></i> <strong>Hoạt động:</strong> giờ nào cũng ok</p>
-</div>
+                    // Gọi hàm cho mỗi thành viên cần cập nhật vị trí
+                    document.addEventListener("DOMContentLoaded", function () {
+                        updateLocationRange("HaMy"); // Thay "HaMy" bằng ID của từng thành viên khác khi cần
+                    });
+                </script>
 
-              <div id="review-container-ANNA" class="review-section">
-    <h4>Đánh giá của bạn cho ANNA</h4>
-    <div class="stars">
-        <span class="star" onclick="rateStar('ANNA', 1)">&#9733;</span>
-        <span class="star" onclick="rateStar('ANNA', 2)">&#9733;</span>
-        <span class="star" onclick="rateStar('ANNA', 3)">&#9733;</span>
-        <span class="star" onclick="rateStar('ANNA', 4)">&#9733;</span>
-        <span class="star" onclick="rateStar('ANNA', 5)">&#9733;</span>
+                <button onclick="showInputBox('HaMy', 'phone')">SDT</button>
+                <button onclick="showInputBox('HaMy', 'address')">Địa chỉ</button>
+                <button onclick="showInputBox('HaMy', 'telegram')">Telegram</button>
+                <p><i class="fas fa-clock"></i> <strong>Thời gian gia nhập:</strong> 12/07/2024 12:03</p>
+                <i class="fas fa-user"></i> Hoạt động: <span class="active-status">Đang hoạt động</span>
+                </p>
+            </div>
+        </div>
+        <h4>Giới thiệu</h4>
+        <p>
+            Em có một dáng người mềm mại muốn ôm mãi không thôi. Gương mặt dễ thương, ngây thơ đáng yêu cực, ngực to và trắng, đầu ti hồng hào nghịch khá thích. Còn bím thì non tơ được cắt tỉa gọn gàng, để nhúm lông rất đẹp mắt gợi tình, hàng này vét đã lắm các anh ạ, thơm tho, nước ra lênh láng, tiếng rên bẽn lẽn đáng yêu, khoản này chắc các anh thích nhất rồi phải không.
+            
+            Kết: em còn chút ngại ngùng khi nói chuyện, nhưng thái độ lúc lâm trận rất nhiệt tình, chịu khó học hỏi, phối hợp các tư thế.
+        </p>
+        <p><i class="fas fa-birthday-cake"></i> <strong>Năm sinh:</strong> 2000</p>
+        <p><i class="fas fa-ruler-vertical"></i> <strong>Cao (cm):</strong> 163</p>
+        <p><i class="fas fa-weight-hanging"></i> <strong>Nặng (kg):</strong> 49</p>
+        <p><i class="fas fa-tape"></i> <strong>Vòng 1 (cm):</strong> 88</p>
+        <p><i class="fas fa-tape"></i> <strong>Vòng 2 (cm):</strong> 59</p>
+        <p><i class="fas fa-tape"></i> <strong>Vòng 3 (cm):</strong> 91</p>
+        <p><i class="fas fa-scissors"></i> <strong>Lông bím:</strong> Gọn gàng</p>
+        <p><i class="fas fa-smile"></i> <strong>Mặt:</strong> Xinh đẹp, thân thiện</p>
+        <p><i class="fas fa-concierge-bell"></i> <strong>Service:</strong> Hôn môi, Hôn vú, Vét máng, HJ, BJ, Bóp vú, Qua đêm</p>
+        <p><i class="fas fa-eye"></i> <strong>Nhận dạng:</strong> Gái ngon, xinh, nhìn rất đáng yêu</p>
+        <p><i class="fas fa-clock"></i> <strong>Hoạt động:</strong> Giờ nào cũng ok</p>
     </div>
-    <p id="rating-result-ANNA">Bạn chưa đánh giá</p>
-</div>
 
-       
+    <div id="review-container-HaMy" class="review-section">
+        <h4>Đánh giá của bạn cho Hà My</h4>
+        <div class="stars">
+            <span class="star" onclick="rateStar('HaMy', 1)">&#9733;</span>
+            <span class="star" onclick="rateStar('HaMy', 2)">&#9733;</span>
+            <span class="star" onclick="rateStar('HaMy', 3)">&#9733;</span>
+            <span class="star" onclick="rateStar('HaMy', 4)">&#9733;</span>
+            <span class="star" onclick="rateStar('HaMy', 5)">&#9733;</span>
+        </div>
+        <p id="rating-result-HaMy">Bạn chưa đánh giá</p>
+    </div>
+
+     
 <script>
-    function rateStar(character, star) {
-        const result = document.getElementById(`rating-result-${character}`);
-        
-        // Hiển thị thông báo đánh giá
-        result.innerText = `Bạn đã đánh giá ${star} sao cho ${character}!`;
+  function rateStar(character, star) {
+      const result = document.getElementById(`rating-result-${character}`);
+      
+      // Hiển thị thông báo đánh giá
+      result.innerText = `Bạn đã đánh giá ${star} sao cho ${character}!`;
 
-        // Sau 3 giây, hiển thị thông báo cảm ơn
-        setTimeout(() => {
-            result.innerText = `Cảm ơn bạn đã đánh giá cho ${character}. Mỗi lượt đánh giá của bạn góp phần thay đổi thứ hạng của cô ấy ! Chỉ tính lần đầu trong ngày ❤️ `;
-        }, 3000);
-    }
+      // Sau 3 giây, hiển thị thông báo cảm ơn
+      setTimeout(() => {
+          result.innerText = `Cảm ơn bạn đã đánh giá cho ${character}. Mỗi lượt đánh giá của bạn góp phần thay đổi thứ hạng của cô ấy ! Chỉ tính lần đầu trong ngày ❤️ `;
+      }, 3000);
+  }
 </script>
 
 <style>
-    .review-section {
-        margin-top: 20px;
-        padding: 10px;
-        background-color: #1a1a1a;
-        color: #ffffff;
-        border-radius: 5px;
-    }
-    .stars {
-        font-size: 20px;
-        color: #ffcc00;
-    }
-    .star {
-        cursor: pointer;
-    }
+  .review-section {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #1a1a1a;
+      color: #ffffff;
+      border-radius: 5px;
+  }
+  .stars {
+      font-size: 20px;
+      color: #ffcc00;
+  }
+  .star {
+      cursor: pointer;
+  }
 </style>
-          
-              <!-- Hình ảnh -->
-              <div id="images-ANNA" style="display: none">
-                  <h4>Hình ảnh</h4>
-                  <img src="https://i.ibb.co/hgz3dVx/335400587-1415450525875943-6337920177012723172-n.jpg" alt="Image New 33" class="info-image" style="height: 330px;">
-    <img src="https://i.ibb.co/R3MNyph/338140120-1082310695881440-8023386275006598633-n.jpg" alt="Image New 34" class="info-image" style="height: 330px;">
-    <img src="https://i.ibb.co/4d9dYKN/339128099-232399929284362-7931558861799857522-n.jpg" alt="Image New 35" class="info-image" style="height: 330px;">
-    <img src="https://i.ibb.co/Z6SKMwQ/341170212-957499028602257-397081985148464965-n.jpg" alt="Image New 36" class="info-image" style="height: 330px;">
-    <img src="https://i.ibb.co/kqky8bM/348253018-1405444270293055-1994742025857552215-n.jpg" alt="Image New 37" class="info-image" style="height: 330px;">
-    <img src="https://i.ibb.co/NrGf4ZV/348319820-801315921561145-1457201329203610492-n.jpg" alt="Image New 38" class="info-image" style="height: 330px;">
-    <img src="https://i.ibb.co/ygw35t8/358446543-982314743187614-4535177861601254636-n.jpg" alt="Image New 39" class="info-image" style="height: 330px;">
-              </div>
-          
-              <!-- Số lượt book -->
-              <div id="bookings-ANNA" style="display: none">
-                  <h4>Đặt lịch</h4>
-                  <p><i class="fas fa-book"></i> <strong>Hướng dẫn đặt lịch:</strong>
-                    * Khi set kèo - Lần đầu book sẽ được hỗ trợ tiền phòng. Các bé thường hoạt động ở 1 khách sạn hoặc nhà nghỉ nhất định. Các anh vào check thông tin xem bé có đang hoạt động không. Nhắn tin cho bé đặt hẹn, nếu bé tiếp được sẽ nhắn lại cho các anh địa chỉ nhà nghỉ. Nếu bé không trả lời thì nghĩa là không tiếp được vì đang bận - Khi đi mang theo tiền check và tiền phòng, bao cao su riêng nếu có - Các anh đến lấy phòng rồi nhắn lại cho bé số phòng. Nếu không biết đặt phòng thì đợi bé xuống đặt phòng giúp. Nếu đến một địa điểm khác cần cung cấp đúng địa chỉ ban quản lý phân công đưa bé đến - Trong khi chờ đợi nên tắm rửa trước, đánh răng súc miệng nếu cần để tiết kiệm thời gian cho đôi bên. - Nên hẹn trước 1 đến 2 tiếng, nếu quá 2 tiếng mà các chưa đi được thì trước khi đi phải hẹn lại - Nếu bé đến muộn quá 20 phút thì nên điện thoại check tình hình để xử lý * Khi check hàng - Các bé có quyền từ chối nếu quá bất lịch sự hay thấy mất an toàn - Phải đeo bao cao su để bảo vệ an toàn của đôi bên. Không rút bao khi đang check nếu chưa thỏa thuận - Không bạo dâm, không ép buộc làm những dịch vụ các bé không cam kết ... - Không quay phim, chụp ảnh mặt khi chưa được bé cho phép - Khi bạn ra dưới bất cứ hình thức nào như khi BJ, HJ...ra sớm thì được tính là 1 lần. Trừ khi có thỏa thuận khác * Sau khi check - Thanh toán tiền đầy đủ cho bé - Thanh toán tiền đầy đủ cho nhà nghỉ nếu chưa thỏa thuận với ban quản lý - Lưu giữ tin nhắn, ảnh đặt phòng để phản hồi nếu muốn. HÃY LÀ MỘT CHECKER VĂN MINH !</p>
-                  <p><i class="fas fa-calendar-alt"></i> <strong>Vui lòng đăng nhập để đặt lịch</strong></p>
-              </div>
-          
-              <!-- Giới thiệu -->
-              <div id="bio-ANNA" style="display: none">
-                  <h4>Giới thiệu</h4>
-                  <p>
-                      Anna có một trái tim ấm áp và luôn mang đến sự thoải mái cho khách hàng. Cô ấy là sự kết hợp hoàn hảo giữa vẻ đẹp và sự dịu dàng, làm hài lòng mọi người tại Diamond Club.
-                  </p>
-              </div>
-          </div>
+        
+           <!-- Hình ảnh -->
+    <div id="images-HaMy" style="display: none">
+        <h4>Hình ảnh</h4>
+        <img src="https://i.ibb.co/sFpYycr/452346105-122097053972434651-70304625633922474-n.jpg" alt="Image 1" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/SmdxdWh/452456058-122097965540434651-3912502212670174861-n.jpg" alt="Image 2" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/WzHdPPS/453808018-122106853232434651-4604519005165612319-n.jpg" alt="Image 3" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/TmfLwVb/454325120-122108645144434651-795226551275134592-n.jpg" alt="Image 4" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/XZ45hh0/454819894-122109417518434651-4162265515860444955-n.jpg" alt="Image 5" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/ZXkgCXB/455314793-122110440716434651-433169597141769416-n.jpg" alt="Image 6" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/4SNd7hF/455277592-122110743476434651-3300050035046233741-n.jpg" alt="Image 7" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/bHLbVdD/455691559-122111257202434651-6263614150393024155-n.jpg" alt="Image 8" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/7gdFX78/455968603-122111767070434651-6913421045416419060-n.jpg" alt="Image 9" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/sP5J3yX/456513928-122112246536434651-2776176340085354863-n.jpg" alt="Image 10" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/0YgLdkf/456565869-122112731396434651-8237853306147565521-n.jpg" alt="Image 11" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/djNfmx1/457033116-122113186844434651-6281615223706451419-n.jpg" alt="Image 12" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/3yVT1xt/457183690-122113673636434651-3115662083493267900-n.jpg" alt="Image 13" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/yd0CyK7/457876971-122114618300434651-2157768203712887052-n.jpg" alt="Image 14" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/qDpG43q/460636309-122118376964434651-2180858217538166205-n.jpg" alt="Image 15" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/J3zsY7S/461512276-122119820114434651-7954635395370619903-n.jpg" alt="Image 16" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/2N37mqL/462373564-122121580796434651-8196861796321031764-n.jpg" alt="Image 17" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/JHkGjnJ/462646415-122122065134434651-8643311744588327997-n.jpg" alt="Image 18" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/MpQ8D12/462746291-122122415960434651-8840312681855580438-n.jpg" alt="Image 19" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/7NMDBBm/464133519-122123559818434651-9114080325865249596-n.jpg" alt="Image 20" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/HG9nkg3/464328944-122123883152434651-9138667014083794969-n.jpg" alt="Image 21" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/8s4Ghcd/465005198-122124788240434651-1038284664742036829-n.jpg" alt="Image 22" class="info-image" style="height: 330px;">
+
+            </div>
+        
+            <!-- Số lượt book -->
+    <div id="bookings-HaMy" style="display: none">
+        <h4>Đặt lịch</h4>
+        <p><i class="fas fa-book"></i> <strong>Hướng dẫn đặt lịch:</strong>
+            * Khi set kèo - Lần đầu book sẽ được hỗ trợ tiền phòng. Các bé thường hoạt động ở 1 khách sạn hoặc nhà nghỉ nhất định. Các anh vào check thông tin xem bé có đang hoạt động không. Nhắn tin cho bé đặt hẹn, nếu bé tiếp được sẽ nhắn lại cho các anh địa chỉ nhà nghỉ. Nếu bé không trả lời thì nghĩa là không tiếp được vì đang bận - Khi đi mang theo tiền check và tiền phòng, bao cao su riêng nếu có - Các anh đến lấy phòng rồi nhắn lại cho bé số phòng. Nếu không biết đặt phòng thì đợi bé xuống đặt phòng giúp. Nếu đến một địa điểm khác cần cung cấp đúng địa chỉ ban quản lý phân công đưa bé đến - Trong khi chờ đợi nên tắm rửa trước, đánh răng súc miệng nếu cần để tiết kiệm thời gian cho đôi bên. - Nên hẹn trước 1 đến 2 tiếng, nếu quá 2 tiếng mà các chưa đi được thì trước khi đi phải hẹn lại - Nếu bé đến muộn quá 20 phút thì nên điện thoại check tình hình để xử lý * Khi check hàng - Các bé có quyền từ chối nếu quá bất lịch sự hay thấy mất an toàn - Phải đeo bao cao su để bảo vệ an toàn của đôi bên. Không rút bao khi đang check nếu chưa thỏa thuận - Không bạo dâm, không ép buộc làm những dịch vụ các bé không cam kết ... - Không quay phim, chụp ảnh mặt khi chưa được bé cho phép - Khi bạn ra dưới bất cứ hình thức nào như khi BJ, HJ...ra sớm thì được tính là 1 lần. Trừ khi có thỏa thuận khác * Sau khi check - Thanh toán tiền đầy đủ cho bé - Thanh toán tiền đầy đủ cho nhà nghỉ nếu chưa thỏa thuận với ban quản lý - Lưu giữ tin nhắn, ảnh đặt phòng để phản hồi nếu muốn. HÃY LÀ MỘT CHECKER VĂN MINH !</p>
+        <p><i class="fas fa-calendar-alt"></i> <strong>Vui lòng đăng nhập để đặt lịch</strong></p>
+    </div>
+
+    <!-- Giới thiệu -->
+    <div id="bio-HaMy" style="display: none">
+        <h4>Giới thiệu</h4>
+        <p>
+            Hà My có một trái tim ấm áp và luôn mang đến sự thoải mái cho khách hàng. Cô ấy là sự kết hợp hoàn hảo giữa vẻ đẹp và sự dịu dàng, làm hài lòng mọi người tại Diamond Club.
+        </p>
+    </div>
+</div>
           
             <!-- Chi tiết MINA -->
             <div id="detail-MINA" class="detail-info">
