@@ -486,7 +486,15 @@
         showErrorNotification();
     }
 }
+  let isCodeValid = false; 
 
+    function redirectToProfile() {
+        if (isCodeValid) {
+            window.location.href = "https://gaigoitocdo.github.io/profile/";
+        } else {
+            alert("Vui lòng nhập mã đặt lịch hợp lệ trước!");
+        }
+    }
 function showVip3Notification() {
     const notification = document.getElementById("vip3Notification");
     notification.style.display = "block";
