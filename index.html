@@ -202,7 +202,7 @@
     </style>
 </head>
 <body>
-    
+  
     <!DOCTYPE html>
     <html lang="vi">
     <head>
@@ -255,22 +255,22 @@
                 text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             }
             .button {
-                background-color: #000000;
-                color: #ffffff;
-                font-size: 12px;
-                padding: 5px 8px;
-                margin: -20px 2px 5px 2px;
-                border-radius: 5px;
-                cursor: pointer;
-                border: 1px solid #ff2c61;
-                transition: background-color 0.3s ease;
-                position: relative;
-                font-weight: 700; /* Tăng độ đậm chữ */
-                box-shadow: 0 4px 8px #ff2c61;/* Hiệu ứng đổ bóng */
-            }
-            .button:hover {
-                background-color: #ff2c61;
-            }
+            background-color: #ffffff;
+            color: #ffffff;
+            font-size: 15px; /* Kích thước chữ của nút */
+            padding: 5px 10px; /* Kích thước padding của nút */
+            margin: 0 0px; /* Khoảng cách giữa các nút */
+            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid #ff2c61;
+            transition: background-color 0.3s ease;
+            position: relative;
+            font-weight: 600; /* Tăng độ đậm chữ */
+            box-shadow: 0 4px 8px #000000; /* Hiệu ứng đổ bóng */
+        }
+        .button:hover {
+            background-color: #00aeff; /* Màu nền khi hover */
+        }
     top: -20px;
            
             
@@ -299,16 +299,23 @@
         <div class="container">
             <div class="header">
                 <h1>Chào mừng bạn đến với LUXURY GIRL BOOKING 🎀</h1>
-                <div class="logo-container">
-                    <img src="https://i.ibb.co/hCt4hGt/Untitled-design-8-removebg-preview.png" alt="Logo lớn">
+                <div class="banner-container">
+                <div class="banner">
+                    <img src="https://i.ibb.co/Tkxd6RF/taoanhdep-lam-net-anh-92190.jpg" alt="Banner Image" class="banner-image">
+                    <img src="https://i.ibb.co/wMmzZPj/taoanhdep-lam-net-anh-99531.jpg" alt="Banner Image" class="banner-image">
+                    <img src="https://i.ibb.co/LCX2dKV/photo-2024-10-29-23-43-13.jpg" alt="Banner Image" class="banner-image">
+                    <img src="https://i.ibb.co/H7YvZVJ/photo-2024-10-29-23-42-21-3.jpg" alt="Banner Image" class="banner-image">
+                    <img src="https://i.ibb.co/d6D4CMS/photo-2024-10-29-23-42-21.jpg" alt="Banner Image" class="banner-image">
                 </div>
-            </div>
         
+            
+        
+            <div class="button-container">
             <button class="button" onclick="redirectToProfile()">
                 <img src="https://i.ibb.co/XyJ7DWF/pngtree-man-wearing-sunglasses-for-the-logo-of-the-game-image-2578704-fotor-202410317423.png" alt="Icon Hồ sơ">
-                Info 💎
+                Info 💎 
             </button>
-        
+        </div>
             <!-- Nút nhập mã đặt lịch -->
             <div class="booking-input">
                 <button id="bookingButton" class="button" onclick="promptBookingCode()">
@@ -319,7 +326,7 @@
         
             <!-- Thông báo dấu tích xanh khi nhập đúng mã -->
             <div id="vip3Notification" class="center-notification success-notification">
-                <img src="https://i.ibb.co/ct1mmj2/Pngtree-green-check-mark-icon-15571790.png" alt="Dấu tích xanh" style="width: 30px; margin-right: 10px;">
+                <img src="https://i.ibb.co/gTKckKr/vip-emblem-transparent-background-357958-3454.jpg" alt="Dấu tích xanh" style="width: 30px; margin-right: 10px;">
                 <span>Chúc mừng! Bạn đã được cấp quyền truy cập đặt biệt trên hệ thống 🥇🥇🥇</span>
             </div>
             
@@ -331,63 +338,81 @@
         </div>
         
         <style>
-            /* CSS cho các nút và container */
-            .button {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Đưa logo và text ra hai đầu */
-    width: 110px; /* Đặt chiều rộng cho nút */
+   .button {
     padding: 5px 10px;
-    background-color: #ff2c61;
-    color: #f5f100;
-    border: 1px solid #ffffff;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: bold;
+    background-color: #1A242F; /* Màu xám đậm */
+    color: #ffffff; /* Màu chữ sáng */
+    border: 1px solid #ffffff; /* Viền trắng */
+    border-radius: 5px;
+    margin: 0 0px; /* Khoảng cách giữa các nút */
     cursor: pointer;
-    transition: all 0.3s ease;
-    margin-right: 15px;
-}
-.button-container {
-    display: flex;
-    gap: 15px; /* Khoảng cách giữa các nút */
-    
-}
-.button:hover {
-    background-color: #1A242F;
-    color: #FFFFFF;
-            }
-            
-            
-            /* CSS cho thông báo chuyên nghiệp */
-            .notification {
+    transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #ff2c61; /* Màu nền khi hover */
+        }
+        .center-notification {
                 display: none;
-                padding: 10px;
-                margin-top: 20px;
-                border-radius: 5px;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                padding: 10px 10px; /* Tăng khoảng cách trong khung */
+                border-radius: 12px;
                 font-weight: bold;
-                display: flex;
-                align-items: center;
-                font-size: 18px;
-                transition: all 0.5s ease;
+                font-size: 18px; /* Kích thước chữ nổi bật */
+                background: linear-gradient(135deg, #1a3c34, #2e7d32); /* Hiệu ứng gradient */
+                color: #ffffff; /* Màu chữ trắng nổi bật */
+                border: 3px solid #145d27; /* Viền đậm */
+                box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4); /* Bóng đậm và lớn hơn */
+                z-index: 1000;
+                text-align: center;
+                max-width: 350px; /* Giới hạn chiều rộng */
+                width: auto;
+                animation: popIn 0.5s ease; /* Hiệu ứng xuất hiện */
+
             }
-        
             .success-notification {
-                background-color: #d4edda;
-                color: #155724;
-            }
+    display: flex; /* Sử dụng flexbox để căn chỉnh các phần tử bên trong */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    background-color: #e0ffe0; /* Màu nền cho thông báo thành công */
+    color: #2e7d32; /* Màu chữ */
+    border-left: 5px solid #66bb6a; /* Viền bên trái */
+    border: 1px solid #2e7d32; /* Viền cho khung */
+    padding: 10px; /* Khoảng cách bên trong khung */
+    border-radius: 8px; /* Bo góc */
+    margin-top: 20px; /* Khoảng cách với các phần tử khác */
+    font-weight: bold; /* Độ đậm chữ */
+    font-size: 18px; /* Kích thước chữ */
+}
+
+.success-notification img {
+    width: 30px; /* Kích thước cho dấu tích */
+    height: 30px; /* Kích thước cho dấu tích */
+    margin-right: 10px; /* Khoảng cách giữa dấu tích và chữ */
+}
+        .banner-container {
+            overflow: hidden;
+            background-color: #100c0c; /* Màu nền cho banner */
+            height: 300px; /* Đặt chiều cao cụ thể cho banner */
+        }
+        .banner {
+            display: flex;
+            animation: scroll 30s linear infinite; /* Lướt liên tục */
+        }
+        .banner-image {
+            height: 300px; /* Điều chỉnh chiều cao cho hình ảnh trong banner */
+            width: auto; /* Giữ tỷ lệ khung hình */
+            margin-right: 10px; /* Khoảng cách giữa các hình ảnh */
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); } /* Cuộn đến hết bộ ảnh */
+        }         
         
-            .error-notification {
-                background-color: #f8d7da;
-                color: #721c24;
-            }
+           
         
-            .notification img {
-                width: 24px;
-                margin-right: 10px;
-            }
-        
-   /* Nút đặc biệt cho việc đặt lịch */
+  /* Nút đặc biệt cho việc đặt lịch */
 .booking-button {
     padding: 10px 10px;
     background-color: #4a4a4a; /* Màu xám đậm sang trọng */
@@ -415,40 +440,6 @@
                 margin-right: 12px;
             }
 
-            .success-notification {
-    background-color: #e0ffe0;
-    color: #2e7d32;
-    border-left: 5px solid #66bb6a;
-    border: 1px solid #2e7d32; /* Viền bạc ánh đen */
-    
-}
-
-.error-notification {
-    background-color: #ffebee;
-    color: #c62828;
-    border-left: 5px solid #ef5350;
-}
-/* CSS căn giữa thông báo */
-.center-notification {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px 30px; /* Tăng khoảng cách trong khung */
-    border-radius: 12px;
-    font-weight: bold;
-    font-size: 18px; /* Kích thước chữ nổi bật */
-    background: linear-gradient(135deg, #1a3c34, #2e7d32); /* Hiệu ứng gradient */
-    color: #ffffff; /* Màu chữ trắng nổi bật */
-    border: 3px solid #145d27; /* Viền đậm */
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4); /* Bóng đậm và lớn hơn */
-    z-index: 1000;
-    text-align: center;
-    max-width: 350px; /* Giới hạn chiều rộng */
-    width: auto;
-    animation: popIn 0.5s ease; /* Hiệu ứng xuất hiện */
-}
 
 /* Hiệu ứng phóng to nhẹ khi hiện */
 @keyframes popIn {
@@ -463,36 +454,37 @@
 }
 
 .button-logo {
-    width: 32px; /* Điều chỉnh kích thước logo */
-    height: auto;
+    width: 22px; /* Điều chỉnh kích thước logo */
+    height: 22PX;
     margin-right: 6px; /* Khoảng cách giữa logo và văn bản */
     vertical-align: middle;
 }
+
 
  
         </style>
 
         <script>
-        function promptBookingCode() {
-    const code = prompt("Vui lòng nhập mã đặt lịch:");
-    const validCode = "999888"; // Mã hợp lệ của bạn
-
-    if (code === validCode) {
-        isCodeValid = true;
-        showVip3Notification();
-        document.getElementById("buttonText").innerText = "VIP3 💎"; // Thay đổi văn bản
-        document.getElementById("buttonLogo").src = "https://i.ibb.co/pXP714d/vip-emblem-transparent-background-357958-3454-removebg-preview.png"; // Đường dẫn đến logo VIP 3
-    } else {
-        showErrorNotification();
-    }
-}
-let isCodeValid = false; 
+              let isCodeValid = false; 
 
 function redirectToProfile() {
     if (isCodeValid) {
         window.location.href = "https://gaigoitocdo.github.io/profile/";
     } else {
         alert("Vui lòng nhập mã đặt lịch hợp lệ trước!");
+    }
+}
+        function promptBookingCode() {
+    const code = prompt("Vui lòng nhập mã đặt lịch:");
+    const validCode = "999999"; // Mã hợp lệ của bạn
+
+    if (code === validCode) {
+        isCodeValid = true;
+        showVip3Notification();
+        document.getElementById("buttonText").innerText = "VIP3 💎"; // Thay đổi văn bản
+        document.getElementById("buttonLogo").src = "https://i.ibb.co/gTKckKr/vip-emblem-transparent-background-357958-3454.jpg"; // Đường dẫn đến logo VIP 3
+    } else {
+        showErrorNotification();
     }
 }
 
@@ -1742,7 +1734,7 @@ function showErrorNotification() {
               <div id="info-JULY" style="display: none">
                   <h4>Thông tin</h4>
                   <div class="info-content">
-                      <img src="https://i.imgur.com/yOyhhhF.jpeg" alt="JULY Image" class="info-image" style="height: 200px;">
+                      <img src="https://i.imgur.com/yOyhhhF.jpeg" alt="JULY Image" class="info-image" style="height: 250px;">
                       <div class="info-text">
                           <p><i class="fas fa-money-bill-wave"></i> <strong>Giá tiền 값 :</strong> 119.000 원/2Shot (60 phút)</p>
                           <div id="contact-info" class="hidden-info">
