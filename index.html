@@ -1,195 +1,6 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chào mừng đến với LUXURY GIRL 🎀</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-            background-color: #f0f0f0;
-        }
-        #location-info {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #333;
-        }
-        #overlay {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 999; /* Để overlay nằm trên tất cả */
-        }
-        #access-form {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        input {
-            margin: 10px 0;
-            padding: 10px;
-            width: 100%;
-            border-radius: 5px;
-        }
-        button {
-            padding: 10px;
-            background-color: #ff3d00;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #e63900;
-        }
-
-        #content {
-            display: none; /* Ẩn nội dung cho đến khi nhập đúng mã */
-            text-align: center;
-        }
-
-        #overlay {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 999; /* Overlay nằm trên tất cả */
-            display: none; /* Ban đầu ẩn overlay */
-        }
-
-        #location-info {
-            margin-top: 20px;
-            color: white;
-        }
-    </style>
-</head>
-<body>
-
-   
-    <div id="overlay">
-        <div id="access-form">
-            <h2>Nhập mã vùng khu vực</h2>
-            <input type="text" id="code-input" placeholder="Nhập mã ở đây" />
-            <button onclick="checkAccessCode()">Gửi</button>
-            <div id="location-info"></div> <!-- Hiển thị thông tin vị trí -->
-        </div>
-    </div>
 
 
-    <script>
-        const accessCode = "564852"; // Đặt mã truy cập của bạn ở đây
 
-        // Hiện overlay khi trang tải
-        document.getElementById('overlay').style.display = 'flex';
-
-        function checkAccessCode() {
-            const userCode = document.getElementById('code-input').value;
-            if (userCode === accessCode) {
-                document.getElementById('overlay').style.display = 'none'; // Ẩn overlay
-                getLocation(); // Gọi hàm lấy vị trí
-            } else {
-                alert("Mã truy cập không đúng!");
-            }
-        }
-
-        // Hàm lấy vị trí
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition, showError);
-            } else {
-                document.getElementById('location-info').innerText = "Geolocation không được hỗ trợ bởi trình duyệt này.";
-            }
-        }
-
-        // Hiển thị vị trí
-        function showPosition(position) {
-            const lat = position.coords.latitude;
-            const lon = position.coords.longitude;
-            document.getElementById('location-info').innerText = `Vị trí của bạn: Latitude: ${lat}, Longitude: ${lon}`;
-        }
-
-        // Xử lý lỗi
-        function showError(error) {
-            switch(error.code) {
-                case error.PERMISSION_DENIED:
-                    document.getElementById('location-info').innerText = "Người dùng từ chối yêu cầu vị trí.";
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    document.getElementById('location-info').innerText = "Vị trí không khả dụng.";
-                    break;
-                case error.TIMEOUT:
-                    document.getElementById('location-info').innerText = "Yêu cầu lấy vị trí đã hết thời gian.";
-                    break;
-                case error.UNKNOWN_ERROR:
-                    document.getElementById('location-info').innerText = "Đã xảy ra lỗi không xác định.";
-                    break;
-            }
-        }
-    </script>
-</body>
-</html>
-</body>
-</html>
-
-
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chào mừng đến với LUXURY GIRL 🎀</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ff7e5f, #feb47b);
-            justify-content: center;
-            align-items: center;
-            padding: 0;
-            margin: 0;
-        }
-        /* Các style khác của bạn ở đây... */
-    </style>
-    
-    <script>
-
-          // Thiết lập thời gian giới hạn truy cập
-          setTimeout(function() {
-            window.location.href = 'timeout.html'; // Đường dẫn chuyển hướng khi hết thời gian
-        }, 10000); // Thời gian giới hạn (10 giây)
-   
-           const accessCode = "43242"; // Đặt mã truy cập của bạn ở đây
-
-function checkAccessCode() {
-    const userCode = document.getElementById('code-input').value;
-    if (userCode === accessCode) {
-        document.getElementById('overlay').style.display = 'none'; // Ẩn overlay
-    } else {
-        alert("Mã truy cập không đúng!");
-    }
-}
-        
-        window.onload = checkAccessCode; // Gọi hàm khi trang được tải
-    </script>
-</head>
-<body>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -760,7 +571,7 @@ h1 {
 
        <!-- Breadcrumb -->
 <div class="breadcrumb">
-  <a href="#">Trang Chủ</a> / <a href="#">LuxuRy Girl Booking</a> 
+  <a href="#">Trang Chủ</a> / <a href="#">Luxury Girl Booking</a> 
 </div>
 
 
@@ -1647,38 +1458,41 @@ h1 {
 <!-- Khu vực -->
 <div id="region-section" class="content active">
     <h2>Thành phố (대도시)</h2>
-    <a class="region-btn" href="https://bookingluxury.github.io/khuvuc/">
-        <i class="fas fa-map-marker-alt"></i> Seoul
-    </a>
-    <a class="region-btn" href="https://bookingluxury.github.io/khuvuc/">
-        <i class="fas fa-map-marker-alt"></i> Busan
-    </a>
-    <a class="region-btn" href="https://bookingluxury.github.io/khuvuc/">
-        <i class="fas fa-map-marker-alt"></i> Incheon
-    </a>
-    <a class="region-btn" href="https://bookingluxury.github.io/khuvuc/">
-        <i class="fas fa-map-marker-alt"></i> Daegu
-    </a>
-    <a class="region-btn" href="https://bookingluxury.github.io/khuvuc/">
-        <i class="fas fa-map-marker-alt"></i> Daejeon
-    </a>
-    <a class="region-btn" href="https://bookingluxury.github.io/khuvuc/">
-        <i class="fas fa-map-marker-alt"></i> Gwangju
-    </a>
-    <a class="region-btn" href="https://bookingluxury.github.io/khuvuc/">
-        <i class="fas fa-map-marker-alt"></i> Ulsan
-    </a>
-    <a class="region-btn" href="https://bookingluxury.github.io/khuvuc/">
-        <i class="fas fa-map-marker-alt"></i> Sejong
-    </a>
-    <a class="region-btn" href="https://bookingluxury.github.io/khuvuc/">
-        <i class="fas fa-map-marker-alt"></i> Pohang
-    </a>
-    <a class="region-btn" href="lhttps://bookingluxury.github.io/khuvuc/">
-        <i class="fas fa-map-marker-alt"></i> Khác
-    </a>
-</div>
-</div>
+    <div class="region-list">
+        <div class="region-btn" onclick="showAlert('Seoul')">
+            <i class="fas fa-map-marker-alt"></i> Seoul
+        </div>
+        <div class="region-btn" onclick="showAlert('Busan')">
+            <i class="fas fa-map-marker-alt"></i> Busan
+        </div>
+        <div class="region-btn" onclick="showAlert('Incheon')">
+            <i class="fas fa-map-marker-alt"></i> Incheon
+        </div>
+        <div class="region-btn" onclick="showAlert('Daegu')">
+            <i class="fas fa-map-marker-alt"></i> Daegu
+        </div>
+        <div class="region-btn" onclick="showAlert('Daejeon')">
+            <i class="fas fa-map-marker-alt"></i> Daejeon
+        </div>
+        <div class="region-btn" onclick="showAlert('Gwangju')">
+            <i class="fas fa-map-marker-alt"></i> Gwangju
+        </div>
+        <div class="region-btn" onclick="showAlert('Ulsan')">
+            <i class="fas fa-map-marker-alt"></i> Ulsan
+        </div>
+        <div class="region-btn" onclick="showAlert('Sejong')">
+            <i class="fas fa-map-marker-alt"></i> Sejong
+        </div>
+        <div class="region-btn" onclick="showAlert('Pohang')">
+            <i class="fas fa-map-marker-alt"></i> Pohang
+        </div>
+        <div class="region-btn" onclick="showAlert('Khác')">
+            <i class="fas fa-map-marker-alt"></i> Khác
+        </div>
+        
+      </div>
+    </div>
+  </div>
 
 <script>
   // Hàm hiển thị thông báo khi người dùng bấm vào một khu vực
@@ -3833,22 +3647,20 @@ font-weight: bold;
   <!-- Hình ảnh -->
   <div id="images-QuynhAnh" style="display: none">
     <h4>Hình ảnh</h4>
-    <a href="https://ibb.co/KjTFxXs"><img src="https://i.ibb.co/KjTFxXs/430029198-946267713512468-5042154628741578756-n.jpg" alt="Image 1" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/CMzrMHz"><img src="https://i.ibb.co/CMzrMHz/378854303-855617289244178-5284751463597591029-n.jpg" alt="Image 2" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/DCXrwLx"><img src="https://i.ibb.co/DCXrwLx/435893748-973112090828030-3658708461828827600-n.jpg" alt="Image 3" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/HxCvHSL"><img src="https://i.ibb.co/HxCvHSL/448578095-1008821667257072-2805937849532685211-n.jpg" alt="Image 4" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/mcnLQcm"><img src="https://i.ibb.co/mcnLQcm/453099935-1034995834639655-2625415353164096910-n.jpg" alt="Image 5" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/c6LntKm"><img src="https://i.ibb.co/c6LntKm/461048233-1070808574391714-6457504351249761695-n.jpg" alt="Image 6" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/3dCf0NY"><img src="https://i.ibb.co/3dCf0NY/461315968-1072265027579402-2095170161509221025-n.jpg" alt="Image 7" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/R99XhXm"><img src="https://i.ibb.co/R99XhXm/465055380-1097488548390383-6204572662205406771-n.jpg" alt="Image 8" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/sHY4sWp"><img src="https://i.ibb.co/sHY4sWp/465004871-1097488598390378-4886516484980949515-n.jpg" alt="Image 9" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/CvWcC5v"><img src="https://i.ibb.co/CvWcC5v/378778004-855617305910843-333745182071302791-n.jpg" alt="Image 10" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/Qjn0ZYv"><img src="https://i.ibb.co/Qjn0ZYv/452104232-1029202725218966-2860286147676872065-n.jpg" alt="Image 11" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/S3ZZRm8"><img src="https://i.ibb.co/S3ZZRm8/452866837-1031653198307252-4040690016312092931-n.jpg" alt="Image 12" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/sJDf3BT"><img src="https://i.ibb.co/sJDf3BT/453433956-1034997097972862-5183529550957858747-n.jpg" alt="Image 13" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/MBCVy8F"><img src="https://i.ibb.co/MBCVy8F/454575777-1041074547365117-1895654296518936209-n.jpg" alt="Image 14" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/W6y4q0g"><img src="https://i.ibb.co/W6y4q0g/461048236-1070808604391711-8132402547166610401-n.jpg" alt="Image 15" style="height: 190px; width: auto;"></a>
-    
+    <img src="https://i.ibb.co/SJQ3Xvb/340931419-776721337030997-2865551987934903214-n.jpg" alt="Image 5" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/TwrRDvJ/367410131-816286566827160-6359684262952889763-n.jpg" alt="Image 6" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/GFQLDpt/383214997-837770018012148-1280788975135102072-n.jpg" alt="Image 7" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/chp1p1M/384235372-839434814512335-2260972901569626098-n.jpg" alt="Image 8" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/vY5S755/387729334-845115860610897-2354261134729548408-n.jpg" alt="Image 9" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/23w03dm/405306079-871290721326744-7522073540435670885-n.jpg" alt="Image 10" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/k44z6CY/425557415-911630753959407-8000729636212690204-n.jpg" alt="Image 11" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/GsnXh7q/441602376-970638008058681-8481165972533691356-n.jpg" alt="Image 12" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/RTBynfD/453871078-1015904680198680-8883037550595303607-n.jpg" alt="Image 13" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/b7c1GK9/454503517-1020509216404893-1431358853470073923-n.jpg" alt="Image 14" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/W0V2JG4/456315582-1027932035662611-7804666417740511200-n.jpg" alt="Image 15" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/7R83yWc/463120465-1066533151802499-8148182830936919702-n.jpg" alt="Image 16" class="info-image" style="height: 330px;">
+<img src="https://i.ibb.co/5LD9hBX/464630662-1074503204338827-362002487356146181-n.jpg" alt="Image 17" class="info-image" style="height: 330px;">
+
     
   
   </div>
