@@ -1,3 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Yêu cầu Vị trí</title>
+</head>
+<body>
+
+<div id="locationError" style="display: none; text-align: center; padding-top: 20%;">
+    <h2>Vui Lòng bật vị trí của bạn </h2>
+    <p>Sau 3 giây nếu chưa kiểm tra được vị trí hệ thống sẽ tự động dẩy bạn ra ngoài</p>
+</div>
+
+<script>
+let checkInterval;
+let maxWaitTime = 10000; // Thời gian chờ tối đa 10 giây
+let locationGranted = false; // Kiểm tra xem quyền vị trí có được cấp không
+
+window.addEventListener("load", () => {
+    // Gọi yêu cầu vị trí ngay khi tải trang
+    requestLocation();
+
+    // Sau khi yêu cầu, chờ kiểm tra trong khoảng thời gian nhất định
+    checkInterval = setInterval(() => {
+        if (locationGranted) {
+            // Nếu có quyền vị trí, hiển thị nội dung và ngừng kiểm tra
+            document.getElementById("content").style.display = "block";
+            clearInterval(checkInterval);
+        }
+    }, 1000);
+    
+    let timeLeft = 300; // Thời gian truy cập tính bằng giây (ví dụ: 5 phút)
+
+const timer = setInterval(() => {
+    timeLeft--;
+    if (timeLeft <= 0) {
+        clearInterval(timer);
+        alert("Thời gian truy cập đã hết. Bạn sẽ được chuyển hướng.");
+        // Chuyển hướng đến trang khác
+        window.location.href = "https://example.com"; // Đổi thành link bạn muốn
+    }
+}, 1000);
+    // Sau thời gian chờ tối đa, nếu không có quyền vị trí, hiển thị chặn
+    setTimeout(() => {
+        if (!locationGranted) {
+            showLocationDenied();
+            clearInterval(checkInterval);
+        }
+    }, maxWaitTime);
+});
+
+function requestLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                locationGranted = true; // Xác nhận quyền vị trí được cấp
+            },
+            (error) => {
+                // Nếu quyền vị trí bị từ chối rõ ràng
+                if (error.code === error.PERMISSION_DENIED) {
+                    showLocationDenied();
+                    clearInterval(checkInterval);
+                }
+            }
+        );
+    } else {
+        alert("Trình duyệt của bạn không hỗ trợ Geolocation.");
+    }
+}
+
+// Hiển thị thông báo từ chối và đóng trang sau vài giây
+function showLocationDenied() {
+    document.getElementById("locationError").style.display = "block";
+    setTimeout(() => {
+        window.close();
+    }, 5000);
+}
+</script>
+
+</body>
+</html>
 
 
 
@@ -408,37 +490,14 @@ h1 {
             <span>Mã không chính xác!</span>
             <div id="requestCode" style="margin-top: 10px; display: none;">
                 <span>Bạn chưa có mã đặt lịch?</span>
-                <button class="button" onclick="showGuide()">Hướng dẫn lấy mã</button>
+                <a href="https://booknowlxr.github.io/girl1/" target="_blank">Hướng dẫn lấy mã</a>
             </div>
         </div>
     
-        <!-- Hướng dẫn lấy mã đặt lịch -->
-       <!-- Hướng dẫn lấy mã đặt lịch -->
-<div id="guide" class="center-notification success-notification" style="display: none;">
-    <h3 style="color: #ff3d00;">Quyền lợi khi đặt lịch trên hệ thống</h3>
-    <ul style="list-style-type: none; padding-left: 0; font-size: 18px;"> <!-- Thay đổi kích thước chữ -->
-        <li>✅ Sử dụng dịch vụ liên tục trong 12 tháng</li>
-        <li>✅ Ưu tiên sắp xếp lịch hẹn và dịch vụ đưa đón tận nơi</li>
-        <li>✅ Truy cập không giới hạn vào các dịch vụ đặc biệt</li>
-        <li>✅ Miễn phí di chuyển và khách sạn lần đầu.</li>
-        <li>✅ Hưởng trọn vẹn dịch vụ trước, thanh toán sau</li>
-        <li>✅ Tặng kèm đồ chơi và trang phục cosplay</li>
-    </ul>
-    <button class="button button-with-border" onclick="window.location.href='https://booknowlxr.github.io/girl1/'">Lấy mã ngay</button>
-    <button class="button button-with-border" onclick="hideGuide()">Đóng</button>
-</div>
-        </div>
-    </div>
-       
        <script>
-        let isCodeValid = false; // Khởi tạo biến là false
-        function redirectToProfile() {
-            if (isCodeValid) {
-                window.location.href = "https://gaigoitocdo.github.io/profile/";
-            } else {
-                alert("Vui lòng nhập mã đặt lịch trước!");
-            }
-        }
+         function redirectToProfile() {
+        window.location.href = "https://gaigoitocdo.github.io/profile/";
+    }
 
         function promptBookingCode() {
             const code = prompt("Vui lòng nhập mã đặt lịch:");
@@ -524,9 +583,9 @@ h1 {
     <div class="statistics-widget">
         <h4>Thống kê người dùng</h4>
         <ul>
-            <li>Online<strong id="online">277</strong></li>
-            <li>Đã dùng dịch vụ <strong id="vipMembers">1713</strong></li>
-            <li>Tổng lượt truy cập <strong id="visitCount">78581</strong></li>
+            <li>Online<strong id="online">227</strong></li>
+            <li>Đã dùng dịch vụ <strong id="vipMembers">1821</strong></li>
+            <li>Tổng lượt truy cập <strong id="visitCount">85581</strong></li>
         </ul>
     </div>
 
@@ -1454,46 +1513,57 @@ h1 {
         selectedContent.style.display = 'block';
     }
 </script>
-
-<!-- Khu vực -->
+</style>
+</head>
+<body>
 <div id="region-section" class="content active">
     <h2>Thành phố (대도시)</h2>
     <div class="region-list">
-        <div class="region-btn" onclick="showAlert('Seoul')">
+        <div class="region-btn" onclick="openLinkInNewTab()">
             <i class="fas fa-map-marker-alt"></i> Seoul
         </div>
-        <div class="region-btn" onclick="showAlert('Busan')">
+        <div class="region-btn" onclick="openLinkInNewTab()">
             <i class="fas fa-map-marker-alt"></i> Busan
         </div>
-        <div class="region-btn" onclick="showAlert('Incheon')">
+        <div class="region-btn" onclick="openLinkInNewTab()">
             <i class="fas fa-map-marker-alt"></i> Incheon
         </div>
-        <div class="region-btn" onclick="showAlert('Daegu')">
+        <div class="region-btn" onclick="openLinkInNewTab()">
             <i class="fas fa-map-marker-alt"></i> Daegu
         </div>
-        <div class="region-btn" onclick="showAlert('Daejeon')">
+        <div class="region-btn" onclick="openLinkInNewTab()">
             <i class="fas fa-map-marker-alt"></i> Daejeon
         </div>
-        <div class="region-btn" onclick="showAlert('Gwangju')">
+        <div class="region-btn" onclick="openLinkInNewTab()">
             <i class="fas fa-map-marker-alt"></i> Gwangju
         </div>
-        <div class="region-btn" onclick="showAlert('Ulsan')">
+        <div class="region-btn" onclick="openLinkInNewTab()">
             <i class="fas fa-map-marker-alt"></i> Ulsan
         </div>
-        <div class="region-btn" onclick="showAlert('Sejong')">
+        <div class="region-btn" onclick="openLinkInNewTab()">
             <i class="fas fa-map-marker-alt"></i> Sejong
         </div>
-        <div class="region-btn" onclick="showAlert('Pohang')">
+        <div class="region-btn" onclick="openLinkInNewTab()">
             <i class="fas fa-map-marker-alt"></i> Pohang
         </div>
-        <div class="region-btn" onclick="showAlert('Khác')">
+        <div class="region-btn" onclick="openLinkInNewTab()">
             <i class="fas fa-map-marker-alt"></i> Khác
         </div>
-        
-      </div>
     </div>
-  </div>
+</div>
 
+<script>
+function openLinkInNewTab() {
+    window.open("https://bookingluxury.github.io/khuvuc/", "_blank");
+}
+</script>
+    <script>
+        function redirectTo(url) {
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>
 <script>
   // Hàm hiển thị thông báo khi người dùng bấm vào một khu vực
   function showAlert(region) {
@@ -1550,6 +1620,7 @@ h1 {
     </div>
 </div>
 
+
 <div id="bookingInfoModal" class="modal">
     <div class="modal-content">
         <h4>Đặt Lịch</h4>
@@ -1573,12 +1644,19 @@ h1 {
 </div>
 
 <!-- Modal nhập mã đặt lịch -->
-<div id="bookingCodeModal" class="modal">
+<div id="bookingCodeModal" class="modal" style="display: none;">
     <div class="modal-content">
         <h4>Nhập Mã Đặt Lịch (예약 성공!)</h4>
+        
         <p>Mã xác nhận đặt lịch của anh là (그의 예약 확인 코드는 다음과 같습니다):</p>
         <input type="text" id="bookingCodeInput" placeholder="Nhập mã đặt lịch">
+        
         <button onclick="submitBookingCode()">Xác nhận</button>
+        <button onclick="closeModal('bookingCodeModal')">Đóng</button>
+        
+        <p>
+            <a href="https://booknowlxr.github.io/girl1/" class="button-link">Tôi chưa có mã đặt lịch?</a>
+        </p>
     </div>
 </div>
 
@@ -1588,11 +1666,17 @@ h1 {
     <img src="https://i.ibb.co/xF4Rq7n/Pngtree-green-check-mark-vector-7885995-removebg-preview.png" alt="Tích xanh">
     Đặt lịch thành công!
 </div>
+
+<div id="errorNotification" class="success-notification" style="display: none;">
+    <p>Mã đặt lịch không chính xác. Vui lòng thử lại.</p>
+    <p>Liên hệ hỗ trợ tại: <a href="https://t.me/luxurygirlbooking">support@example.com</a></p>
+    <p><a href="https://t.me/luxurygirlbooking">Trợ giúp trực tuyến</a></p>
 </div>
+
 
 <script>
 const correctBookingCode = "88889999";
-
+const errorRedirectUrl = "https://example.com/error"; // Thay đổi đường dẫn theo ý bạn
 // Mở modal nhập thông tin đặt lịch
 function openBookingModal() {
     document.getElementById("bookingInfoModal").style.display = "flex";
@@ -1637,7 +1721,14 @@ function showSuccessNotification() {
         notification.style.display = "none";
     }, 3000);
 }
-
+// Hiển thị thông báo lỗi
+function showErrorNotification() {
+    const errorNotification = document.getElementById("errorNotification");
+    errorNotification.style.display = "block";
+    setTimeout(() => {
+        errorNotification.style.display = "none";
+    }, 8000); // Hiển thị trong 8 giây
+}
 // Đóng thông báo
 function closeNotification() {
     document.getElementById("successNotification").style.display = "none";
@@ -3647,20 +3738,22 @@ font-weight: bold;
   <!-- Hình ảnh -->
   <div id="images-QuynhAnh" style="display: none">
     <h4>Hình ảnh</h4>
-    <img src="https://i.ibb.co/SJQ3Xvb/340931419-776721337030997-2865551987934903214-n.jpg" alt="Image 5" class="info-image" style="height: 330px;">
-<img src="https://i.ibb.co/TwrRDvJ/367410131-816286566827160-6359684262952889763-n.jpg" alt="Image 6" class="info-image" style="height: 330px;">
-<img src="https://i.ibb.co/GFQLDpt/383214997-837770018012148-1280788975135102072-n.jpg" alt="Image 7" class="info-image" style="height: 330px;">
-<img src="https://i.ibb.co/chp1p1M/384235372-839434814512335-2260972901569626098-n.jpg" alt="Image 8" class="info-image" style="height: 330px;">
-<img src="https://i.ibb.co/vY5S755/387729334-845115860610897-2354261134729548408-n.jpg" alt="Image 9" class="info-image" style="height: 330px;">
-<img src="https://i.ibb.co/23w03dm/405306079-871290721326744-7522073540435670885-n.jpg" alt="Image 10" class="info-image" style="height: 330px;">
-<img src="https://i.ibb.co/k44z6CY/425557415-911630753959407-8000729636212690204-n.jpg" alt="Image 11" class="info-image" style="height: 330px;">
-<img src="https://i.ibb.co/GsnXh7q/441602376-970638008058681-8481165972533691356-n.jpg" alt="Image 12" class="info-image" style="height: 330px;">
-<img src="https://i.ibb.co/RTBynfD/453871078-1015904680198680-8883037550595303607-n.jpg" alt="Image 13" class="info-image" style="height: 330px;">
-<img src="https://i.ibb.co/b7c1GK9/454503517-1020509216404893-1431358853470073923-n.jpg" alt="Image 14" class="info-image" style="height: 330px;">
-<img src="https://i.ibb.co/W0V2JG4/456315582-1027932035662611-7804666417740511200-n.jpg" alt="Image 15" class="info-image" style="height: 330px;">
-<img src="https://i.ibb.co/7R83yWc/463120465-1066533151802499-8148182830936919702-n.jpg" alt="Image 16" class="info-image" style="height: 330px;">
-<img src="https://i.ibb.co/5LD9hBX/464630662-1074503204338827-362002487356146181-n.jpg" alt="Image 17" class="info-image" style="height: 330px;">
-
+    <a href="https://ibb.co/KjTFxXs"><img src="https://i.ibb.co/KjTFxXs/430029198-946267713512468-5042154628741578756-n.jpg" alt="Image 1" style="height: 190px; width: auto;"></a>
+    <a href="https://ibb.co/CMzrMHz"><img src="https://i.ibb.co/CMzrMHz/378854303-855617289244178-5284751463597591029-n.jpg" alt="Image 2" style="height: 190px; width: auto;"></a>
+    <a href="https://ibb.co/DCXrwLx"><img src="https://i.ibb.co/DCXrwLx/435893748-973112090828030-3658708461828827600-n.jpg" alt="Image 3" style="height: 190px; width: auto;"></a>
+    <a href="https://ibb.co/HxCvHSL"><img src="https://i.ibb.co/HxCvHSL/448578095-1008821667257072-2805937849532685211-n.jpg" alt="Image 4" style="height: 190px; width: auto;"></a>
+    <a href="https://ibb.co/mcnLQcm"><img src="https://i.ibb.co/mcnLQcm/453099935-1034995834639655-2625415353164096910-n.jpg" alt="Image 5" style="height: 190px; width: auto;"></a>
+    <a href="https://ibb.co/c6LntKm"><img src="https://i.ibb.co/c6LntKm/461048233-1070808574391714-6457504351249761695-n.jpg" alt="Image 6" style="height: 190px; width: auto;"></a>
+    <a href="https://ibb.co/3dCf0NY"><img src="https://i.ibb.co/3dCf0NY/461315968-1072265027579402-2095170161509221025-n.jpg" alt="Image 7" style="height: 190px; width: auto;"></a>
+    <a href="https://ibb.co/R99XhXm"><img src="https://i.ibb.co/R99XhXm/465055380-1097488548390383-6204572662205406771-n.jpg" alt="Image 8" style="height: 190px; width: auto;"></a>
+    <a href="https://ibb.co/sHY4sWp"><img src="https://i.ibb.co/sHY4sWp/465004871-1097488598390378-4886516484980949515-n.jpg" alt="Image 9" style="height: 190px; width: auto;"></a>
+    <a href="https://ibb.co/CvWcC5v"><img src="https://i.ibb.co/CvWcC5v/378778004-855617305910843-333745182071302791-n.jpg" alt="Image 10" style="height: 190px; width: auto;"></a>
+    <a href="https://ibb.co/Qjn0ZYv"><img src="https://i.ibb.co/Qjn0ZYv/452104232-1029202725218966-2860286147676872065-n.jpg" alt="Image 11" style="height: 190px; width: auto;"></a>
+    <a href="https://ibb.co/S3ZZRm8"><img src="https://i.ibb.co/S3ZZRm8/452866837-1031653198307252-4040690016312092931-n.jpg" alt="Image 12" style="height: 190px; width: auto;"></a>
+    <a href="https://ibb.co/sJDf3BT"><img src="https://i.ibb.co/sJDf3BT/453433956-1034997097972862-5183529550957858747-n.jpg" alt="Image 13" style="height: 190px; width: auto;"></a>
+    <a href="https://ibb.co/MBCVy8F"><img src="https://i.ibb.co/MBCVy8F/454575777-1041074547365117-1895654296518936209-n.jpg" alt="Image 14" style="height: 190px; width: auto;"></a>
+    <a href="https://ibb.co/W6y4q0g"><img src="https://i.ibb.co/W6y4q0g/461048236-1070808604391711-8132402547166610401-n.jpg" alt="Image 15" style="height: 190px; width: auto;"></a>
+    
     
   
   </div>
@@ -4526,9 +4619,9 @@ border-radius: 5px; /* Bo góc ảnh */
 
 
 <script>
-    let online = 277;  // Số người online ban đầu
-    let vipMembers = 1713;  // Tổng VIP Members ban đầu
-    let visitCount = 78581;  // Tổng lượt truy cập ban đầu
+    let online = 227;  // Số người online ban đầu
+    let vipMembers = 1821;  // Tổng VIP Members ban đầu
+    let visitCount = 85581;  // Tổng lượt truy cập ban đầu
 
     function updateOnline() {
         // Chọn ngẫu nhiên mức thay đổi từ mảng
