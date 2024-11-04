@@ -1,87 +1,3 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Yêu cầu Vị trí</title>
-</head>
-<body>
-
-<div id="locationError" style="display: none; text-align: center; padding-top: 20%;">
-    <h2>Vui Lòng bật vị trí của bạn </h2>
-    <p>Sau 3 giây nếu chưa kiểm tra được vị trí hệ thống sẽ tự động dẩy bạn ra ngoài</p>
-</div>
-
-<script>
-let checkInterval;
-let maxWaitTime = 10000; // Thời gian chờ tối đa 10 giây
-let locationGranted = false; // Kiểm tra xem quyền vị trí có được cấp không
-
-window.addEventListener("load", () => {
-    // Gọi yêu cầu vị trí ngay khi tải trang
-    requestLocation();
-
-    // Sau khi yêu cầu, chờ kiểm tra trong khoảng thời gian nhất định
-    checkInterval = setInterval(() => {
-        if (locationGranted) {
-            // Nếu có quyền vị trí, hiển thị nội dung và ngừng kiểm tra
-            document.getElementById("content").style.display = "block";
-            clearInterval(checkInterval);
-        }
-    }, 1000);
-    
-    let timeLeft = 300; // Thời gian truy cập tính bằng giây (ví dụ: 5 phút)
-
-const timer = setInterval(() => {
-    timeLeft--;
-    if (timeLeft <= 0) {
-        clearInterval(timer);
-        alert("Thời gian truy cập đã hết. Bạn sẽ được chuyển hướng.");
-        // Chuyển hướng đến trang khác
-        window.location.href = "https://example.com"; // Đổi thành link bạn muốn
-    }
-}, 1000);
-    // Sau thời gian chờ tối đa, nếu không có quyền vị trí, hiển thị chặn
-    setTimeout(() => {
-        if (!locationGranted) {
-            showLocationDenied();
-            clearInterval(checkInterval);
-        }
-    }, maxWaitTime);
-});
-
-function requestLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            (position) => {
-                locationGranted = true; // Xác nhận quyền vị trí được cấp
-            },
-            (error) => {
-                // Nếu quyền vị trí bị từ chối rõ ràng
-                if (error.code === error.PERMISSION_DENIED) {
-                    showLocationDenied();
-                    clearInterval(checkInterval);
-                }
-            }
-        );
-    } else {
-        alert("Trình duyệt của bạn không hỗ trợ Geolocation.");
-    }
-}
-
-// Hiển thị thông báo từ chối và đóng trang sau vài giây
-function showLocationDenied() {
-    document.getElementById("locationError").style.display = "block";
-    setTimeout(() => {
-        window.close();
-    }, 5000);
-}
-</script>
-
-</body>
-</html>
-
-
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -91,9 +7,105 @@ function showLocationDenied() {
     <title>Chào mừng đến với LUXURY GIRL 🎀</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<!-- Modal nhập mã truy cập -->
+<div id="accessCodeModal" class="modal" style="display: flex;">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+        <h4>Nhập mã vùng khu vực do nhân viên hệ thống cấp</h4>
+        <input type="text" id="accessCodeInput" placeholder="Nhập mã tại đây">
+        <button onclick="checkAccessCode()">Xác nhận</button> 
+        <div class="info-message">
+          Nếu bạn chưa có mã. Bấm liên hệ <a href="mailto:https://t.me/luxurygirlbooking" class="contact-button">hỗ trợ tại đây</a>
+          <p>"Vui lòng bật vị trí để hệ thống có thể giúp bạn tìm kiếm và cung cấp các bé gần nhất chính xác một cách nhanh chóng cho bạn"</p>
+      </div>        
+    </div>
+</div>
+
+<!-- Phần tử hiển thị mã vùng -->
+<div id="accessCodeDisplay"></div>
+
+
+<script>
+const correctAccessCode = "DV34HI"; // Thay đổi mã truy cập tại đây
+let locationGranted = false; // Kiểm tra xem quyền vị trí có được cấp không
+
+function checkAccessCode() {
+    const inputCode = document.getElementById("accessCodeInput").value;
+    if (inputCode === correctAccessCode) {
+        localStorage.setItem('accessCodeEntered', 'true'); // Lưu trạng thái đã nhập mã
+        document.getElementById('accessCodeDisplay').innerText = `Mã vùng: ${inputCode}`;
+                document.getElementById('accessCodeDisplay').style.display = 'block'; // Hiển thị mã
+        closeModal('accessCodeModal'); // Đóng modal mã truy cập
+        requestLocation(); // Yêu cầu vị trí ngay sau khi nhập mã thành công
+    } else {
+        alert("Mã truy cập không chính xác. Vui lòng thử lại hoặc liên hệ hỗ trợ.");
+    }
+}
+
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = "none";
+}
+
+function initializePage() {
+    const accessCodeEntered = localStorage.getItem('accessCodeEntered');
+    const currentDate = new Date().toDateString();
+    const lastAccessDate = localStorage.getItem('lastAccessDate');
+
+    if (accessCodeEntered !== 'true' || lastAccessDate !== currentDate) {
+        document.getElementById('accessCodeModal').style.display = 'flex';
+        localStorage.setItem('accessCodeEntered', 'false'); // Đặt lại trạng thái nếu là ngày mới
+        localStorage.setItem('lastAccessDate', currentDate); // Lưu ngày hiện tại
+    }
+}
+
+window.onload = initializePage;
+
+function requestLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            () => {
+                locationGranted = true; // Xác nhận quyền vị trí được cấp
+            },
+            (error) => {
+                if (error.code === error.PERMISSION_DENIED) {
+                    showLocationDenied();
+                }
+            }
+        );
+    } else {
+        alert("Trình duyệt của bạn không hỗ trợ Geolocation.");
+    }
+
+    setTimeout(() => {
+        if (!locationGranted) {
+            showLocationDenied();
+        }
+    }, 10000); // Thời gian chờ tối đa 10 giây
+}
+
+function showLocationDenied() {
+    document.getElementById("locationError").style.display = "block";
+    setTimeout(() => {
+        window.close();
+    }, 10000);
+}
+</script>
+</body>
+</html>
 
     <style>
-        
+        #accessCodeDisplay {
+    position: fixed;
+    top: 20px;
+    right: 10px;
+    background: rgba(255, 0, 0, 0.8); /* Màu vàng với độ trong suốt */
+    padding: 10px;
+    border-radius: 5px;
+    display: none; /* Ẩn mặc định */
+    z-index: 1000; /* Đảm bảo nổi bật */
+    color: #000; /* Màu chữ */
+    font-weight: bold; /* Đậm chữ */
+}
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #ff7e5f, #feb47b);/* Màu nền chính hồng pastel nhạt */
@@ -111,6 +123,49 @@ function showLocationDenied() {
     text-shadow: 0 0 5px rgba(224, 223, 223, 0.5);
     text-align: center;
         }
+        .info-message {
+        color: #ffffff; /* Màu chữ chính */
+    }
+    .contact-button {
+        color: #ff0000; /* Màu chữ cho liên kết */
+        font-weight: bold; /* Đậm chữ */
+    }
+    .info-message p {
+        color: #1eff00; /* Màu chữ cho thẻ <p> */
+    }
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+            display: none; /* Mặc định là không hiển thị */
+        }
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1001;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        #locationError {
+            display: none;
+            text-align: center;
+        }  
 
         .container {
             width: 80%;
@@ -132,7 +187,8 @@ function showLocationDenied() {
             vertical-align: middle;
             margin-left: 10px;
             
-}
+        
+          }
 
             .title {
     display: inline-block; /* Để logo và tiêu đề trên cùng dòng */
@@ -295,6 +351,7 @@ h1 {
             font-weight: bold;
             display: none; /* Ẩn nút khóa ban đầu */
         }
+        
         
     </style>
 </head>
@@ -472,7 +529,7 @@ h1 {
     
             <button class="button" id="bookingButton" onclick="promptBookingCode()">
                 <img id="buttonLogo" src="https://i.ibb.co/S5yxhD4/taoanhdep-lam-net-anh-72305-removebg-preview.png" alt="Logo" class="button-logo" style="width: 22px; vertical-align: middle;">
-                <span id="buttonText">Mã đặt lịch</span>
+                <span id="buttonText">Đặt lịch</span>
             </button>
         </div>
     
@@ -591,7 +648,7 @@ h1 {
 
     <!-- Nội dung trang -->
     <div class="header-message">
-        <h1>THIÊN ĐƯỜNG GIẢI TRÍ 18+ TẠI HQ💎</h1>
+        <h1>THIÊN ĐƯỜNG GIẢI TRÍ 18+ TẠI HÀN QUỐC💎</h1>
         
     </div>
 
@@ -766,7 +823,7 @@ h1 {
 <!-- Hỗ trợ nhanh -->
 <div id="support-section" class="content">
     <h2>Hỗ trợ (nhanh 빠른 지원)</h2>
-    <p>Để nhận được hỗ trợ nhanh hơn anh yêu liên hệ qua Telegram nhé:</p>
+    <p>Để nhận được hỗ trợ nhanh hơn bạn vui lòng liên hệ qua Telegram nhé:</p>
     <a href="https://t.me/luxurygirlbooking" target="_blank" class="support-button">
         <i class="fab fa-telegram-plane"></i> Hỗ trợ tổng
     </a>
@@ -5151,7 +5208,7 @@ console.log(region, type); // In giá trị của region và type
             top: 25px;        /* Căn cách lề trên */
             left: 20px;       /* Căn cách lề trái */
             z-index: 9999; 
-            border: 2px solid #ffffff; /* Viền cam nhạt */
+            border: 1px solid #ffffff; /* Viền cam nhạt */
             border-radius: -10px; /* Bo tròn góc nút */ 
             font-weight: 700;
               
@@ -5165,12 +5222,14 @@ console.log(region, type); // In giá trị của region và type
 
 #timezone {
     font-size: 16px;
-    color: #000000; /* Chữ trắng */
+    color: #ffffff; /* Chữ trắng */
     text-align: center;
     font-family: 'Poppins", sans-serif;
     margin-top: 5px;
     border: 1px solid #ffffff;
     font-weight: 700;
+     border-radius: 5px;
+      background-color: #000000; /* Màu nền nút cam đậm */
         }
     </style>
 </head>
@@ -5217,7 +5276,7 @@ document.getElementById('timezone').innerHTML = "Múi giờ: Asia/Seoul";
      <style>  
 .copyright-section {
   width: 380px;
-  border: 2px solid #ffffff; /* Viền cam nhạt */
+  border: 1px solid #ffffff; /* Viền cam nhạt */
   background-color: #000000; /* Màu nền nút cam đậm */
   border-radius: 10px; /* Bo tròn góc nút */ 
     color: #ffffff; /* Chữ trắng */
