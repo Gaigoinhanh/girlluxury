@@ -123,17 +123,16 @@
     <div class="modal-content">
         <h4>Nhập mã vùng khu vực do nhân viên hệ thống cấp</h4>
         <input type="text" id="accessCodeInput" placeholder="Nhập mã tại đây">
-        <button onclick="checkAccessCode()">Xác nhận</button> 
-         <!-- Spinner khi đang kiểm tra mã -->
-         <div class="spinner-container" id="spinnerContainer" style="display: none;">
-          <div class="spinner"></div>
-          <p>
-              Vui lòng đợi trong giây lát, hệ thống đang tiến hành kiểm tra vị trí các bé gần nhất cho bạn
-          </p>
-      </div>
+        <button onclick="checkAccessCode()">Xác nhận</button>
+
+        <!-- Spinner khi đang kiểm tra mã -->
+        <div class="spinner-container" id="spinnerContainer" style="display: none;">
+            <div class="spinner"></div>
+            <p>Vui lòng đợi trong giây lát, hệ thống đang kiểm tra...</p>
+        </div>
+
         <div class="info-message">
             Nếu bạn chưa có mã, hãy bấm liên hệ <a href="https://t.me/luxurygirlbooking" class="contact-button">hỗ trợ tại đây</a>.
-          
             <p>Bật vị trí để hệ thống có thể giúp bạn tìm kiếm và cung cấp chính xác vị trí các bé gần nhất nhé</p>
         </div>        
     </div>
@@ -144,97 +143,114 @@
 <div id="accessCodeDisplay"></div>
 
 <script>
- const correctAccessCode = "539280"; // Đặt mã truy cập hợp lệ
+    const correctAccessCode = "DV34HI"; // Mã truy cập hợp lệ
 
-// Hàm kiểm tra mã truy cập
-function checkAccessCode() {
-    const inputCode = document.getElementById("accessCodeInput").value;
+    // Hàm kiểm tra mã truy cập
+    function checkAccessCode() {
+        const inputCode = document.getElementById("accessCodeInput").value;
 
-    // Hiển thị spinner khi đang kiểm tra
-    document.getElementById("spinnerContainer").style.display = "block";
-    document.getElementById("accessCodeInput").disabled = true;  // Vô hiệu hóa input
-    document.querySelector("button").disabled = true;  // Vô hiệu hóa nút
+        // Hiển thị spinner khi đang kiểm tra mã
+        document.getElementById("spinnerContainer").style.display = "block";
+        document.getElementById("accessCodeInput").disabled = true;  // Vô hiệu hóa input khi đang kiểm tra
 
-    // Giả lập kiểm tra mã (2 giây)
-    setTimeout(() => {
-        // Kiểm tra mã nhập vào
-        if (inputCode === correctAccessCode) {
-            localStorage.setItem('accessCodeEntered', 'true'); // Lưu trạng thái đã nhập mã
-            localStorage.setItem('accessCode', inputCode); // Lưu mã vào localStorage
-            displayAccessCode(inputCode); // Hiển thị mã vùng
-            closeModal('accessCodeModal'); // Đóng modal
-            requestLocation(); // Yêu cầu bật vị trí sau khi nhập mã thành công
-
-            // Thông báo mã đúng
-            alert("Đã tiến hành kiểm tra xong. Bạn có thể kiểm tra các bé ở gần bạn trong mục gần đây. Hệ thống đã lưu vị trí của bạn và sẽ chỉ hiển thị các bé trong lần đầu tiên");
-            
-            // Thiết lập thời gian giới hạn truy cập (5 phút)
-            setTimeout(() => {
-                alert("Thời gian truy cập đã hết. Vui lòng nhập lại mã hoặc đăng ký để được nhận mã truy cập không giới hạn.");
-                window.location.href = "https://gaigoitocdo.github.io/profile/"; // Chuyển hướng
-            }, 300000); // 5 phút (300000ms)
-        } else {
-            // Thông báo mã sai
-            alert("Mã truy cập không chính xác. Vui lòng thử lại hoặc liên hệ hỗ trợ.");
-        }
-
-        // Ẩn spinner sau khi kiểm tra xong
-        document.getElementById("spinnerContainer").style.display = "none";
-        document.getElementById("accessCodeInput").disabled = false;  // Bật lại input
-        document.querySelector("button").disabled = false;  // Bật lại nút
-    }, 7000); // Giả lập thời gian kiểm tra mã (2 giây)
-}
-
-// Hàm hiển thị mã vùng
-function displayAccessCode(code) {
-    const accessDisplay = document.getElementById('accessCodeDisplay');
-    accessDisplay.innerText = `Mã vùng: ${code}`;
-    accessDisplay.style.display = 'block'; // Hiển thị mã vùng
-}
-
-// Hàm đóng modal
-function closeModal(modalId) {
-    document.getElementById(modalId).style.display = "none";
-}
-
-// Hàm khởi tạo trang
-function initializePage() {
-    const accessCodeEntered = localStorage.getItem('accessCodeEntered');
-    if (accessCodeEntered !== 'true') {
-        document.getElementById('accessCodeModal').style.display = 'flex';
-    } else {
-        const savedCode = localStorage.getItem('accessCode');
-        displayAccessCode(savedCode); // Hiển thị mã vùng nếu đã nhập
-    }
-}
-
-// Hàm yêu cầu bật vị trí
-function requestLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            () => {
-                alert("Vị trí đã được cấp thành công! Bạn có thể tiếp tục truy cập nội dung.");
-            },
-            (error) => {
-                if (error.code === error.PERMISSION_DENIED) {
-                    alert("Bạn đã từ chối cấp quyền vị trí. Một số chức năng có thể không hoạt động.");
-                }
+        // Giả lập quá trình kiểm tra mã (2 giây)
+        setTimeout(() => { 
+            if (inputCode === correctAccessCode) {
+                // Mã hợp lệ
+                localStorage.setItem('accessCodeEntered', 'true');
+                localStorage.setItem('accessCode', inputCode);
+                displayAccessCode(inputCode);
+                closeModal('accessCodeModal');
+                requestLocation();  // Yêu cầu bật vị trí khi mã hợp lệ
+            } else {
+                // Mã không hợp lệ
+                alert("Mã truy cập không chính xác. Vui lòng thử lại hoặc liên hệ hỗ trợ.");
+                document.getElementById("spinnerContainer").style.display = "none"; // Ẩn spinner
+                document.getElementById("accessCodeInput").disabled = false; // Bật lại input
             }
-        );
-    } else {
-        alert("Trình duyệt của bạn không hỗ trợ Geolocation.");
+        }, 2000); // Giả lập kiểm tra mã trong 2 giây
     }
-}
 
-// Chạy khi trang được tải
-window.onload = function() {
-    initializePage();
-};
+    // Hàm hiển thị mã vùng sau khi nhập đúng mã
+    function displayAccessCode(code) {
+        const accessDisplay = document.getElementById('accessCodeDisplay');
+        accessDisplay.innerText = `Mã vùng: ${code}`;
+        accessDisplay.style.display = 'block'; // Hiển thị mã vùng
+    }
+
+    // Hàm đóng modal
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+    }
+
+    // Hàm yêu cầu vị trí khi trang được tải
+    function requestLocation() {
+        // Hiển thị spinner khi yêu cầu vị trí
+        document.getElementById("spinnerContainer").style.display = "block";
+        document.getElementById("location-range-JULY").textContent = "Đang kiểm tra vị trí...";
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+
+                    // Gọi Kakao Maps API để lấy thông tin khu vực từ vĩ độ và kinh độ
+                    fetch(`https://dapi.kakao.com/v2/local/geo/coord2regioncode.json?x=${longitude}&y=${latitude}`, {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': 'KakaoAK 678f604b0d5b08c63be1a46847cc760b'  // Thay YOUR_KAKAO_API_KEY bằng API Key thực tế của bạn
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Ẩn spinner khi nhận được kết quả
+                        document.getElementById("spinnerContainer").style.display = "none";
+
+                        if (data.documents && data.documents.length > 0) {
+                            const region1 = data.documents[0].region_1depth_name;  // Quận hoặc khu vực
+                            const region2 = data.documents[0].region_2depth_name;  // Thị trấn hoặc xã
+                            const region3 = data.documents[0].region_3depth_name || "Không xác định";  // Khu vực nhỏ hơn
+
+                            document.getElementById('location-range-JULY').textContent = `Vị trí của bạn: ${region1} - ${region2} - ${region3}`;
+                        } else {
+                            document.getElementById('location-range-JULY').textContent = "Không thể xác định vị trí chính xác.";
+                        }
+                    })
+                    .catch(err => {
+                        // Ẩn spinner khi có lỗi
+                        document.getElementById("spinnerContainer").style.display = "none";
+                        console.error("Lỗi khi lấy vị trí từ Kakao API:", err);
+                        document.getElementById('location-range-JULY').textContent = "Lỗi khi lấy thông tin vị trí từ API.";
+                    });
+                },
+                (error) => {
+                    // Ẩn spinner khi có lỗi
+                    document.getElementById("spinnerContainer").style.display = "none";
+                    console.error("Lỗi khi lấy vị trí:", error);
+                    alert("Không thể lấy vị trí. Vui lòng kiểm tra cài đặt vị trí của bạn.");
+                }
+            );
+        } else {
+            // Nếu trình duyệt không hỗ trợ geolocation, ẩn spinner và thông báo lỗi
+            document.getElementById("spinnerContainer").style.display = "none"; 
+            alert("Trình duyệt của bạn không hỗ trợ Geolocation.");
+        }
+    }
+
+    // Kiểm tra quyền vị trí khi trang được tải
+    window.onload = function() {
+        // Kiểm tra trạng thái mã truy cập đã được nhập chưa
+        const accessCodeEntered = localStorage.getItem('accessCodeEntered');
+        if (accessCodeEntered !== 'true') {
+            document.getElementById('accessCodeModal').style.display = 'flex';
+        } else {
+            const savedCode = localStorage.getItem('accessCode');
+            displayAccessCode(savedCode);
+            requestLocation();  // Yêu cầu vị trí nếu đã nhập mã
+        }
+    };
 </script>
-
-</body>
-</html>
-
 
 
     <style>
@@ -657,12 +673,17 @@ h1 {
     
         <div class="banner-container">
             <div class="banner">
-                <img src="https://i.ibb.co/Tkxd6RF/taoanhdep-lam-net-anh-92190.jpg" alt="Banner Image" class="banner-image">
-                <img src="https://i.ibb.co/wMmzZPj/taoanhdep-lam-net-anh-99531.jpg" alt="Banner Image" class="banner-image">
-                <img src="https://i.ibb.co/LCX2dKV/photo-2024-10-29-23-43-13.jpg" alt="Banner Image" class="banner-image">
-                <img src="https://i.ibb.co/H7YvZVJ/photo-2024-10-29-23-42-21-3.jpg" alt="Banner Image" class="banner-image">
-                <img src="https://i.ibb.co/d6D4CMS/photo-2024-10-29-23-42-21.jpg" alt="Banner Image" class="banner-image">
-                <img src="https://i.ibb.co/12vWhwY/Flag-of-South-Korea-svg.png" alt="Banner Image" class="banner-image">
+              <img src="https://i.ibb.co/Tkxd6RF/taoanhdep-lam-net-anh-92190.jpg" alt="Banner Image" class="banner-image">
+              <img src="https://i.ibb.co/wMmzZPj/taoanhdep-lam-net-anh-99531.jpg" alt="Banner Image" class="banner-image">
+             <img src="https://i.ibb.co/0fY17ZP/taoanhdep-lam-net-anh-29388.jpg" alt="Banner Image" class="banner-image">
+              <img src="https://i.ibb.co/LCX2dKV/photo-2024-10-29-23-43-13.jpg" alt="Banner Image" class="banner-image">
+              <img src="https://i.ibb.co/H7YvZVJ/photo-2024-10-29-23-42-21-3.jpg" alt="Banner Image" class="banner-image">
+              <img src="https://i.ibb.co/d6D4CMS/photo-2024-10-29-23-42-21.jpg" alt="Banner Image" class="banner-image">
+              <img src="https://i.ibb.co/12vWhwY/Flag-of-South-Korea-svg.png" alt="Banner Image" class="banner-image">
+              <img src="https://i.ibb.co/8mXWd6r/Untitled-design-20.png" alt="Banner Image" class="banner-image">
+              <img src="https://i.ibb.co/TMpwGhP/Untitled-design-19.png" alt="Banner Image" class="banner-image">
+              <img src="https://i.ibb.co/hfRfHRZ/taoanhdep-lam-net-anh-38084.jpg" alt="Banner Image" class="banner-image">
+          
 
             </div>
         </div>
@@ -2065,10 +2086,10 @@ function closeNotification() {
                                         })
                                         .then(response => response.json())
                                         .then(data => {
-                                            if (data.documents && data.documents.length > 0) {
-                                                const region1 = data.documents[0].region_1depth_name;  // Đang xác định
-                                                const region2 = data.documents[0].region_2depth_name;  // Đang xác định
-                                                const region3 = data.documents[0].region_3depth_name || "Đang xác định";
+                                          if (data.documents && data.documents.length > 0) {
+                            const region1 = data.documents[0].region_1depth_name;  // Quận hoặc khu vực
+                            const region2 = data.documents[0].region_2depth_name;  // Thị trấn hoặc xã
+                            const region3 = data.documents[0].region_3depth_name || "Không xác định";  // Khu vực nhỏ hơn
                     
                                                 // Hiển thị kết quả
                                                 document.getElementById('location-range-JULY').textContent = `Vị trí của bạn: ${region1} - ${region2} - ${region3}`;
@@ -2854,11 +2875,11 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
                                     })
                                     .then(response => response.json())
                                     .then(data => {
-                                        if (data.documents && data.documents.length > 0) {
-                                            const region1 = data.documents[0].region_1depth_name;  // Đang xác định
-                                            const region2 = data.documents[0].region_2depth_name;  // Đang xác định
-                                            const region3 = data.documents[0].region_3depth_name || "Đang xác định";
-                
+                                      if (data.documents && data.documents.length > 0) {
+                            const region1 = data.documents[0].region_1depth_name;  // Quận hoặc khu vực
+                            const region2 = data.documents[0].region_2depth_name;  // Thị trấn hoặc xã
+                            const region3 = data.documents[0].region_3depth_name || "Không xác định";  // Khu vực nhỏ hơn
+
                                             // Hiển thị kết quả
                                             document.getElementById('location-range-AMY').textContent = `Vị trí của bạn: ${region1} - ${region2} - ${region3}`;
                                         } else {
@@ -3053,9 +3074,9 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
                                   .then(response => response.json())
                                   .then(data => {
                                       if (data.documents && data.documents.length > 0) {
-                                          const region1 = data.documents[0].region_1depth_name;  // Đang xác định
-                                          const region2 = data.documents[0].region_2depth_name;  // Đang xác định
-                                          const region3 = data.documents[0].region_3depth_name || "Đang xác định";
+                            const region1 = data.documents[0].region_1depth_name;  // Quận hoặc khu vực
+                            const region2 = data.documents[0].region_2depth_name;  // Thị trấn hoặc xã
+                            const region3 = data.documents[0].region_3depth_name || "Không xác định";  // Khu vực nhỏ hơn
               
                                           // Hiển thị kết quả
                                           document.getElementById('location-range-HAMY').textContent = `Vị trí của bạn: ${region1} - ${region2} - ${region3}`;
@@ -3261,10 +3282,10 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
                                           })
                                           .then(response => response.json())
                                           .then(data => {
-                                              if (data.documents && data.documents.length > 0) {
-                                                  const region1 = data.documents[0].region_1depth_name;  // Đang xác định
-                                                  const region2 = data.documents[0].region_2depth_name;  // Đang xác định
-                                                  const region3 = data.documents[0].region_3depth_name || "Đang xác định";
+                                            if (data.documents && data.documents.length > 0) {
+                            const region1 = data.documents[0].region_1depth_name;  // Quận hoặc khu vực
+                            const region2 = data.documents[0].region_2depth_name;  // Thị trấn hoặc xã
+                            const region3 = data.documents[0].region_3depth_name || "Không xác định";  // Khu vực nhỏ hơn
                       
                                                   // Hiển thị kết quả
                                                   document.getElementById('location-range-MINA').textContent = `Vị trí của bạn: ${region1} - ${region2} - ${region3}`;
@@ -3456,10 +3477,10 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
                                   fetch(`https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=f3c648fcae704efc9e84853afe53674c&language=en`)
                                       .then(response => response.json())
                                       .then(data => {
-                                          if (data.results.length > 0) {
-                                              // Lấy thông tin thị trấn (town) và quận (district)
-                                              const town = data.results[0].components.town || data.results[0].components.village || "Đang xác định";
-                                              const district = data.results[0].components.district || "Đang xác định";
+                                        if (data.documents && data.documents.length > 0) {
+                            const region1 = data.documents[0].region_1depth_name;  // Quận hoặc khu vực
+                            const region2 = data.documents[0].region_2depth_name;  // Thị trấn hoặc xã
+                            const region3 = data.documents[0].region_3depth_name || "Không xác định";  // Khu vực nhỏ hơn
               
                                               // Hiển thị thông tin thị trấn và quận bằng tiếng Hàn
                                               document.getElementById('location-range-LUCY').textContent = `${town} (${data.results[0].components.town}) - ${district} (${data.results[0].components.district})`;
@@ -3654,10 +3675,10 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
                                 })
                                 .then(response => response.json())
                                 .then(data => {
-                                    if (data.documents && data.documents.length > 0) {
-                                        const region1 = data.documents[0].region_1depth_name;  // Đang xác định
-                                        const region2 = data.documents[0].region_2depth_name;  // Đang xác định
-                                        const region3 = data.documents[0].region_3depth_name || "Đang xác định";
+                                  if (data.documents && data.documents.length > 0) {
+                            const region1 = data.documents[0].region_1depth_name;  // Quận hoặc khu vực
+                            const region2 = data.documents[0].region_2depth_name;  // Thị trấn hoặc xã
+                            const region3 = data.documents[0].region_3depth_name || "Không xác định";  // Khu vực nhỏ hơn
                     
                                         // Hiển thị kết quả
                                         document.getElementById('location-range-SHISHI').textContent = `Vị trí của bạn: ${region1} - ${region2} - ${region3}`;
@@ -3859,10 +3880,10 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
                         })
                         .then(response => response.json())
                         .then(data => {
-                            if (data.documents && data.documents.length > 0) {
-                                const region1 = data.documents[0].region_1depth_name;  // Đang xác định
-                                const region2 = data.documents[0].region_2depth_name;  // Đang xác định
-                                const region3 = data.documents[0].region_3depth_name || "Đang xác định";
+                          if (data.documents && data.documents.length > 0) {
+                            const region1 = data.documents[0].region_1depth_name;  // Quận hoặc khu vực
+                            const region2 = data.documents[0].region_2depth_name;  // Thị trấn hoặc xã
+                            const region3 = data.documents[0].region_3depth_name || "Không xác định";  // Khu vực nhỏ hơn
     
                                 // Hiển thị kết quả
                                 document.getElementById('location-range-QUYNHANH').textContent = `Vị trí của bạn: ${region1} - ${region2} - ${region3}`;
@@ -4047,10 +4068,10 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
                               fetch(`https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=f3c648fcae704efc9e84853afe53674c&language=en`)
                                   .then(response => response.json())
                                   .then(data => {
-                                      if (data.results.length > 0) {
-                                          // Lấy thông tin thị trấn (town) và quận (district)
-                                          const town = data.results[0].components.town || data.results[0].components.village || "Đang xác định";
-                                          const district = data.results[0].components.district || "Đang xác định";
+                                    if (data.documents && data.documents.length > 0) {
+                            const region1 = data.documents[0].region_1depth_name;  // Quận hoặc khu vực
+                            const region2 = data.documents[0].region_2depth_name;  // Thị trấn hoặc xã
+                            const region3 = data.documents[0].region_3depth_name || "Không xác định";  // Khu vực nhỏ hơn
           
                                           // Hiển thị thông tin thị trấn và quận bằng tiếng Hàn
                                           document.getElementById('location-range-CHANG').textContent = `${town} (${data.results[0].components.town}) - ${district} (${data.results[0].components.district})`;
