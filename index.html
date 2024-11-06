@@ -1999,12 +1999,12 @@ function closeNotification() {
             <script>
               
                     // Hàm thay đổi trạng thái hoạt động ngẫu nhiên
-    function updateStatusYumi() {
+    function updateStatusJulyi() {
         const statuses = ["Đang hoạt động", "Đang bận", "Đang được book", "Chưa được đặt lịch", "Đã được đặt lịch"];
         const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
 
         // Cập nhật trạng thái vào phần tử
-        const statusElement = document.getElementById("active-status-YUMI");
+        const statusElement = document.getElementById("active-status-JULY");
         statusElement.textContent = randomStatus;
 
         // Loại bỏ các lớp cũ trước khi thêm lớp mới
@@ -2031,7 +2031,7 @@ function closeNotification() {
     }
 
     // Cập nhật trạng thái mỗi 3 giây
-    setInterval(updateStatusYumi, 3000000); // Thay đổi trạng thái sau mỗi 3 giây
+    setInterval(updateStatusJuly, 3000000); // Thay đổi trạng thái sau mỗi 3 giây
                 function rateStar(character, star) {
                     const result = document.getElementById(`rating-result-${character}`);
                     
