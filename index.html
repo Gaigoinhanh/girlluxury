@@ -131,7 +131,7 @@ function checkAccessCode() {
             // Thông báo mã đúng
             alert("Đã tiến hành kiểm tra xong. Bạn có thể kiểm tra các bé ở gần bạn trong mục gần đây. Hệ thống đã lưu vị trí của bạn và sẽ chỉ hiển thị các bé trong lần đầu tiên");
             
-          // 5 phút (700000ms)
+          // 5 phút (7000ms)
         } else {
             // Thông báo mã sai
             alert("Mã truy cập không chính xác. Vui lòng thử lại hoặc liên hệ hỗ trợ.");
@@ -1999,7 +1999,7 @@ function closeNotification() {
             <script>
               
                     // Hàm thay đổi trạng thái hoạt động ngẫu nhiên
-    function updateStatusJulyi() {
+    function updateStatusJuly() {
         const statuses = ["Đang hoạt động", "Đang bận", "Đang được book", "Chưa được đặt lịch", "Đã được đặt lịch"];
         const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
 
@@ -2030,8 +2030,8 @@ function closeNotification() {
         }
     }
 
-    // Cập nhật trạng thái mỗi 3 giây
-    setInterval(updateStatusJuly, 3000000); // Thay đổi trạng thái sau mỗi 3 giây
+    // Cập nhật trạng thái mỗi 7000 giây
+    setInterval(updateStatusJuly, 7000000); // Thay đổi trạng thái sau mỗi 7000 giây
                 function rateStar(character, star) {
                     const result = document.getElementById(`rating-result-${character}`);
                     
