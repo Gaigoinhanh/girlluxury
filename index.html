@@ -77,8 +77,10 @@
     </style>
 </head>
 <body>
- 
-<script>
+    <audio id="backgroundMusic" loop autoplay>
+        <source src="your-audio-file.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
 </script>
 </body>
 </html>
@@ -167,7 +169,7 @@ function checkAccessCode() {
         document.getElementById("spinnerContainer").style.display = "none";
         document.getElementById("accessCodeInput").disabled = false;
         document.querySelector("button").disabled = false;
-    }, 10000); // Giả lập thời gian kiểm tra mã (2 giây)
+    }, 6000); // Giả lập thời gian kiểm tra mã (2 giây)
 }
 
 // Hàm hiển thị mã vùng
@@ -1707,7 +1709,7 @@ function openLinkInNewTab() {
         <button onclick="closeModal('bookingCodeModal')">Đóng</button>
         
         <p>
-            <a href="https://booknowlxr.github.io/girl1/" class="button-link">Tôi chưa có mã đặt lịch?</a>
+            <a href="https://t.me/sglbhaiyen12" class="button-link">Tôi chưa có mã đặt lịch?</a>
         </p>
     </div>
 </div>
@@ -1721,7 +1723,7 @@ function openLinkInNewTab() {
 
 <div id="errorNotification" class="success-notification" style="display: none;">
     <p>Mã đặt lịch không chính xác. Vui lòng thử lại.</p>
-    <p>Liên hệ hỗ trợ tại: <a href="https://t.me/luxurygirlbooking">đây</a></p>
+    <p>Liên hệ hỗ trợ tại: <a href="https://t.me/sglbhaiyen12">đây</a></p>
     <p><a href="https://t.me/luxurygirlbooking">Trợ giúp trực tuyến</a></p>
 </div>
 
@@ -5363,7 +5365,7 @@ document.getElementById('timezone').innerHTML = "Múi giờ: Asia/Seoul";
     margin-top: 20px; /* Khoảng cách phía trên */
     font-family: 'Poppins", sans-serif; /* Đặt font đơn giản */
     box-shadow: 0 4px 8px #000000;
-    font-weight: 700;
+ 
 }
 
 
