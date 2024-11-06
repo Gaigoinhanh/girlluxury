@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-        #accessCodeDisplay { position: fixed; top: 20px; right: 10px; background: rgba(255, 0, 0, 0.8); padding: 10px; border-radius: 5px; display: none; z-index: 1000; color: #000; font-weight: bold; }
+        #accessCodeDisplay { position: fixed; top: 20px; right: 10px; background: rgba(255, 0, 0, 0.8); padding: 5px; border-radius: 10px; display: none; z-index: 1000; color: #000; font-weight: bold; }
         body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #ff7e5f, #feb47b); padding: 0; margin: 0; }
         .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; z-index: 1001; }
         .modal-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 1000; }
@@ -82,72 +82,99 @@
 </script>
 </body>
 </html>
-  <div id="accessCodeModal" class="modal" style="display: flex;">
+<div id="accessCodeModal" class="modal" style="display: flex;">
     <div class="modal-overlay"></div>
     <div class="modal-content">
         <h4>Nhập mã vùng khu vực do nhân viên hệ thống cấp</h4>
-        <input type="text" id="accessCodeInput" placeholder="Nhập mã tại đây">
-        <button onclick="checkAccessCode()">Xác nhận</button> 
-         <!-- Spinner khi đang kiểm tra mã -->
-         <div class="spinner-container" id="spinnerContainer" style="display: none;">
-          <div class="spinner"></div>
-          <p>
-              Vui lòng đợi trong giây lát, hệ thống đang tiến hành kiểm tra vị trí các bé gần nhất cho bạn
-          </p>
-      </div>
+        <div style="position: relative; width: 100%;">
+            <input type="password" id="accessCodeInput" placeholder="Nhập mã tại đây" style="width: calc(100% - 40px); padding: 10px; margin-bottom: 10px;">
+            <span id="togglePassword" onclick="togglePasswordVisibility()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                👁️
+            </span>
+        </div>
+        <button onclick="checkAccessCode()" style="background-color: #3498db; color: black; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+            Xác nhận
+        </button>
+
+        <!-- Spinner khi đang kiểm tra mã -->
+        <div class="spinner-container" id="spinnerContainer" style="display: none;">
+            <div class="spinner"></div>
+            <p class="spinner-text">Vui lòng đợi, hệ thống đang kiểm tra và tìm kiếm các bé gần nhất cho bạn...</p>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+        </div>
+
+        <!-- Dấu tích xanh hiển thị khi mã được xác nhận -->
+        <div class="success-message" id="successMessage" style="display: none; margin-top: 10px;">
+            <span style="color: green; font-size: 24px;">&#10004;</span> Mã đã được xác nhận thành công!
+        </div>
+
         <div class="info-message">
-    
-            <p>Bật vị trí để hệ thống có thể giúp bạn tìm kiếm và cung cấp chính xác vị trí các bé gần nhất nhé</p>
-        </div>        
+            <p><span style="color: green;">📍</span> Bật vị trí để hệ thống có thể giúp bạn tìm kiếm và cung cấp chính xác vị trí các bé gần nhất nhé</p>
+        </div>
     </div>
 </div>
 
-
 <div id="accessCodeDisplay"></div>
 
+<style>
+    .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; }
+    .modal-content { background: white; padding: 20px; border-radius: 8px; text-align: center; width: 300px; }
+    .spinner-container { display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; width: 100%; }
+    .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin-bottom: 10px; }
+    .spinner-text { color: #3498db; font-size: 14px; font-weight: bold; }
+    .progress-bar { width: 100%; background-color: #f3f3f3; height: 5px; margin-top: 10px; }
+    .progress { width: 0%; height: 100%; background-color: #3498db; animation: progressBar 2s ease-in-out infinite; }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+    @keyframes progressBar {
+        0% { width: 0%; }
+        50% { width: 50%; }
+        100% { width: 100%; }
+    }
+    .success-message { font-weight: bold; color: green; }
+    input[type="password"] { font-size: 16px; }
+    button:disabled { background-color: gray; }
+</style>
+
 <script>
- const correctAccessCode = "DV34HI"; // Đặt mã truy cập hợp lệ
+const correctAccessCode = "DV34HI"; // Đặt mã truy cập hợp lệ
 
 // Hàm kiểm tra mã truy cập
 function checkAccessCode() {
-    const inputCode = document.getElementById("accessCodeInput").value;
-
-    // Hiển thị spinner khi đang kiểm tra
+    const inputCode = document.getElementById("accessCodeInput").value.toUpperCase();  // Chuyển tất cả chữ thành chữ hoa
     document.getElementById("spinnerContainer").style.display = "block";
-    document.getElementById("accessCodeInput").disabled = true;  // Vô hiệu hóa input
-    document.querySelector("button").disabled = true;  // Vô hiệu hóa nút
+    document.getElementById("accessCodeInput").disabled = true;
+    document.querySelector("button").disabled = true;
 
-    // Giả lập kiểm tra mã (2 giây)
     setTimeout(() => {
-        // Kiểm tra mã nhập vào
         if (inputCode === correctAccessCode) {
-            localStorage.setItem('accessCodeEntered', 'true'); // Lưu trạng thái đã nhập mã
-            localStorage.setItem('accessCode', inputCode); // Lưu mã vào localStorage
-            displayAccessCode(inputCode); // Hiển thị mã vùng
-            closeModal('accessCodeModal'); // Đóng modal
-            requestLocation(); // Yêu cầu bật vị trí sau khi nhập mã thành công
+            localStorage.setItem('accessCodeEntered', 'true');
+            localStorage.setItem('accessCode', inputCode);
+            displayAccessCode(inputCode);
 
-            // Thông báo mã đúng
-            alert("Đã tiến hành kiểm tra xong. Bạn có thể kiểm tra các bé ở gần bạn trong mục gần đây. Hệ thống đã lưu vị trí của bạn và sẽ chỉ hiển thị các bé trong lần đầu tiên");
-            
-          // 5 phút (7000ms)
+            // Hiển thị dấu tích xanh
+            document.getElementById("successMessage").style.display = 'block';
+
+            closeModal('accessCodeModal');
+            requestLocation();
+
+            alert("Đã kiểm tra thành công. Các bé gần nhất cho bạn đã được đề xuất");
         } else {
-            // Thông báo mã sai
             alert("Mã truy cập không chính xác. Vui lòng thử lại hoặc liên hệ hỗ trợ.");
         }
 
-        // Ẩn spinner sau khi kiểm tra xong
         document.getElementById("spinnerContainer").style.display = "none";
-        document.getElementById("accessCodeInput").disabled = false;  // Bật lại input
-        document.querySelector("button").disabled = false;  // Bật lại nút
-    }, 7000); // Giả lập thời gian kiểm tra mã (2 giây)
+        document.getElementById("accessCodeInput").disabled = false;
+        document.querySelector("button").disabled = false;
+    }, 10000); // Giả lập thời gian kiểm tra mã (2 giây)
 }
 
 // Hàm hiển thị mã vùng
 function displayAccessCode(code) {
     const accessDisplay = document.getElementById('accessCodeDisplay');
     accessDisplay.innerText = `Mã vùng: ${code}`;
-    accessDisplay.style.display = 'block'; // Hiển thị mã vùng
+    accessDisplay.style.display = 'block';
 }
 
 // Hàm đóng modal
@@ -162,7 +189,7 @@ function initializePage() {
         document.getElementById('accessCodeModal').style.display = 'flex';
     } else {
         const savedCode = localStorage.getItem('accessCode');
-        displayAccessCode(savedCode); // Hiển thị mã vùng nếu đã nhập
+        displayAccessCode(savedCode);
     }
 }
 
@@ -171,16 +198,30 @@ function requestLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             () => {
-                alert("Vị trí đã được cấp thành công! Bạn có thể tiếp tục truy cập nội dung.");
+                alert("Vị trí đã được cấp thành công!");
             },
             (error) => {
                 if (error.code === error.PERMISSION_DENIED) {
-                    alert("Bạn đã từ chối cấp quyền vị trí. Một số chức năng có thể không hoạt động.");
+                    alert("Bạn đã từ chối quyền vị trí. Một số chức năng có thể không hoạt động.");
                 }
             }
         );
     } else {
         alert("Trình duyệt của bạn không hỗ trợ Geolocation.");
+    }
+}
+
+// Hàm bật/tắt hiển thị mật khẩu
+function togglePasswordVisibility() {
+    const passwordInput = document.getElementById("accessCodeInput");
+    const toggleIcon = document.getElementById("togglePassword");
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        toggleIcon.innerText = "🙈"; // Thay đổi biểu tượng
+    } else {
+        passwordInput.type = "password";
+        toggleIcon.innerText = "👁️";
     }
 }
 
@@ -190,8 +231,7 @@ window.onload = function() {
 };
 </script>
 
-</body>
-</html>
+
 
 
 
@@ -220,8 +260,10 @@ window.onload = function() {
         }
 
         h2 {
+            border: 2px solid #000000; /* Viền cam nhạt */
           font-size: 20px;
           color: #000000; /* Màu chữ chính */
+          border-radius: 10px;
 
     text-align: center;
         }
@@ -481,8 +523,10 @@ h1 {
         }
 
         h2 {
+            border: 2px solid #000000; /* Viền cam nhạt */
             font-size: 25px;
             font-weight: bold;
+            border-radius: 10px;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-bottom: 10px;
@@ -1588,7 +1632,7 @@ function openLinkInNewTab() {
 
 <!-- Gái gọi gần tôi -->
 <div id="my-region-section" class="content">
-    <h2>Gái gọi gần tôi (내 근처를 부르는 소녀들)</h2>
+    <h2>Đề xuất gần bạn (주변 추천)</h2>
     <div class="region-list">
         <div class="region-btn" onclick="showDetails('JULY')">
             <i class="fas fa-female"></i> July 
@@ -1926,7 +1970,7 @@ function closeNotification() {
                         <button onclick="showInputBox('JULY', 'phone')">SDT</button>
 <button onclick="showInputBox('JULY', 'telegram')">Telegram</button>
                           <p><i class="fas fa-clock"></i> <strong>Thời gian gia nhập:</strong> 29/05/2024 10:30</p>
-                          <p><i class="fas fa-user"></i> <strong>Hoạt động:</strong> <span id="active-status-YUMI" class="active-status">Đang hoạt động</span></p>                        </p>
+                          <p><i class="fas fa-user"></i> <strong>Hoạt động:</strong> <span id="active-status-JULY" class="active-status">Đang hoạt động</span></p>                        </p>
                       </div>
                   </div>
 
@@ -2276,8 +2320,8 @@ function closeNotification() {
         }
     }
 
-    // Cập nhật trạng thái mỗi 3 giây
-    setInterval(updateStatusYumi, 3000); // Thay đổi trạng thái sau mỗi 3 giây
+    // Cập nhật trạng thái mỗi 5000 giây
+    setInterval(updateStatusYumi, 500000); // Thay đổi trạng thái sau mỗi 5000 giây
                 function rateStar(character, star) {
                     const result = document.getElementById(`rating-result-${character}`);
                     
@@ -2991,7 +3035,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
                
                 <button onclick="showInputBox('HaMy', 'telegram')">Telegram</button>
                 <p><i class="fas fa-clock"></i> <strong>Thời gian gia nhập:</strong> 12/07/2024 12:03</p>
-                <i class="fas fa-user"></i> Hoạt động: <span class="active-status">Đang bận</span>
+                <i class="fas fa-user"></i> Hoạt động: <span class="active-status">Đang hoạt động</span>
                 </p>
             </div>
         </div>
@@ -3589,7 +3633,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
 
 <button onclick="showInputBox('SHISHI', 'telegram')">Telegram</button>
                 <p><i class="fas fa-clock"></i> <strong>Thời gian gia nhập:</strong> 22/06/2024 13:17</p>
-                <i class="fas fa-user"></i> Hoạt động: <span class="active-status">Đang bận</span>
+                <i class="fas fa-user"></i> Hoạt động: <span class="active-status">Đang hoạt động</span>
                         </p>
                       </div>
                   </div>
