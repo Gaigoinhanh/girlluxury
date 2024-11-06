@@ -1,52 +1,4 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Vị Trí Người Dùng</title>
-    <script src="https://api.opencagedata.com/geocode/v1/json?key=f3c648fcae704efc9e84853afe53674c" async defer></script>
-</head>
-<body>
-    <script>
-        function requestLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    (position) => {
-                        const { latitude, longitude } = position.coords;
 
-                        // Gọi API geocoding để lấy thông tin quận
-                        fetch(`https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=f3c648fcae704efc9e84853afe53674c`)
-                            .then(response => response.json())
-                            .then(data => {
-                                if (data.results.length > 0) {
-                                    const district = data.results[0].components.suburb || data.results[0].components.city; // Lấy quận hoặc thành phố
-                                    document.getElementById('location-range-YUMI').textContent = district; // Cập nhật vị trí quận
-                                } else {
-                                    document.getElementById('location-range-YUMI').textContent = "Không tìm thấy vị trí";
-                                }
-                            })
-                            .catch(err => {
-                                console.error("Error getting location:", err);
-                                document.getElementById('location-range-YUMI').textContent = "Lỗi khi lấy vị trí";
-                            });
-                    },
-                    (error) => {
-                        console.error("Geolocation error:", error);
-                        alert("Không thể lấy vị trí. Vui lòng kiểm tra cài đặt vị trí của bạn.");
-                        document.getElementById('location-range-YUMI').textContent = "Không thể lấy vị trí";
-                    }
-                );
-            } else {
-                alert("Trình duyệt của bạn không hỗ trợ Geolocation.");
-                document.getElementById('location-range-YUMI').textContent = "Geolocation không được hỗ trợ";
-            }
-        }
-
-        // Gọi hàm để yêu cầu vị trí khi trang được tải
-        window.onload = requestLocation;
-    </script>
-</body>
-</html>
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -70,7 +22,7 @@
 
       #warning {
             font-size: 15px;
-            color: #ffffff; /* Chữ trắng */
+            color: #007413; /* Chữ trắng */
             text-align: center;
             background-color: #ff3d00; /* Màu nền cam */
             padding: 10px;
@@ -88,8 +40,8 @@
 }
 
 .spinner {
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    border-top: 4px solid #00f;
+    border: 4px solid rgb(255, 255, 255);
+    border-top: 4px solid rgb(255, 0, 0);
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -106,18 +58,30 @@
     margin-top: 10px;
 }
 .contact-button {
-    color: #007bff;
+    color: #ff0000;
     text-decoration: none;
+    font-weight: 700; /* Đậm chữ */
 }
 
 .contact-button:hover {
     text-decoration: underline;
 }
-
+  .character {
+            margin-bottom: 20px;
+        }
+        .status-btn {
+            padding: 5px 10px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-
+ 
+<script>
+</script>
+</body>
+</html>
   <div id="accessCodeModal" class="modal" style="display: flex;">
     <div class="modal-overlay"></div>
     <div class="modal-content">
@@ -139,7 +103,6 @@
     </div>
 </div>
 
-<div id="warning">Thời gian truy cập của bạn giới hạn là 3 phút. Liên hệ hỗ trợ để mở giới hạn truy cập</div>
 
 <div id="accessCodeDisplay"></div>
 
@@ -168,11 +131,7 @@ function checkAccessCode() {
             // Thông báo mã đúng
             alert("Đã tiến hành kiểm tra xong. Bạn có thể kiểm tra các bé ở gần bạn trong mục gần đây. Hệ thống đã lưu vị trí của bạn và sẽ chỉ hiển thị các bé trong lần đầu tiên");
             
-            // Thiết lập thời gian giới hạn truy cập (5 phút)
-            setTimeout(() => {
-                alert("Thời gian truy cập đã hết. Vui lòng nhập lại mã hoặc đăng ký để được nhận mã truy cập không giới hạn.");
-                window.location.href = "https://gaigoitocdo.github.io/profile/"; // Chuyển hướng
-            }, 300000); // 5 phút (300000ms)
+          // 5 phút (300000ms)
         } else {
             // Thông báo mã sai
             alert("Mã truy cập không chính xác. Vui lòng thử lại hoặc liên hệ hỗ trợ.");
@@ -262,17 +221,17 @@ window.onload = function() {
         }
 
         h2 {
-          font-size: 30px;
-    color: ;
-    text-shadow: 0 0 5px rgba(224, 223, 223, 0.5);
+          font-size: 20px;
+          color: #000000; /* Màu chữ chính */
+
     text-align: center;
         }
         .info-message {
         color: #ffffff; /* Màu chữ chính */
     }
     .contact-button {
-        color: #ff0000; /* Màu chữ cho liên kết */
-        font-weight: bold; /* Đậm chữ */
+        color: #ff5e00; /* Màu chữ cho liên kết */
+        font-weight: 700; /* Đậm chữ */
     }
     .info-message p {
         color: #1eff00; /* Màu chữ cho thẻ <p> */
@@ -336,9 +295,9 @@ window.onload = function() {
 
             .title {
     display: inline-block; /* Để logo và tiêu đề trên cùng dòng */
-    font-size: 33px; /* Kích thước tiêu đề */
+    font-size: 20px; /* Kích thước tiêu đề */
     font-weight: bold;
-    color: #ffffff; /* Màu hồng đậm cho tiêu đề */
+    color: #000000; /* Màu hồng đậm cho tiêu đề */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Đổ bóng cho tiêu đề */
     vertical-align: middle; /* Căn chỉnh logo và tiêu đề theo chiều dọc */
 }
@@ -346,11 +305,11 @@ window.onload = function() {
 h1 {
     display: inline-block;
     font-family: 'Playfair Display', serif;
-    font-size: 42px;
+    font-size: 20px;
     font-weight: bold;
     text-align: center;
     /* Thay đổi màu sắc ở đây */
-    color: #ffffff; /* Thay màu theo ý muốn */
+    color: #000000; /* Thay màu theo ý muốn */
     background: #000000;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -372,11 +331,15 @@ h1 {
             }
         }
         .breadcrumb a {
+            margin-top: -20px; /* Điều chỉnh giá trị này theo nhu cầu */
+
             color: #000000;
             text-decoration: none;
             font-family: 'Poppins', sans-serif;
         }
         .breadcrumb a {
+            margin-top: -20px; /* Điều chỉnh giá trị này theo nhu cầu */
+
             color: #000000; /* Màu chữ breadcrumb */
             text-decoration: none;
         }
@@ -514,22 +477,24 @@ h1 {
             background-color: linear-gradient(135deg, #ff7e5f, #feb47b); /* Màu nền chính */
             color: #ffffff; /* Màu chữ tối để dễ đọc trên nền sáng */
             margin: 0;
-            padding: 0;
+            padding: -10px;
             font-family: 'Poppins", sans-serif; /* Font chữ hiện đại */
         }
 
-        h1 {
-            font-size: 42px;
+        h2 {
+            font-size: 25px;
             font-weight: bold;
             text-align: center;
-            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
         }
 
         .container {
             text-align: center;
-            width: 80%;
+            width: 60%;
+            margin-top: -50px;
             margin: 0 auto;
-            padding: 20px;
+            padding: -30px;
             background-color: #000000; /* Màu nền nút cam đậm */
             box-shadow: 0 4px 8px #000000;
             color: #ffffff; /* Màu chữ sáng */
@@ -539,13 +504,15 @@ h1 {
 
         .header {
             text-align: center;
-            padding: 20px;
+            padding: 10px;
         }
 
         .banner-container {
+          margin-top: -30px;
             overflow: hidden;
             background-color: linear-gradient(135deg, #ff7e5f, #feb47b);
             height: 300px;
+             width: auto;
             transition: background-color 0.3s ease, transform 0.3s ease; /* Hiệu ứng chuyển đổi */
         }
 
@@ -556,7 +523,7 @@ h1 {
         }
 
         .banner-image {
-            height: 230px;
+            height: 200px;
             width: auto;
             margin-right: 10px;
             border: 2px solid #000000; /* Viền cam nhạt */
@@ -568,33 +535,7 @@ h1 {
             100% { transform: translateX(-100%); }
         }
 
-        .button-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: -50px;
-            body {
-    background-color: #000000; /* Nền cam đậm */
-}
-}
-.button {
-    padding: 7px 15px;
-    background-color: #000000; /* Màu nền nút cam đậm */
-    color: #ffffff; /* Màu chữ trắng */
-    border: 2px solid #ffffff; /* Viền cam nhạt */
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    font-weight: bold; /* Chữ đậm hơn */
-    box-shadow: 0 4px 8px #000000;
-}
-
-.button:hover {
-    background-color: #ff3d00; /* Màu nền khi hover */
-    transform: scale(1.05); /* Phóng to nhẹ khi hover */
-    box-shadow: 0 4px 8px #000000;
-}
-
+      
 .center-notification {
     display: none; /* Ẩn ban đầu */
     position: fixed;
@@ -666,118 +607,6 @@ h1 {
 
             </div>
         </div>
-    
-        <div class="button-container">
-            <button class="button" onclick="redirectToProfile()">
-                <img src="https://i.ibb.co/dtQh08K/kisspng-clarify-health-solutions-health-care-the-welcome-r-5d2d5a1e013a63-980000501563253278005.png" alt="Icon Hồ sơ" style="width: 22px; vertical-align: middle;">
-                Hồ sơ
-            </button>
-    
-            <button class="button" id="bookingButton" onclick="promptBookingCode()">
-                <img id="buttonLogo" src="https://i.ibb.co/S5yxhD4/taoanhdep-lam-net-anh-72305-removebg-preview.png" alt="Logo" class="button-logo" style="width: 22px; vertical-align: middle;">
-                <span id="buttonText">Đặt lịch</span>
-            </button>
-        </div>
-    
-        <div id="vip3Notification" class="center-notification success-notification" style="display: none;">
-            <img src="https://i.ibb.co/n3cmF8p/pngtree-gold-vip-member-with-paddy-symbol-and-crown-vector-png-image-7482103-removebg-preview.png" alt="Dấu tích xanh" style="width: 30px; margin-right: 10px;">
-            <span>Chúc mừng ! Bạn đã được cấp quyền truy cập đặc biệt trên hệ thống 🥇🥇🥇</span>
-        </div>
-    
-        <div id="additionalCodeNotification" class="center-notification success-notification" style="display: none;">
-            <img src="https://i.ibb.co/k3FFnSL/pngtree-vector-illustration-of-sin-2-removebg-preview.png" alt="Dấu tích xanh" style="width: 30px; margin-right: 10px;">
-            <span>Mã hợp lệ. Vui lòng kích hoạt để đủ điều kiện sử dụng dịch vụ</span>
-        </div>
-    
-        <div id="errorTick" class="center-notification error-notification" style="display: none;">
-            <span>Mã không chính xác!</span>
-            <div id="requestCode" style="margin-top: 10px; display: none;">
-                <span>Bạn chưa có mã đặt lịch?</span>
-                <a href="https://booknowlxr.github.io/girl1/" target="_blank">Hướng dẫn lấy mã</a>
-            </div>
-        </div>
-    
-       <script>
-         function redirectToProfile() {
-        window.location.href = "https://gaigoitocdo.github.io/profile/";
-    }
-
-        function promptBookingCode() {
-            const code = prompt("Vui lòng nhập mã đặt lịch:");
-            const validCode1 = "111111"; // Mã hợp lệ của bạn
-            const validCode2 = "121213"; // Mã bổ sung hợp lệ
-
-            if (code === validCode1) {
-                isCodeValid = true;
-                showVip3Notification();
-                document.getElementById("buttonText").innerText = "Đã cấp phép"; // Thay đổi văn bản
-                document.getElementById("buttonLogo").src = "https://i.ibb.co/xF4Rq7n/Pngtree-green-check-mark-vector-7885995-removebg-preview.png"; // Đường dẫn đến logo VIP 3
-            } else if (code === validCode2) {
-                isCodeValid = false; // Chưa kích hoạt nhưng mã hợp lệ
-                showAdditionalCodeNotification(); // Hiển thị thông báo cho mã bổ sung
-                document.getElementById("buttonText").innerText = "Kích hoạt"; // Thay đổi văn bản
-                document.getElementById("buttonLogo").src = "https://i.ibb.co/HDchsrx/vecteezy-on-and-off-buttons-clipart-design-illustration-9398581.png"; // Icon cho mã hợp lệ
-                document.getElementById("bookingButton").onclick = activate; // Thay đổi hành động của nút để kích hoạt
-            } else {
-                showErrorNotification();
-                document.getElementById("buttonText").innerText = "Thất bại"; // Thay đổi văn bản
-                document.getElementById("buttonLogo").src = "https://i.ibb.co/9qxwKyZ/Red-round-white-palm-prohibition-sign-traffic-stop-156632-wh300-removebg-preview.png"; // Icon cho mã không hợp lệ
-                document.getElementById("requestCode").style.display = "block"; // Hiện yêu cầu mã
-            }
-        }
-
-        function showGuide() {
-            const guide = document.getElementById("guide");
-            guide.style.display = "block"; // Hiện hướng dẫn
-        }
-
-        function showAccountInfo() {
-            const accountInfo = document.getElementById("accountInfo");
-            accountInfo.style.display = "block"; // Hiện thông tin tài khoản
-            hideGuide(); // Ẩn hướng dẫn
-        }
-
-        function hideGuide() {
-            const guide = document.getElementById("guide");
-            guide.style.display = "none"; // Ẩn hướng dẫn
-        }
-
-        function hideAccountInfo() {
-            const accountInfo = document.getElementById("accountInfo");
-            accountInfo.style.display = "none"; // Ẩn thông tin tài khoản
-        }
-
-        function showVip3Notification() {
-            const notification = document.getElementById("vip3Notification");
-            notification.style.display = "block";
-
-            setTimeout(() => {
-                notification.style.display = "none";
-            }, 3000); // Tự động ẩn sau 3 giây
-        }
-
-        function showAdditionalCodeNotification() {
-            const notification = document.getElementById("additionalCodeNotification");
-            notification.style.display = "block";
-
-            setTimeout(() => {
-                notification.style.display = "none"; // Ẩn thông báo sau 3 giây
-            }, 3000);
-        }
-
-        function showErrorNotification() {
-            const errorTick = document.getElementById("errorTick");
-            errorTick.style.display = "block";
-
-            setTimeout(() => {
-                errorTick.style.display = "none";
-            }, 3000); // Tự động ẩn sau 3 giây
-        }
-    </script>
-</body>
-</html>
-    
-
 <style>
   
 </style>
@@ -792,11 +621,6 @@ h1 {
         </ul>
     </div>
 
-    <!-- Nội dung trang -->
-    <div class="header-message">
-        <h1>THIÊN ĐƯỜNG GIẢI TRÍ 18+ TẠI HÀN QUỐC💎</h1>
-        
-    </div>
 
     </style>
 
@@ -1667,16 +1491,11 @@ h1 {
 </div>
 <style>
     
- .status {
+ .introduce {
     font-size: 16px;
-    color: #fff !important; /* Màu mặc định cho phần chữ "Hoạt động:" */
+    color: #ffffff !important; /* Màu mặc định cho phần chữ "Hoạt động:" */
 }
 
-.active-status {
-    color: #28a745 !important; /* Màu xanh cho chữ "Đang hoạt động" */
-    font-weight: bold; /* Để chữ "Đang hoạt động" nổi bật hơn */
-
-}
 </style>
 
 
@@ -1767,21 +1586,6 @@ function openLinkInNewTab() {
     </script>
 </body>
 </html>
-<script>
-  // Hàm hiển thị thông báo khi người dùng bấm vào một khu vực
-  function showAlert(region) {
-      alert(`Bạn chưa có tài khoản để sử dụng dịch vụ này ! `);
-  }
-
-  function toggleContent(region, type) {
-      const contentDiv = document.getElementById(`${type}-${region}`);
-      if (contentDiv.style.display === "block") {
-          contentDiv.style.display = "none";
-      } else {
-          contentDiv.style.display = "block";
-      }
-  }
-</script>
 
 <!-- Gái gọi gần tôi -->
 <div id="my-region-section" class="content">
@@ -1812,7 +1616,7 @@ function openLinkInNewTab() {
             <i class="fas fa-female"></i> Lucy  
         </div>
         <div class="region-btn" onclick="showDetails('SHISHI')">
-            <i class="fas fa-female"></i> SHISHI 
+            <i class="fas fa-female"></i> Shishi 
             </div>
       <div class="region-btn" onclick="showDetails('QuynhAnh')">
           <i class="fas fa-female"></i> Q.Anh
@@ -1840,7 +1644,9 @@ function openLinkInNewTab() {
             <option value="luxury">Gói Luxury (프리미엄 패키지)</option>
             <option value="vip-tour">Gói VIP Tour (VIP 투어 패키지)</option>
         </select>
-        
+          <div id="character-status">
+        <p id="status">Trạng thái: Đang hoạt động</p>
+    </div>
            
         <button onclick="confirmBookingInfo()">Xác nhận</button>
     </div>
@@ -2011,7 +1817,7 @@ function closeNotification() {
               <h3>JULY</h3>
               <div class="button-container">
                   <button class="info-button" onclick="toggleContent('JULY', 'info')">
-                      <i class="fas fa-info-circle"></i> Info
+                      <i class="fas fa-info-circle"></i> Thông tin 
                   </button>
                   <button class="info-button" onclick="toggleContent('JULY', 'images')">
                       <i class="fas fa-images"></i> Hình ảnh
@@ -2026,7 +1832,7 @@ function closeNotification() {
                   <div class="info-content">
                       <img src="https://i.imgur.com/yOyhhhF.jpeg" alt="JULY Image" class="info-image" style="height: 250px;">
                       <div class="info-text">
-                          <p><i class="fas fa-money-bill-wave"></i> <strong>Giá tiền 값 :</strong> 119.000 원/2Shot (60 phút)</p>
+                          <p><i class="fas fa-money-bill-wave"></i> <strong>Giá tiền 값 :</strong> 119.000 원 / 2 lần quan hệ  (60 phút)</p>
                           <div id="contact-info" class="hidden-info">
                             <p><i class="fas fa-phone"></i> <strong>SDT:</strong> +82 10 3891 4***</p>
                             <div class="location-info">
@@ -2045,6 +1851,19 @@ function closeNotification() {
                               .button-container, .detail-info { 
                                   text-align: center; 
                               }
+                                .active-status {
+        font-weight: bold;
+        color: #00ff22;  /* Màu xanh cho trạng thái hoạt động */
+    }
+    .active-status.busy {
+        color: #dc3545;  /* Màu đỏ cho trạng thái bận */
+    }
+    .active-status.booked {
+        color: #ffc107;  /* Màu vàng cho trạng thái đã được đặt lịch */
+    }
+    .active-status.idle {
+        color: #0088ff;  /* Màu xám cho trạng thái chưa được đặt lịch */
+    }
                           </style>
                        <script>
                         // Hàm khởi tạo vị trí
@@ -2108,8 +1927,7 @@ function closeNotification() {
                         <button onclick="showInputBox('JULY', 'phone')">SDT</button>
 <button onclick="showInputBox('JULY', 'telegram')">Telegram</button>
                           <p><i class="fas fa-clock"></i> <strong>Thời gian gia nhập:</strong> 29/05/2024 10:30</p>
-                          <i class="fas fa-user"></i> Hoạt động: <span class="active-status">Đang hoạt động</span>
-                        </p>
+                          <p><i class="fas fa-user"></i> <strong>Hoạt động:</strong> <span id="active-status-YUMI" class="active-status">Đang hoạt động</span></p>                        </p>
                       </div>
                   </div>
 
@@ -2177,9 +1995,43 @@ function closeNotification() {
                     <span class="star" onclick="rateStar('JULY', 4)">&#9733;</span>
                     <span class="star" onclick="rateStar('JULY', 5)">&#9733;</span>
                 </div>
-                <p id="rating-result-JULY">Bạn chưa đánh giá</p>
             </div>          
             <script>
+              
+                    // Hàm thay đổi trạng thái hoạt động ngẫu nhiên
+    function updateStatusYumi() {
+        const statuses = ["Đang hoạt động", "Đang bận", "Đang được book", "Chưa được đặt lịch", "Đã được đặt lịch"];
+        const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
+
+        // Cập nhật trạng thái vào phần tử
+        const statusElement = document.getElementById("active-status-YUMI");
+        statusElement.textContent = randomStatus;
+
+        // Loại bỏ các lớp cũ trước khi thêm lớp mới
+        statusElement.classList.remove("busy", "booked", "idle", "unavailable");
+
+        // Thêm lớp CSS tương ứng với trạng thái
+        switch (randomStatus) {
+            case "Đang hoạt động":
+                statusElement.classList.add("active-status");
+                break;
+            case "Đang bận":
+                statusElement.classList.add("busy");
+                break;
+            case "Đang được book":
+                statusElement.classList.add("booked");
+                break;
+            case "Chưa được đặt lịch":
+                statusElement.classList.add("idle");
+                break;
+            case "Đã được đặt lịch":
+                statusElement.classList.add("unavailable");
+                break;
+        }
+    }
+
+    // Cập nhật trạng thái mỗi 3 giây
+    setInterval(updateStatusYumi, 3000000); // Thay đổi trạng thái sau mỗi 3 giây
                 function rateStar(character, star) {
                     const result = document.getElementById(`rating-result-${character}`);
                     
@@ -2212,6 +2064,9 @@ function closeNotification() {
                 .star {
                     cursor: pointer;
                 }
+                   
+                            
+
             </style>
             
               
@@ -2246,7 +2101,7 @@ function closeNotification() {
               <div id="bio-JULY" style="display: none">
                   <h4>Giới thiệu</h4>
                   <p>
-                      July là một trong những thành viên nổi bật của Diamond Club với vẻ đẹp thanh tú và tinh tế. Với dịch vụ tận tâm và phong cách chuyên nghiệp, cô ấy luôn làm hài lòng khách hàng.
+                      Với dịch vụ tận tâm và phong cách chuyên nghiệp, cô ấy luôn làm hài lòng khách hàng.
                   </p>
               </div>
           </div>
@@ -2257,7 +2112,7 @@ function closeNotification() {
               <h3>YUMI</h3>
               <div class="button-container">
                   <button class="info-button" onclick="toggleContent('YUMI', 'info')">
-                      <i class="fas fa-info-circle"></i> Info
+                      <i class="fas fa-info-circle"></i> Thông tin
                   </button>
                   <button class="info-button" onclick="toggleContent('YUMI', 'images')">
                       <i class="fas fa-images"></i> Hình ảnh
@@ -2272,7 +2127,7 @@ function closeNotification() {
                   <div class="info-content">
                     <img src="https://i.ibb.co/8rrgt7x/photo-2024-09-05-04-55-42-7.jpg" alt="Image New" class="info-image" style="height: 250px;">
                       <div class="info-text">
-                          <p><i class="fas fa-money-bill-wave"></i> <strong>Giá tiền 값:</strong> 109.000 원/2Shot (60 phút)</p>
+                          <p><i class="fas fa-money-bill-wave"></i> <strong>Giá tiền 값:</strong> 109.000 원 / 2 lần quan hệ (60 phút)</p>
                           <p><i class="fas fa-phone"></i> <strong>SDT:</strong> +82 10 4276 15**</p>
                           <style>
                             /* styles.css */
@@ -2287,6 +2142,19 @@ function closeNotification() {
                             .button-container, .detail-info { 
                                 text-align: center; 
                             }
+                             .active-status {
+        font-weight: bold;
+        color: #00ff22;  /* Màu xanh cho trạng thái hoạt động */
+    }
+    .active-status.busy {
+        color: #dc3545;  /* Màu đỏ cho trạng thái bận */
+    }
+    .active-status.booked {
+        color: #ffc107;  /* Màu vàng cho trạng thái đã được đặt lịch */
+    }
+    .active-status.idle {
+        color: #0088ff;  /* Màu xám cho trạng thái chưa được đặt lịch */
+    }
                         </style>
                         
                         <script>
@@ -2340,7 +2208,8 @@ function closeNotification() {
                          
                           <button onclick="showInputBox('YUMI', 'telegram')">Telegram</button>
                           <p><i class="fas fa-clock"></i> <strong>Thời gian gia nhập:</strong> 29/08/2024 10:30</p>
-                          <i class="fas fa-user"></i> Hoạt động: <span class="active-status">Đang hoạt động</span>
+                          <p><i class="fas fa-user"></i> <strong>Hoạt động:</strong> <span id="active-status-YUMI" class="active-status">Đang hoạt động</span></p>                        </p>
+
                         </p>
                       </div>
                   </div>
@@ -2372,11 +2241,44 @@ function closeNotification() {
                     <span class="star" onclick="rateStar('YUMI', 4)">&#9733;</span>
                     <span class="star" onclick="rateStar('YUMI', 5)">&#9733;</span>
                 </div>
-                <p id="rating-result-YUMI">Bạn chưa đánh giá</p>
             </div>
             
             <script>
               
+               // Hàm thay đổi trạng thái hoạt động ngẫu nhiên
+    function updateStatusYumi() {
+        const statuses = ["Đang hoạt động", "Đang bận", "Đang được book", "Chưa được đặt lịch", "Đã được đặt lịch"];
+        const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
+
+        // Cập nhật trạng thái vào phần tử
+        const statusElement = document.getElementById("active-status-YUMI");
+        statusElement.textContent = randomStatus;
+
+        // Loại bỏ các lớp cũ trước khi thêm lớp mới
+        statusElement.classList.remove("busy", "booked", "idle", "unavailable");
+
+        // Thêm lớp CSS tương ứng với trạng thái
+        switch (randomStatus) {
+            case "Đang hoạt động":
+                statusElement.classList.add("active-status");
+                break;
+            case "Đang bận":
+                statusElement.classList.add("busy");
+                break;
+            case "Đang được book":
+                statusElement.classList.add("booked");
+                break;
+            case "Chưa được đặt lịch":
+                statusElement.classList.add("idle");
+                break;
+            case "Đã được đặt lịch":
+                statusElement.classList.add("unavailable");
+                break;
+        }
+    }
+
+    // Cập nhật trạng thái mỗi 3 giây
+    setInterval(updateStatusYumi, 3000); // Thay đổi trạng thái sau mỗi 3 giây
                 function rateStar(character, star) {
                     const result = document.getElementById(`rating-result-${character}`);
                     
@@ -2443,7 +2345,7 @@ function closeNotification() {
               <div id="bookings-YUMI" style="display: none">
                   <h4>Đặt lịch</h4>
                   <p><i class="fas fa-book"></i> <strong>Hướng dẫn đặt lịch:</strong>
-                    * Khi set kèo - Lần đầu book sẽ được hỗ trợ tiền phòng. Các bé thường hoạt động ở 1 khách sạn hoặc nhà nghỉ nhất định. Các anh vào check thông tin xem bé có đang hoạt động không. Nhắn tin cho bé đặt hẹn, nếu bé tiếp được sẽ nhắn lại cho các anh địa chỉ nhà nghỉ. Nếu bé không trả lời thì nghĩa là không tiếp được vì đang bận - Khi đi mang theo tiền check và tiền phòng, bao cao su riêng nếu có - Các anh đến lấy phòng rồi nhắn lại cho bé số phòng. Nếu không biết đặt phòng thì đợi bé xuống đặt phòng giúp. Nếu đến một địa điểm khác cần cung cấp đúng địa chỉ ban quản lý phân công đưa bé đến - Trong khi chờ đợi nên tắm rửa trước, đánh răng súc miệng nếu cần để tiết kiệm thời gian cho đôi bên. - Nên hẹn trước 1 đến 2 tiếng, nếu quá 2 tiếng mà các chưa đi được thì trước khi đi phải hẹn lại - Nếu bé đến muộn quá 20 phút thì nên điện thoại check tình hình để xử lý * Khi check hàng - Các bé có quyền từ chối nếu quá bất lịch sự hay thấy mất an toàn - Phải đeo bao cao su để bảo vệ an toàn của đôi bên. Không rút bao khi đang check nếu chưa thỏa thuận - Không bạo dâm, không ép buộc làm những dịch vụ các bé không cam kết ... - Không quay phim, chụp ảnh mặt khi chưa được bé cho phép - Khi bạn ra dưới bất cứ hình thức nào như khi BJ, HJ...ra sớm thì được tính là 1 lần. Trừ khi có thỏa thuận khác * Sau khi check - Thanh toán tiền đầy đủ cho bé - Thanh toán tiền đầy đủ cho nhà nghỉ nếu chưa thỏa thuận với ban quản lý - Lưu giữ tin nhắn, ảnh đặt phòng để phản hồi nếu muốn. HÃY LÀ MỘT CHECKER VĂN MINH !</p>
+                    * HÃY LÀ MỘT CHECKER VĂN MINH !</p>
                   <p><i class="fas fa-calendar-alt"></i> <strong>Vui lòng đăng nhập để đặt lịch !</strong></p>
               </div>
           
@@ -2451,7 +2353,7 @@ function closeNotification() {
               <div id="bio-YUMI" style="display: none">
                   <h4>Giới thiệu</h4>
                   <p>
-                      Yumi là một trong những thành viên nổi bật của Diamond Club với phong cách hiện đại và sự tự tin quyến rũ. Cô ấy luôn biết cách thu hút mọi ánh nhìn.
+                      Cô ấy luôn biết cách thu hút mọi ánh nhìn.
                   </p>
               </div>
           </div>
@@ -2463,7 +2365,7 @@ function closeNotification() {
   <h3>Hà Huyền</h3>
   <div class="button-container">
       <button class="info-button" onclick="toggleContent('HaHuyen', 'info')">
-          <i class="fas fa-info-circle"></i> Info
+          <i class="fas fa-info-circle"></i> Thông tin
       </button>
       <button class="info-button" onclick="toggleContent('HaHuyen', 'images')">
           <i class="fas fa-images"></i> Hình ảnh
@@ -2477,7 +2379,7 @@ function closeNotification() {
       <div class="info-content">
         <img src="https://i.ibb.co/S5cZB7m/419418603-1508797216580744-6598850606428340490-n.jpg" alt="Image 11" class="info-image" style="height: 250px;">
         <div class="info-text">
-              <p><i class="fas fa-money-bill-wave"></i> <strong>Giá tiền:</strong> 108.000 원/2 lần quan hệ (70 phút)</p>
+              <p><i class="fas fa-money-bill-wave"></i> <strong>Giá tiền:</strong> 108.000 원 / 2 lần quan hệ (70 phút)</p>
               <p><i class="fas fa-phone"></i> <strong>SDT:</strong> +82 10 5751 09**</p>
               <style>
                 /* styles.css */
@@ -2577,7 +2479,6 @@ function closeNotification() {
           <span class="star" onclick="rateStar('HaHuyen', 4)">&#9733;</span>
           <span class="star" onclick="rateStar('HaHuyen', 5)">&#9733;</span>
       </div>
-      <p id="rating-result-HaHuyen">Bạn chưa đánh giá</p>
   </div>
 
   <!-- Hình ảnh -->
@@ -2620,7 +2521,7 @@ function closeNotification() {
             <h3>SUMY</h3>
             <div class="button-container">
                 <button class="info-button" onclick="toggleContent('SUMY', 'info')">
-                    <i class="fas fa-info-circle"></i> Info
+                    <i class="fas fa-info-circle"></i> Thông tin
                 </button>
                 <button class="info-button" onclick="toggleContent('SUMY', 'images')">
                     <i class="fas fa-images"></i> Hình ảnh
@@ -2635,7 +2536,7 @@ function closeNotification() {
                 <div class="info-content">
                     <img src="https://i.ibb.co/PY0fpmk/300807010-1276755979806415-8863721451651082149-n.jpg" alt="SUMY Image" class="info-image" style="height: 250px;">
                     <div class="info-text">
-                        <p><i class="fas fa-money-bill-wave"></i> <strong>Giá tiền 값:</strong> 102.000 원/2Shot (60 phút)</p>
+                        <p><i class="fas fa-money-bill-wave"></i> <strong>Giá tiền 값:</strong> 102.000 원 / 2 lần quan hệ (60 phút)</p>
                         <p><i class="fas fa-phone"></i> <strong>SDT:</strong> +82 10 8349 55**</p>
                         <style>
                           /* styles.css */
@@ -2735,7 +2636,6 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
         <span class="star" onclick="rateStar('SUMY', 4)">&#9733;</span>
         <span class="star" onclick="rateStar('SUMY', 5)">&#9733;</span>
     </div>
-    <p id="rating-result-SUMY">Bạn chưa đánh giá</p>
 </div>
 
        
@@ -2793,7 +2693,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
             <div id="bookings-SUMY" style="display: none">
                 <h4>Đặt lịch</h4>
                 <p><i class="fas fa-book"></i> <strong>Hướng dẫn đặt lịch:</strong>
-                    * Khi set kèo - Lần đầu book sẽ được hỗ trợ tiền phòng. Các bé thường hoạt động ở 1 khách sạn hoặc nhà nghỉ nhất định. Các anh vào check thông tin xem bé có đang hoạt động không. Nhắn tin cho bé đặt hẹn, nếu bé tiếp được sẽ nhắn lại cho các anh địa chỉ nhà nghỉ. Nếu bé không trả lời thì nghĩa là không tiếp được vì đang bận - Khi đi mang theo tiền check và tiền phòng, bao cao su riêng nếu có - Các anh đến lấy phòng rồi nhắn lại cho bé số phòng. Nếu không biết đặt phòng thì đợi bé xuống đặt phòng giúp. Nếu đến một địa điểm khác cần cung cấp đúng địa chỉ ban quản lý phân công đưa bé đến - Trong khi chờ đợi nên tắm rửa trước, đánh răng súc miệng nếu cần để tiết kiệm thời gian cho đôi bên. - Nên hẹn trước 1 đến 2 tiếng, nếu quá 2 tiếng mà các chưa đi được thì trước khi đi phải hẹn lại - Nếu bé đến muộn quá 20 phút thì nên điện thoại check tình hình để xử lý * Khi check hàng - Các bé có quyền từ chối nếu quá bất lịch sự hay thấy mất an toàn - Phải đeo bao cao su để bảo vệ an toàn của đôi bên. Không rút bao khi đang check nếu chưa thỏa thuận - Không bạo dâm, không ép buộc làm những dịch vụ các bé không cam kết ... - Không quay phim, chụp ảnh mặt khi chưa được bé cho phép - Khi bạn ra dưới bất cứ hình thức nào như khi BJ, HJ...ra sớm thì được tính là 1 lần. Trừ khi có thỏa thuận khác * Sau khi check - Thanh toán tiền đầy đủ cho bé - Thanh toán tiền đầy đủ cho nhà nghỉ nếu chưa thỏa thuận với ban quản lý - Lưu giữ tin nhắn, ảnh đặt phòng để phản hồi nếu muốn. HÃY LÀ MỘT CHECKER VĂN MINH !</p>
+                    HÃY LÀ MỘT CHECKER VĂN MINH !</p>
                 <p><i class="fas fa-calendar-alt"></i> <strong>Vui lòng đăng nhập để đặt lịch !</strong></p>
         </div>
     </div>
@@ -2803,7 +2703,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
         <h3>AMY</h3>
         <div class="button-container">
             <button class="info-button" onclick="toggleContent('AMY', 'info')">
-                <i class="fas fa-info-circle"></i> Info
+                <i class="fas fa-info-circle"></i> Thông tin
             </button>
             <button class="info-button" onclick="toggleContent('AMY', 'images')">
                 <i class="fas fa-images"></i> Hình ảnh
@@ -2818,7 +2718,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
             <div class="info-content">
                 <img src="https://i.ibb.co/CWFhJKn/photo-11-2024-09-20-09-04-21.jpg" alt="Image New 32" class="info-image" style="height: 250px;">
                 <div class="info-text">
-                    <p><i class="fas fa-money-bill-wave"></i> <strong>Giá tiền 값:</strong> 110.000 원/2Shot (60 phút)</p>
+                    <p><i class="fas fa-money-bill-wave"></i> <strong>Giá tiền 값:</strong> 110.000 원 / 2 lần quan hệ (60 phút)</p>
                     <p><i class="fas fa-phone"></i> <strong>SDT:</strong> +82 10 8349 55**</p>
                     <style>
                       /* styles.css */
@@ -2892,7 +2792,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
                
                     <button onclick="showInputBox('AMY', 'telegram')">Telegram</button>
                     <p><i class="fas fa-clock"></i> <strong>Thời gian gia nhập:</strong> 02/07/2024 14:00</p>
-                    <p><i class="fas fa-user-check"></i> <strong>Hoạt động:</strong> Đang bận</p>
+                    <i class="fas fa-user"></i> Hoạt động: <span class="active-status">Đang hoạt động</span>
     
                     <div id="bio-AMY" style="display: block;">
                         <h4>Giới thiệu</h4>
@@ -2922,7 +2822,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
         <span class="star" onclick="rateStar('AMY', 4)">&#9733;</span>
         <span class="star" onclick="rateStar('AMY', 5)">&#9733;</span>
     </div>
-    <p id="rating-result-AMY">Bạn chưa đánh giá</p>
+
 </div>
 
        
@@ -2995,7 +2895,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
         <div id="bookings-AMY" style="display: none;">
             <h4>Đặt lịch</h4>
             <p><i class="fas fa-book"></i> <strong>Hướng dẫn đặt lịch :</strong>
-                * Khi set kèo - Lần đầu book sẽ được hỗ trợ tiền phòng. Các bé thường hoạt động ở 1 khách sạn hoặc nhà nghỉ nhất định. Các anh vào check thông tin xem bé có đang hoạt động không. Nhắn tin cho bé đặt hẹn, nếu bé tiếp được sẽ nhắn lại cho các anh địa chỉ nhà nghỉ. Nếu bé không trả lời thì nghĩa là không tiếp được vì đang bận - Khi đi mang theo tiền check và tiền phòng, bao cao su riêng nếu có - Các anh đến lấy phòng rồi nhắn lại cho bé số phòng. Nếu không biết đặt phòng thì đợi bé xuống đặt phòng giúp. Nếu đến một địa điểm khác cần cung cấp đúng địa chỉ ban quản lý phân công đưa bé đến - Trong khi chờ đợi nên tắm rửa trước, đánh răng súc miệng nếu cần để tiết kiệm thời gian cho đôi bên. - Nên hẹn trước 1 đến 2 tiếng, nếu quá 2 tiếng mà các chưa đi được thì trước khi đi phải hẹn lại - Nếu bé đến muộn quá 20 phút thì nên điện thoại check tình hình để xử lý * Khi check hàng - Các bé có quyền từ chối nếu quá bất lịch sự hay thấy mất an toàn - Phải đeo bao cao su để bảo vệ an toàn của đôi bên. Không rút bao khi đang check nếu chưa thỏa thuận - Không bạo dâm, không ép buộc làm những dịch vụ các bé không cam kết ... - Không quay phim, chụp ảnh mặt khi chưa được bé cho phép - Khi bạn ra dưới bất cứ hình thức nào như khi BJ, HJ...ra sớm thì được tính là 1 lần. Trừ khi có thỏa thuận khác * Sau khi check - Thanh toán tiền đầy đủ cho bé - Thanh toán tiền đầy đủ cho nhà nghỉ nếu chưa thỏa thuận với ban quản lý - Lưu giữ tin nhắn, ảnh đặt phòng để phản hồi nếu muốn. HÃY LÀ MỘT CHECKER VĂN MINH !</p>
+               HÃY LÀ MỘT CHECKER VĂN MINH !</p>
             <p><i class="fas fa-calendar-alt"></i> <strong>Vui lòng đăng nhập để đặt lịch !</strong></p>
         </div>
     </div>
@@ -3007,7 +2907,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
     <h3>Hà My</h3>
     <div class="button-container">
         <button class="info-button" onclick="toggleContent('HaMy', 'info')">
-            <i class="fas fa-info-circle"></i> Info
+            <i class="fas fa-info-circle"></i> Thông tin
         </button>
         <button class="info-button" onclick="toggleContent('HaMy', 'images')">
             <i class="fas fa-images"></i> Hình ảnh
@@ -3023,7 +2923,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
 
 
             <div class="info-text">
-                <p><i class="fas fa-money-bill-wave"></i> <strong>Giá tiền 값:</strong> 109.000 원/2Shot (60 phút)</p>
+                <p><i class="fas fa-money-bill-wave"></i> <strong>Giá tiền 값:</strong> 109.000 원 / 2 lần quan hệ (60 phút)</p>
               
                 <style>
                     /* styles.css */
@@ -3124,7 +3024,6 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
             <span class="star" onclick="rateStar('HaMy', 4)">&#9733;</span>
             <span class="star" onclick="rateStar('HaMy', 5)">&#9733;</span>
         </div>
-        <p id="rating-result-HaMy">Bạn chưa đánh giá</p>
     </div>
 
      
@@ -3191,7 +3090,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
     <div id="bookings-HaMy" style="display: none">
         <h4>Đặt lịch</h4>
         <p><i class="fas fa-book"></i> <strong>Hướng dẫn đặt lịch:</strong>
-            * Khi set kèo - Lần đầu book sẽ được hỗ trợ tiền phòng. Các bé thường hoạt động ở 1 khách sạn hoặc nhà nghỉ nhất định. Các anh vào check thông tin xem bé có đang hoạt động không. Nhắn tin cho bé đặt hẹn, nếu bé tiếp được sẽ nhắn lại cho các anh địa chỉ nhà nghỉ. Nếu bé không trả lời thì nghĩa là không tiếp được vì đang bận - Khi đi mang theo tiền check và tiền phòng, bao cao su riêng nếu có - Các anh đến lấy phòng rồi nhắn lại cho bé số phòng. Nếu không biết đặt phòng thì đợi bé xuống đặt phòng giúp. Nếu đến một địa điểm khác cần cung cấp đúng địa chỉ ban quản lý phân công đưa bé đến - Trong khi chờ đợi nên tắm rửa trước, đánh răng súc miệng nếu cần để tiết kiệm thời gian cho đôi bên. - Nên hẹn trước 1 đến 2 tiếng, nếu quá 2 tiếng mà các chưa đi được thì trước khi đi phải hẹn lại - Nếu bé đến muộn quá 20 phút thì nên điện thoại check tình hình để xử lý * Khi check hàng - Các bé có quyền từ chối nếu quá bất lịch sự hay thấy mất an toàn - Phải đeo bao cao su để bảo vệ an toàn của đôi bên. Không rút bao khi đang check nếu chưa thỏa thuận - Không bạo dâm, không ép buộc làm những dịch vụ các bé không cam kết ... - Không quay phim, chụp ảnh mặt khi chưa được bé cho phép - Khi bạn ra dưới bất cứ hình thức nào như khi BJ, HJ...ra sớm thì được tính là 1 lần. Trừ khi có thỏa thuận khác * Sau khi check - Thanh toán tiền đầy đủ cho bé - Thanh toán tiền đầy đủ cho nhà nghỉ nếu chưa thỏa thuận với ban quản lý - Lưu giữ tin nhắn, ảnh đặt phòng để phản hồi nếu muốn. HÃY LÀ MỘT CHECKER VĂN MINH !</p>
+           HÃY LÀ MỘT CHECKER VĂN MINH !</p>
         <p><i class="fas fa-calendar-alt"></i> <strong>Vui lòng đăng nhập để đặt lịch</strong></p>
     </div>
 
@@ -3209,7 +3108,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
               <h3>MINA</h3>
               <div class="button-container">
                   <button class="info-button" onclick="toggleContent('MINA', 'info')">
-                      <i class="fas fa-info-circle"></i> Info
+                      <i class="fas fa-info-circle"></i> Thông tin
                   </button>
                   <button class="info-button" onclick="toggleContent('MINA', 'images')">
                       <i class="fas fa-images"></i> Hình ảnh
@@ -3225,7 +3124,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
                   <div class="info-content">
                     <img src="https://i.ibb.co/9HyQwy6/462776443-1193449098391062-5602390579257707131-n.jpg" alt="Image New 60" class="info-image" style="height: 250px;">
                       <div class="info-text">
-                          <p><i class="fas fa-money-bill-wave"></i> <strong>Giá tiền 값:</strong> 115.000 원/2Shot (60 phút)</p>
+                          <p><i class="fas fa-money-bill-wave"></i> <strong>Giá tiền 값:</strong> 115.000 원/ 2 lần quan hệ (60 phút)</p>
                           <p><i class="fas fa-phone"></i> <strong>SDT:</strong> +82 10 8349 58**</p>
                           <style>
                             /* styles.css */
@@ -3332,7 +3231,6 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
         <span class="star" onclick="rateStar('MINA', 4)">&#9733;</span>
         <span class="star" onclick="rateStar('MINA', 5)">&#9733;</span>
     </div>
-    <p id="rating-result-MINA">Bạn chưa đánh giá</p>
 </div>
 
        
@@ -3395,7 +3293,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
               <div id="bookings-MINA" style="display: none">
                   <h4>Đặt lịch</h4>
                   <p><i class="fas fa-book"></i> <strong>Hướng dẫn đặt lịch:</strong>
-                    * Khi set kèo - Lần đầu book sẽ được hỗ trợ tiền phòng. Các bé thường hoạt động ở 1 khách sạn hoặc nhà nghỉ nhất định. Các anh vào check thông tin xem bé có đang hoạt động không. Nhắn tin cho bé đặt hẹn, nếu bé tiếp được sẽ nhắn lại cho các anh địa chỉ nhà nghỉ. Nếu bé không trả lời thì nghĩa là không tiếp được vì đang bận - Khi đi mang theo tiền check và tiền phòng, bao cao su riêng nếu có - Các anh đến lấy phòng rồi nhắn lại cho bé số phòng. Nếu không biết đặt phòng thì đợi bé xuống đặt phòng giúp. Nếu đến một địa điểm khác cần cung cấp đúng địa chỉ ban quản lý phân công đưa bé đến - Trong khi chờ đợi nên tắm rửa trước, đánh răng súc miệng nếu cần để tiết kiệm thời gian cho đôi bên. - Nên hẹn trước 1 đến 2 tiếng, nếu quá 2 tiếng mà các chưa đi được thì trước khi đi phải hẹn lại - Nếu bé đến muộn quá 20 phút thì nên điện thoại check tình hình để xử lý * Khi check hàng - Các bé có quyền từ chối nếu quá bất lịch sự hay thấy mất an toàn - Phải đeo bao cao su để bảo vệ an toàn của đôi bên. Không rút bao khi đang check nếu chưa thỏa thuận - Không bạo dâm, không ép buộc làm những dịch vụ các bé không cam kết ... - Không quay phim, chụp ảnh mặt khi chưa được bé cho phép - Khi bạn ra dưới bất cứ hình thức nào như khi BJ, HJ...ra sớm thì được tính là 1 lần. Trừ khi có thỏa thuận khác * Sau khi check - Thanh toán tiền đầy đủ cho bé - Thanh toán tiền đầy đủ cho nhà nghỉ nếu chưa thỏa thuận với ban quản lý - Lưu giữ tin nhắn, ảnh đặt phòng để phản hồi nếu muốn. HÃY LÀ MỘT CHECKER VĂN MINH !</p>
+                    * Khi set kèo HÃY LÀ MỘT CHECKER VĂN MINH !</p>
                   <p><i class="fas fa-calendar-alt"></i> <strong>Vui lòng đăng nhập để đặt lịch</strong></p>
               </div>
           
@@ -3413,7 +3311,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
     <h3>LUCY</h3>
     <div class="button-container">
         <button class="info-button" onclick="toggleContent('LUCY', 'info')">
-            <i class="fas fa-info-circle"></i> Info
+            <i class="fas fa-info-circle"></i> Thông tin
         </button>
         <button class="info-button" onclick="toggleContent('LUCY', 'images')">
             <i class="fas fa-images"></i> Hình ảnh
@@ -3427,7 +3325,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
         <div class="info-content">
             <img src="https://i.ibb.co/Dfc46yb/photo-2024-09-05-18-55-27.jpg" alt="Image New 67" class="info-image" style="height: 250px;">
             <div class="info-text">
-                <p><i class="fas fa-money-bill-wave"></i> <strong>Giá tiền 값:</strong> 109.000 원/2Shot (60 phút)</p>
+                <p><i class="fas fa-money-bill-wave"></i> <strong>Giá tiền 값:</strong> 109.000 원 / 2 lần quan hệ (60 phút)</p>
                 <p><i class="fas fa-phone"></i> <strong>SDT:</strong> +82 10 8349 59**</p>
                 <style>
                   /* styles.css */
@@ -3528,7 +3426,6 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
         <span class="star" onclick="rateStar('LUCY', 4)">&#9733;</span>
         <span class="star" onclick="rateStar('LUCY', 5)">&#9733;</span>
     </div>
-    <p id="rating-result-LUCY">Bạn chưa đánh giá</p>
 </div>
 
        
@@ -3584,7 +3481,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
     <div id="bookings-LUCY" style="display: none">
         <h4>Đặt lịch</h4>
         <p><i class="fas fa-book"></i> <strong>Hướng dẫn đặt lịch:</strong>
-            * Khi set kèo - Lần đầu book sẽ được hỗ trợ tiền phòng. Các bé thường hoạt động ở 1 khách sạn hoặc nhà nghỉ nhất định. Các anh vào check thông tin xem bé có đang hoạt động không. Nhắn tin cho bé đặt hẹn, nếu bé tiếp được sẽ nhắn lại cho các anh địa chỉ nhà nghỉ. Nếu bé không trả lời thì nghĩa là không tiếp được vì đang bận - Khi đi mang theo tiền check và tiền phòng, bao cao su riêng nếu có - Các anh đến lấy phòng rồi nhắn lại cho bé số phòng. Nếu không biết đặt phòng thì đợi bé xuống đặt phòng giúp. Nếu đến một địa điểm khác cần cung cấp đúng địa chỉ ban quản lý phân công đưa bé đến - Trong khi chờ đợi nên tắm rửa trước, đánh răng súc miệng nếu cần để tiết kiệm thời gian cho đôi bên. - Nên hẹn trước 1 đến 2 tiếng, nếu quá 2 tiếng mà các chưa đi được thì trước khi đi phải hẹn lại - Nếu bé đến muộn quá 20 phút thì nên điện thoại check tình hình để xử lý * Khi check hàng - Các bé có quyền từ chối nếu quá bất lịch sự hay thấy mất an toàn - Phải đeo bao cao su để bảo vệ an toàn của đôi bên. Không rút bao khi đang check nếu chưa thỏa thuận - Không bạo dâm, không ép buộc làm những dịch vụ các bé không cam kết ... - Không quay phim, chụp ảnh mặt khi chưa được bé cho phép - Khi bạn ra dưới bất cứ hình thức nào như khi BJ, HJ...ra sớm thì được tính là 1 lần. Trừ khi có thỏa thuận khác * Sau khi check - Thanh toán tiền đầy đủ cho bé - Thanh toán tiền đầy đủ cho nhà nghỉ nếu chưa thỏa thuận với ban quản lý - Lưu giữ tin nhắn, ảnh đặt phòng để phản hồi nếu muốn. HÃY LÀ MỘT CHECKER VĂN MINH !</p>
+          HÃY LÀ MỘT CHECKER VĂN MINH !</p>
         <p><i class="fas fa-calendar-alt"></i> <strong>Vui lòng đăng nhập để đặt lịch</strong></p>
     </div>
 
@@ -3602,7 +3499,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
     <h3>SHISHI</h3>
     <div class="button-container">
         <button class="info-button" onclick="toggleContent('SHISHI', 'info')">
-            <i class="fas fa-info-circle"></i> Info
+            <i class="fas fa-info-circle"></i> Thông tin
         </button>
         <button class="info-button" onclick="toggleContent('SHISHI', 'images')">
             <i class="fas fa-images"></i> Hình ảnh
@@ -3618,7 +3515,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
         <div class="info-content">
             <img src="https://i.ibb.co/47Dw4Dt/photo-7-2024-09-20-09-20-50.jpg" alt="Image New 83" class="info-image" style="height: 330px;">
             <div class="info-text">
-                <p><i class="fas fa-money-bill-wave"></i> <strong>Giá tiền 값:</strong>105.000 원/2Shot (60 phút)</p>
+                <p><i class="fas fa-money-bill-wave"></i> <strong>Giá tiền 값:</strong>105.000 원 / 2 lần quan hệ (60 phút)</p>
                 <p><i class="fas fa-phone"></i> <strong>SDT:</strong> +82 10 8349 60**</p>
                 <style>
                   /* styles.css */
@@ -3725,7 +3622,6 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
         <span class="star" onclick="rateStar('SHISHI', 4)">&#9733;</span>
         <span class="star" onclick="rateStar('SHISHI', 5)">&#9733;</span>
     </div>
-    <p id="rating-result-SHISHI">Bạn chưa đánh giá</p>
 </div>
 
        
@@ -3804,7 +3700,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
   <h3>Quỳnh Anh</h3>
   <div class="button-container">
     <button class="info-button" onclick="toggleContent('QuynhAnh', 'info')">
-      <i class="fas fa-info-circle"></i> Info
+      <i class="fas fa-info-circle"></i> Thông tin
     </button>
     <button class="info-button" onclick="toggleContent('QuynhAnh', 'images')">
       <i class="fas fa-images"></i> Hình ảnh
@@ -3820,7 +3716,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
       <div class="info-text">
         <p>
           <i class="fas fa-money-bill-wave"></i>
-          <strong>Giá tiền:</strong> 115.000 원/2 lần quan hệ (60 phút)
+          <strong>Giá tiền:</strong> 115.000 원 / 2 lần quan hệ (60 phút)
         </p>
         <p>
           <i class="fas fa-phone"></i> <strong>SDT:</strong> +82 10 3555 28**
@@ -3943,7 +3839,6 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
       <span class="star" onclick="rateStar('QuynhAnh', 4)">&#9733;</span>
       <span class="star" onclick="rateStar('QuynhAnh', 5)">&#9733;</span>
     </div>
-    <p id="rating-result-QuynhAnh">Bạn chưa đánh giá</p>
   </div>
 
   <!-- Hình ảnh -->
@@ -3997,7 +3892,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
     <h3>Chang</h3>
     <div class="button-container">
       <button class="info-button" onclick="toggleContent('Chang', 'info')">
-        <i class="fas fa-info-circle"></i> Info
+        <i class="fas fa-info-circle"></i> Thông tin
       </button>
       <button class="info-button" onclick="toggleContent('Chang', 'images')">
         <i class="fas fa-images"></i> Hình ảnh
@@ -4013,7 +3908,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
         <div class="info-text">
           <p>
             <i class="fas fa-money-bill-wave"></i>
-            <strong>Giá tiền:</strong> 125.000 원/2 lần quan hệ (60 phút)
+            <strong>Giá tiền:</strong> 125.000 원 / 2 lần quan hệ (60 phút)
           </p>
           <p>
             <i class="fas fa-phone"></i> <strong>SDT:</strong> +82 10 4542 23**
@@ -4120,7 +4015,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
         <span class="star" onclick="rateStar('Chang', 4)">&#9733;</span>
         <span class="star" onclick="rateStar('Chang', 5)">&#9733;</span>
       </div>
-      <p id="rating-result-Chang">Bạn chưa đánh giá</p>
+      
     </div>
   
     <!-- Hình ảnh -->
@@ -4324,11 +4219,11 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
     padding: 10px;
     border-radius: 20px; /* Bo tròn các góc */
     box-shadow: 0 4px 8px #000000;
-    width: 250px;
+    width: 100px;
     margin: 10px auto;
     text-align: center;
     position: relative;
-    top: 15px;
+    top: -70px;
     border: 2px solid #000000; /* Viền cam nhạt */
     
 }
@@ -4337,6 +4232,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
     margin: 0 0 15px 0;
     font-size: 20px;
     color: #ffffff; /* Màu chữ trắng nổi bật */
+    
 }
 
 .statistics-widget ul {
@@ -4353,7 +4249,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
 }
 
 .statistics-widget strong {
-    color: #ffffff; /* Màu hồng cam nổi bật cho số liệu */
+    color: #09ff00; /* Màu hồng cam nổi bật cho số liệu */
     font-weight: bold;
 }
 
@@ -4412,14 +4308,14 @@ transform: translateX(-100%); /* Cuộn đến hết bộ ảnh */
         * Khung chứa các hình ảnh */
 .slider {
 overflow: hidden; /* Ẩn các hình ảnh khi chúng cuộn ra khỏi khung nhìn */
-width: 100%; /* Chiều rộng khung chứa */
+width: 400%; /* Chiều rộng khung chứa */
 }
 
 /* Các hình ảnh sẽ được cuộn */
 .slider-images {
 display: flex;
 width: 400%; /* Gấp đôi để chứa cả 2 bộ ảnh */
-animation: slide 30s linear infinite; /* Animation cuộn với thời gian 30 giây */
+animation: slide 50s linear infinite; /* Animation cuộn với thời gian 30 giây */
 }
 
 /* Cài đặt cho hình ảnh */
@@ -4431,40 +4327,13 @@ border-radius: 5px; /* Bo góc ảnh */
 }
 
 {
-    font-size: 30px; /* Kích thước chữ của tiêu đề */
+    font-size: 20px; /* Kích thước chữ của tiêu đề */
     background: linear-gradient(45deg, #ff79a1, #ffdd40); /* Hiệu ứng gradient từ hồng sang vàng */
     -webkit-background-clip: text; /* Hiển thị gradient trên văn bản */
     
     text-align: center; /* Căn giữa tiêu đề */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Tạo đổ bóng cho tiêu đề */
     border: 2px solid #ff79a1; /* Tạo viền 3px với màu hồng */
-}
-
-        .slider-images {
-            display: flex;
-            width: 400px;
-            animation: slideRightToLeft 20s infinite linear; /* Tốc độ chậm hơn */
-        }
-
-        .slider-images img {
-            width: 150px;
-            height: 200px; /* Điều chỉnh chiều cao ảnh */
-            object-fit: cover;
-            margin-right: 0px;
-            border-radius: 5px;
-            border: 1px solid #BCC6CC /* Viền bạc ánh đen */
-              
- 
-        }
-
-        @media (max-width: 768px) {
-    .container {
-        width: 100%;
-        padding: 10px;
-    }
-    .slider-images {
-        width: 200%;
-    }
 }
 
 
@@ -4550,7 +4419,6 @@ border-radius: 5px; /* Bo góc ảnh */
     #toggle-chat-btn:hover {
       background-color: #000000;
     }
-    
     .statistics-widget h4 {
     margin: 0 0 10px 0;
     font-size: 16px;
@@ -4571,7 +4439,7 @@ border-radius: 5px; /* Bo góc ảnh */
 }
 
 .statistics-widget strong {
-    background-color: #ff6600; /* Màu nền khi hover */
+ 
     border-radius: 5px;
 }
     </style>
@@ -4996,15 +4864,15 @@ body {
 }
 
 /* Tiêu đề nổi bật */
-h1, h2, h3 {
-    font-size: 25px; /* Kích thước chữ */
+, h3 {
+    font-size: 10px; /* Kích thước chữ */
     font-family: "Poppins", sans-serif;       
     font-weight: 700;
     color: #000000;
-    text-align: center;
     text-transform: uppercase; /* Chữ in hoa */
     letter-spacing: 2px; /* Khoảng cách giữa các chữ */
      border-radius: -10px; /* Bo tròn góc nút */ 
+     top: -70px; /* Căn lên đầu */
 }
 
 /* Nút bấm ấn tượng */
@@ -5092,13 +4960,16 @@ img:hover {
 
 /* Breadcrumb (dấu vết điều hướng) */
 .breadcrumb {
-    font-size: 13px;
+    margin-top: -50px; /* Điều chỉnh giá trị này theo nhu cầu */
+    font-size: 14px;
+    font-weight: 700;
     color: #000000;
     margin-bottom: 20px;
     text-align: center;
 }
 
 .breadcrumb a {
+    margin-top: -50px; /* Điều chỉnh giá trị này theo nhu cầu */
     color: #000000;
     text-decoration: none;
 }
@@ -5220,7 +5091,7 @@ body {
   <div id="chat-sex-section">
     <h2>Chat sex (섹스 채팅)</h2>
     <input type="text" id="user-input" placeholder="Nhập đối tác muốn chat..." />
-    <button id="user-submit-btn">Nhấp</button>
+    <button id="user-submit-btn">OK</button>
     <p style="color: #ffffff; border: 2px solid #ffffff; text-align: center; padding: 10px; background-color: #000000; border-radius: 5px;">
         Chat sex với các đối tác của Web. Member có thể tham gia chat sex trực tiếp với các bé của hệ thống,hoặc đối tác của Web mình mong muốn 💎 
     </p>
@@ -5248,7 +5119,7 @@ body {
     <!-- Thông báo khi không phải là VIP -->
     <div id="vip-message">
         Bạn chưa đủ điều kiện để truy cập vào các dịch vụ đặc biệt của hệ thống 💎 <br>
-      Anh liên hệ hỗ trợ hoặc có thể tạm thời vào nhóm chat trên Telegram để giao lưu 💎 :
+     Liên hệ hỗ trợ hoặc có thể tạm thời vào nhóm chat trên Telegram để giao lưu 💎 :
       <a href="https://t.me/+NKc2wvZ_c4hhM2E9" id="telegram-link" target="_blank">Tham gia nhóm chat</a>
     </div>
   </div>
@@ -5398,7 +5269,7 @@ console.log(region, type); // In giá trị của region và type
 </head>
 <body>
     <div class="copyright-section">
-        <p>© Bản quyền thuộc về Luxury Girl Booking hoạt động 15/02/2021
+        <p>Copyright © 2021. All rights reserved
         </p>
     </div>
 
