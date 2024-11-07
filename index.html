@@ -91,7 +91,7 @@
             <!-- Gói Thường -->
             <div class="accordion-item">
                 <div class="accordion-header" onclick="toggleAccordion('regular-package')">
-                    <i class="fas fa-box"></i> Gói Thường - 105,000 원
+                    <i class="fas fa-box"></i> Gói Thường ( 90 Phút )- 105,000 원
                 </div>
                 <div class="accordion-content" id="regular-package">
                     <p><strong>Thời gian:</strong> 90 phút</p>
@@ -101,7 +101,7 @@
             </div>
             <div class="accordion-item">
                 <div class="accordion-header" onclick="toggleAccordion('vip-package')">
-                    <i class="fas fa-crown"></i> Gói VIP - 145,000 원
+                    <i class="fas fa-crown"></i> Gói VIP ( 180 Phút ) - 145,000 원
                 </div>
                 <div class="accordion-content" id="vip-package">
                     <p><strong>Thời gian:</strong> 180 phút</p>
@@ -111,7 +111,7 @@
             </div>
             <div class="accordion-item">
                 <div class="accordion-header" onclick="toggleAccordion('luxury-package')">
-                    <i class="fas fa-gem"></i> Gói Luxury - 335,000 원
+                    <i class="fas fa-gem"></i> Gói Luxury ( 16 tiếng ) - 335,000 원
                 </div>
                 <div class="accordion-content" id="luxury-package">
                     <p><strong>Thời gian:</strong> 16 giờ</p>
@@ -121,7 +121,7 @@
             </div>
             <div class="accordion-item">
                 <div class="accordion-header" onclick="toggleAccordion('vip-tour-package')">
-                    <i class="fas fa-globe"></i> Gói VIP Tour - 1,925,000 원
+                    <i class="fas fa-globe"></i> Gói VIP Tour ( 3 ngày ) - 1,925,000 원
                 </div>
                 <div class="accordion-content" id="vip-tour-package">
                     <p><strong>Thời gian:</strong> 3 ngày</p>
@@ -2215,55 +2215,41 @@ function closeNotification() {
                 </div>
             </div> 
         </div>         
-            <script>
-              
-                    // Hàm thay đổi trạng thái hoạt động ngẫu nhiên
-    function updateStatusJuly() {
-        const statuses = ["Đang hoạt động", "Đang bận", "Đang được book", "Chưa được đặt lịch", "Đã được đặt lịch"];
-        const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
-
-        // Cập nhật trạng thái vào phần tử
-        const statusElement = document.getElementById("active-status-JULY");
-        statusElement.textContent = randomStatus;
-
-        // Loại bỏ các lớp cũ trước khi thêm lớp mới
-        statusElement.classList.remove("busy", "booked", "idle", "unavailable");
-
-        // Thêm lớp CSS tương ứng với trạng thái
-        switch (randomStatus) {
-            case "Đang hoạt động":
-                statusElement.classList.add("active-status");
-                break;
-            case "Đang bận":
-                statusElement.classList.add("busy");
-                break;
-            case "Đang được book":
-                statusElement.classList.add("booked");
-                break;
-            case "Chưa được đặt lịch":
-                statusElement.classList.add("idle");
-                break;
-            case "Đã được đặt lịch":
-                statusElement.classList.add("unavailable");
-                break;
-        }
-    }
-
-    // Cập nhật trạng thái mỗi 5000000 giây
-    setInterval(updateStatusJuly, 5000000); // Thay đổi trạng thái sau mỗi 5000000 giây
-                function rateStar(character, star) {
-                    const result = document.getElementById(`rating-result-${character}`);
-                    
-                    // Hiển thị thông báo đánh giá
-                    result.innerText = `Bạn đã đánh giá ${star} sao cho ${character}!`;
-            
-                    // Sau 3 giây, hiển thị thông báo cảm ơn
-                    setTimeout(() => {
-                        result.innerText = `Cảm ơn bạn đã đánh giá cho ${character}. Mỗi lượt đánh giá của bạn góp phần thay đổi thứ hạng của cô ấy ! Chỉ tính lần đầu trong ngày ❤️ `;
-                    }, 3000);
-                }
-            </script>
-            
+        <script>
+   
+            function rateStar(character, star) {
+             const result = document.getElementById(`rating-result-${character}`);
+         
+             if (result) {
+                 // Hiển thị thông báo đánh giá
+                 result.innerText = `Bạn đã đánh giá ${star} sao cho ${character}!`;
+         
+                 // Sau 3 giây, hiển thị thông báo cảm ơn và ẩn đi sau đó
+                 setTimeout(() => {
+                     result.innerText = `Cảm ơn bạn đã đánh giá cho ${character}. Mỗi lượt đánh giá của bạn góp phần thay đổi thứ hạng của cô ấy! Chỉ tính lần đầu trong ngày ❤️`;
+         
+                     // Ẩn thông báo sau thêm 2 giây nữa
+                     setTimeout(() => {
+                         result.innerText = ''; // Xóa nội dung để ẩn đi
+                         result.style.display = 'none'; // Ẩn phần tử
+                     }, 2000);
+                 }, 3000);
+             } else {
+                 console.error("Không tìm thấy phần tử kết quả đánh giá!");
+             }
+         }
+         
+         // Tạo phần tử để hiển thị kết quả đánh giá trong HTML (nếu chưa có)
+         document.querySelectorAll('.review-section').forEach(section => {
+             const character = section.id.split('-')[2]; // Lấy tên nhân vật từ ID
+             if (!document.getElementById(`rating-result-${character}`)) {
+                 const resultElement = document.createElement('p');
+                 resultElement.id = `rating-result-${character}`;
+                 section.appendChild(resultElement);
+             }
+         });
+             
+         </script>
             <style>
                 .review-section {
     margin-top: 20px;
@@ -2373,19 +2359,7 @@ function closeNotification() {
                             }
                             .button-container, .detail-info { 
                                 text-align: center; 
-                            }
-                             .active-status {
-        font-weight: bold;
-        color: #00ff22;  /* Màu xanh cho trạng thái hoạt động */
-    }
-    .active-status.busy {
-        color: #dc3545;  /* Màu đỏ cho trạng thái bận */
-    }
-    .active-status.booked {
-        color: #ffc107;  /* Màu vàng cho trạng thái đã được đặt lịch */
-    }
-    .active-status.idle {
-        color: #0088ff;  /* Màu xám cho trạng thái chưa được đặt lịch */
+                       
     }
                         </style>
                         
@@ -2480,53 +2454,40 @@ function closeNotification() {
             </div>
             
             <script>
-              
-               // Hàm thay đổi trạng thái hoạt động ngẫu nhiên
-    function updateStatusYumi() {
-        const statuses = ["Đang hoạt động", "Đang bận", "Đang được book", "Chưa được đặt lịch", "Đã được đặt lịch"];
-        const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
-
-        // Cập nhật trạng thái vào phần tử
-        const statusElement = document.getElementById("active-status-YUMI");
-        statusElement.textContent = randomStatus;
-
-        // Loại bỏ các lớp cũ trước khi thêm lớp mới
-        statusElement.classList.remove("busy", "booked", "idle", "unavailable");
-
-        // Thêm lớp CSS tương ứng với trạng thái
-        switch (randomStatus) {
-            case "Đang hoạt động":
-                statusElement.classList.add("active-status");
-                break;
-            case "Đang bận":
-                statusElement.classList.add("busy");
-                break;
-            case "Đang được book":
-                statusElement.classList.add("booked");
-                break;
-            case "Chưa được đặt lịch":
-                statusElement.classList.add("idle");
-                break;
-            case "Đã được đặt lịch":
-                statusElement.classList.add("unavailable");
-                break;
-        }
-    }
-
-    // Cập nhật trạng thái mỗi 3000000 giây
-    setInterval(updateStatusYumi, 3000000); // Thay đổi trạng thái sau mỗi 3000000 giây
+   
                 function rateStar(character, star) {
-                    const result = document.getElementById(`rating-result-${character}`);
-                    
-                    // Hiển thị thông báo đánh giá
-                    result.innerText = `Bạn đã đánh giá ${star} sao cho ${character}!`;
-            
-                    // Sau 3 giây, hiển thị thông báo cảm ơn
-                    setTimeout(() => {
-                        result.innerText = `Cảm ơn bạn đã đánh giá cho ${character}. Mỗi lượt đánh giá của bạn góp phần thay đổi thứ hạng của cô ấy ! Chỉ tính lần đầu trong ngày ❤️ `;
-                    }, 3000000);
-                }
-            </script>
+                 const result = document.getElementById(`rating-result-${character}`);
+             
+                 if (result) {
+                     // Hiển thị thông báo đánh giá
+                     result.innerText = `Bạn đã đánh giá ${star} sao cho ${character}!`;
+             
+                     // Sau 3 giây, hiển thị thông báo cảm ơn và ẩn đi sau đó
+                     setTimeout(() => {
+                         result.innerText = `Cảm ơn bạn đã đánh giá cho ${character}. Mỗi lượt đánh giá của bạn góp phần thay đổi thứ hạng của cô ấy! Chỉ tính lần đầu trong ngày ❤️`;
+             
+                         // Ẩn thông báo sau thêm 2 giây nữa
+                         setTimeout(() => {
+                             result.innerText = ''; // Xóa nội dung để ẩn đi
+                             result.style.display = 'none'; // Ẩn phần tử
+                         }, 2000);
+                     }, 3000);
+                 } else {
+                     console.error("Không tìm thấy phần tử kết quả đánh giá!");
+                 }
+             }
+             
+             // Tạo phần tử để hiển thị kết quả đánh giá trong HTML (nếu chưa có)
+             document.querySelectorAll('.review-section').forEach(section => {
+                 const character = section.id.split('-')[2]; // Lấy tên nhân vật từ ID
+                 if (!document.getElementById(`rating-result-${character}`)) {
+                     const resultElement = document.createElement('p');
+                     resultElement.id = `rating-result-${character}`;
+                     section.appendChild(resultElement);
+                 }
+             });
+                 
+             </script>
             
             <style>
                 .review-section {
@@ -2626,19 +2587,7 @@ function closeNotification() {
                 .button-container, .detail-info { 
                     text-align: center; 
                 }
-                .active-status {
-        font-weight: bold;
-        color: #00ff22;  /* Màu xanh cho trạng thái hoạt động */
-    }
-    .active-status.busy {
-        color: #dc3545;  /* Màu đỏ cho trạng thái bận */
-    }
-    .active-status.booked {
-        color: #ffc107;  /* Màu vàng cho trạng thái đã được đặt lịch */
-    }
-    .active-status.idle {
-        color: #0088ff;  /* Màu xám cho trạng thái chưa được đặt lịch */
-    }
+                
             </style>
     <script>
        // Hàm khởi tạo vị trí
@@ -2724,53 +2673,40 @@ function closeNotification() {
       </div>
   </div>
   <script>
-  // Cập nhật trạng thái mỗi 5000 giây
-       // Hàm thay đổi trạng thái hoạt động ngẫu nhiên
-       function updateStatusdateStatusHahuyen() {
-        const statuses = ["Đang hoạt động", "Đang bận", "Đang được book", "Chưa được đặt lịch", "Đã được đặt lịch"];
-        const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
-
-        // Cập nhật trạng thái vào phần tử
-        const statusElement = document.getElementById("active-status-YUMI");
-        statusElement.textContent = randomStatus;
-
-        // Loại bỏ các lớp cũ trước khi thêm lớp mới
-        statusElement.classList.remove("busy", "booked", "idle", "unavailable");
-
-        // Thêm lớp CSS tương ứng với trạng thái
-        switch (randomStatus) {
-            case "Đang hoạt động":
-                statusElement.classList.add("active-status");
-                break;
-            case "Đang bận":
-                statusElement.classList.add("busy");
-                break;
-            case "Đang được book":
-                statusElement.classList.add("booked");
-                break;
-            case "Chưa được đặt lịch":
-                statusElement.classList.add("idle");
-                break;
-            case "Đã được đặt lịch":
-                statusElement.classList.add("unavailable");
-                break;
-        }
-    }
-
-    // Cập nhật trạng thái mỗi 3000000 giây
-    setInterval(updateStatusdateStatusHahuyen, 5000); // Thay đổi trạng thái sau mỗi 3000000 giây
-                function rateStar(character, star) {
-                    const result = document.getElementById(`rating-result-${character}`);
-                    
-                  // Hiển thị thông báo đánh giá
-                  result.innerText = `Bạn đã đánh giá ${star} sao cho ${character}!`;
-          
-                  // Sau 3 giây, hiển thị thông báo cảm ơn
-                  setTimeout(() => {
-                      result.innerText = `Cảm ơn bạn đã đánh giá cho ${character}. Mỗi lượt đánh giá của bạn góp phần thay đổi thứ hạng của cô ấy ! Chỉ tính lần đầu trong ngày ❤️ `;
-                  }, 3000);
-              }
-          </script>
+   
+    function rateStar(character, star) {
+     const result = document.getElementById(`rating-result-${character}`);
+ 
+     if (result) {
+         // Hiển thị thông báo đánh giá
+         result.innerText = `Bạn đã đánh giá ${star} sao cho ${character}!`;
+ 
+         // Sau 3 giây, hiển thị thông báo cảm ơn và ẩn đi sau đó
+         setTimeout(() => {
+             result.innerText = `Cảm ơn bạn đã đánh giá cho ${character}. Mỗi lượt đánh giá của bạn góp phần thay đổi thứ hạng của cô ấy! Chỉ tính lần đầu trong ngày ❤️`;
+ 
+             // Ẩn thông báo sau thêm 2 giây nữa
+             setTimeout(() => {
+                 result.innerText = ''; // Xóa nội dung để ẩn đi
+                 result.style.display = 'none'; // Ẩn phần tử
+             }, 2000);
+         }, 3000);
+     } else {
+         console.error("Không tìm thấy phần tử kết quả đánh giá!");
+     }
+ }
+ 
+ // Tạo phần tử để hiển thị kết quả đánh giá trong HTML (nếu chưa có)
+ document.querySelectorAll('.review-section').forEach(section => {
+     const character = section.id.split('-')[2]; // Lấy tên nhân vật từ ID
+     if (!document.getElementById(`rating-result-${character}`)) {
+         const resultElement = document.createElement('p');
+         resultElement.id = `rating-result-${character}`;
+         section.appendChild(resultElement);
+     }
+ });
+     
+ </script>
   <!-- Hình ảnh -->
   <div id="images-HaHuyen" style="display: none">
       <h4>Hình ảnh</h4>
@@ -2840,19 +2776,7 @@ function closeNotification() {
                           .button-container, .detail-info { 
                               text-align: center; 
                           }
-                          .active-status {
-        font-weight: bold;
-        color: #00ff22;  /* Màu xanh cho trạng thái hoạt động */
-    }
-    .active-status.busy {
-        color: #dc3545;  /* Màu đỏ cho trạng thái bận */
-    }
-    .active-status.booked {
-        color: #ffc107;  /* Màu vàng cho trạng thái đã được đặt lịch */
-    }
-    .active-status.idle {
-        color: #0088ff;  /* Màu xám cho trạng thái chưa được đặt lịch */
-    }
+                          
                       </style>
                       
                       <script>
@@ -2948,66 +2872,40 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
     </div>
 </div>
 <script>
-        // Hàm thay đổi trạng thái hoạt động ngẫu nhiên
-        function updateStatusdateStatusSumy() {
-        const statuses = ["Đang hoạt động", "Đang bận", "Đang được book", "Chưa được đặt lịch", "Đã được đặt lịch"];
-        const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
-
-        // Cập nhật trạng thái vào phần tử
-        const statusElement = document.getElementById("active-status-SUMY");
-        statusElement.textContent = randomStatus;
-
-        // Loại bỏ các lớp cũ trước khi thêm lớp mới
-        statusElement.classList.remove("busy", "booked", "idle", "unavailable");
-
-        // Thêm lớp CSS tương ứng với trạng thái
-        switch (randomStatus) {
-            case "Đang hoạt động":
-                statusElement.classList.add("active-status");
-                break;
-            case "Đang bận":
-                statusElement.classList.add("busy");
-                break;
-            case "Đang được book":
-                statusElement.classList.add("booked");
-                break;
-            case "Chưa được đặt lịch":
-                statusElement.classList.add("idle");
-                break;
-            case "Đã được đặt lịch":
-                statusElement.classList.add("unavailable");
-                break;
-        }
-    }
-
-    // Cập nhật trạng thái mỗi 5000 giây
-    setInterval(updateStatusYumi, 5000); // Thay đổi trạng thái sau mỗi 5000 giây
-                function rateStar(character, star) {
-                    const result = document.getElementById(`rating-result-${character}`);
-                    
-                    
-                    // Hiển thị thông báo đánh giá
-                    result.innerText = `Bạn đã đánh giá ${star} sao cho ${character}!`;
-            
-                    // Sau 3 giây, hiển thị thông báo cảm ơn
-                    setTimeout(() => {
-                        result.innerText = `Cảm ơn bạn đã đánh giá cho ${character}. Mỗi lượt đánh giá của bạn góp phần thay đổi thứ hạng của cô ấy ! Chỉ tính lần đầu trong ngày ❤️ `;
-                    }, 3000);
-                }
-         
-       
+   
     function rateStar(character, star) {
-        const result = document.getElementById(`rating-result-${character}`);
-        
-        // Hiển thị thông báo đánh giá
-        result.innerText = `Bạn đã đánh giá ${star} sao cho ${character}!`;
-
-        // Sau 3 giây, hiển thị thông báo cảm ơn
-        setTimeout(() => {
-            result.innerText = `Cảm ơn bạn đã đánh giá cho ${character}. Mỗi lượt đánh giá của bạn góp phần thay đổi thứ hạng của cô ấy ! Chỉ tính lần đầu trong ngày ❤️ `;
-        }, 3000);
-    }
-</script>
+     const result = document.getElementById(`rating-result-${character}`);
+ 
+     if (result) {
+         // Hiển thị thông báo đánh giá
+         result.innerText = `Bạn đã đánh giá ${star} sao cho ${character}!`;
+ 
+         // Sau 3 giây, hiển thị thông báo cảm ơn và ẩn đi sau đó
+         setTimeout(() => {
+             result.innerText = `Cảm ơn bạn đã đánh giá cho ${character}. Mỗi lượt đánh giá của bạn góp phần thay đổi thứ hạng của cô ấy! Chỉ tính lần đầu trong ngày ❤️`;
+ 
+             // Ẩn thông báo sau thêm 2 giây nữa
+             setTimeout(() => {
+                 result.innerText = ''; // Xóa nội dung để ẩn đi
+                 result.style.display = 'none'; // Ẩn phần tử
+             }, 2000);
+         }, 3000);
+     } else {
+         console.error("Không tìm thấy phần tử kết quả đánh giá!");
+     }
+ }
+ 
+ // Tạo phần tử để hiển thị kết quả đánh giá trong HTML (nếu chưa có)
+ document.querySelectorAll('.review-section').forEach(section => {
+     const character = section.id.split('-')[2]; // Lấy tên nhân vật từ ID
+     if (!document.getElementById(`rating-result-${character}`)) {
+         const resultElement = document.createElement('p');
+         resultElement.id = `rating-result-${character}`;
+         section.appendChild(resultElement);
+     }
+ });
+     
+ </script>
             
             <style>
                 .review-section {
@@ -3181,35 +3079,40 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
 
        
 <script>
+   
     function rateStar(character, star) {
-        const result = document.getElementById(`rating-result-${character}`);
-        
-        // Hiển thị thông báo đánh giá
-        result.innerText = `Bạn đã đánh giá ${star} sao cho ${character}!`;
-
-        // Sau 3 giây, hiển thị thông báo cảm ơn
-        setTimeout(() => {
-            result.innerText = `Cảm ơn bạn đã đánh giá cho ${character}. Mỗi lượt đánh giá của bạn góp phần thay đổi thứ hạng của cô ấy ! Chỉ tính lần đầu trong ngày ❤️ `;
-        }, 3000);
-    }
-</script>
-
-<style>
-    .review-section {
-        margin-top: 20px;
-        padding: 10px;
-        background-color: #1a1a1a;
-        color: #ffffff;
-        border-radius: 5px;
+     const result = document.getElementById(`rating-result-${character}`);
+ 
+     if (result) {
+         // Hiển thị thông báo đánh giá
+         result.innerText = `Bạn đã đánh giá ${star} sao cho ${character}!`;
+ 
+         // Sau 3 giây, hiển thị thông báo cảm ơn và ẩn đi sau đó
+         setTimeout(() => {
+             result.innerText = `Cảm ơn bạn đã đánh giá cho ${character}. Mỗi lượt đánh giá của bạn góp phần thay đổi thứ hạng của cô ấy! Chỉ tính lần đầu trong ngày ❤️`;
+ 
+             // Ẩn thông báo sau thêm 2 giây nữa
+             setTimeout(() => {
+                 result.innerText = ''; // Xóa nội dung để ẩn đi
+                 result.style.display = 'none'; // Ẩn phần tử
+             }, 2000);
+         }, 3000);
+     } else {
+         console.error("Không tìm thấy phần tử kết quả đánh giá!");
+     }
+ }
+ 
+ // Tạo phần tử để hiển thị kết quả đánh giá trong HTML (nếu chưa có)
+ document.querySelectorAll('.review-section').forEach(section => {
+     const character = section.id.split('-')[2]; // Lấy tên nhân vật từ ID
+     if (!document.getElementById(`rating-result-${character}`)) {
+         const resultElement = document.createElement('p');
+         resultElement.id = `rating-result-${character}`;
+         section.appendChild(resultElement);
+     }
+ });
      
-    }
-    .stars {
-        font-size: 20px;
-        color: #ffcc00;
-    }
-    .star {
-        cursor: pointer;
-    }
+ </script>
 </style>
 
         <!-- Hình ảnh -->
@@ -3380,19 +3283,41 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
     </div>
 
      
-<script>
-  function rateStar(character, star) {
-      const result = document.getElementById(`rating-result-${character}`);
-      
-      // Hiển thị thông báo đánh giá
-      result.innerText = `Bạn đã đánh giá ${star} sao cho ${character}!`;
-
-      // Sau 3 giây, hiển thị thông báo cảm ơn
-      setTimeout(() => {
-          result.innerText = `Cảm ơn bạn đã đánh giá cho ${character}. Mỗi lượt đánh giá của bạn góp phần thay đổi thứ hạng của cô ấy ! Chỉ tính lần đầu trong ngày ❤️ `;
-      }, 3000);
-  }
-</script>
+    <script>
+   
+        function rateStar(character, star) {
+         const result = document.getElementById(`rating-result-${character}`);
+     
+         if (result) {
+             // Hiển thị thông báo đánh giá
+             result.innerText = `Bạn đã đánh giá ${star} sao cho ${character}!`;
+     
+             // Sau 3 giây, hiển thị thông báo cảm ơn và ẩn đi sau đó
+             setTimeout(() => {
+                 result.innerText = `Cảm ơn bạn đã đánh giá cho ${character}. Mỗi lượt đánh giá của bạn góp phần thay đổi thứ hạng của cô ấy! Chỉ tính lần đầu trong ngày ❤️`;
+     
+                 // Ẩn thông báo sau thêm 2 giây nữa
+                 setTimeout(() => {
+                     result.innerText = ''; // Xóa nội dung để ẩn đi
+                     result.style.display = 'none'; // Ẩn phần tử
+                 }, 2000);
+             }, 3000);
+         } else {
+             console.error("Không tìm thấy phần tử kết quả đánh giá!");
+         }
+     }
+     
+     // Tạo phần tử để hiển thị kết quả đánh giá trong HTML (nếu chưa có)
+     document.querySelectorAll('.review-section').forEach(section => {
+         const character = section.id.split('-')[2]; // Lấy tên nhân vật từ ID
+         if (!document.getElementById(`rating-result-${character}`)) {
+             const resultElement = document.createElement('p');
+             resultElement.id = `rating-result-${character}`;
+             section.appendChild(resultElement);
+         }
+     });
+         
+     </script>
 
 <style>
   .review-section {
@@ -3584,20 +3509,41 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
     </div>
 </div>
 
-       
 <script>
+   
     function rateStar(character, star) {
-        const result = document.getElementById(`rating-result-${character}`);
-        
-        // Hiển thị thông báo đánh giá
-        result.innerText = `Bạn đã đánh giá ${star} sao cho ${character}!`;
-
-        // Sau 3 giây, hiển thị thông báo cảm ơn
-        setTimeout(() => {
-            result.innerText = `Cảm ơn bạn đã đánh giá cho ${character}. Mỗi lượt đánh giá của bạn góp phần thay đổi thứ hạng của cô ấy ! Chỉ tính lần đầu trong ngày ❤️ `;
-        }, 3000);
-    }
-</script>
+     const result = document.getElementById(`rating-result-${character}`);
+ 
+     if (result) {
+         // Hiển thị thông báo đánh giá
+         result.innerText = `Bạn đã đánh giá ${star} sao cho ${character}!`;
+ 
+         // Sau 3 giây, hiển thị thông báo cảm ơn và ẩn đi sau đó
+         setTimeout(() => {
+             result.innerText = `Cảm ơn bạn đã đánh giá cho ${character}. Mỗi lượt đánh giá của bạn góp phần thay đổi thứ hạng của cô ấy! Chỉ tính lần đầu trong ngày ❤️`;
+ 
+             // Ẩn thông báo sau thêm 2 giây nữa
+             setTimeout(() => {
+                 result.innerText = ''; // Xóa nội dung để ẩn đi
+                 result.style.display = 'none'; // Ẩn phần tử
+             }, 2000);
+         }, 3000);
+     } else {
+         console.error("Không tìm thấy phần tử kết quả đánh giá!");
+     }
+ }
+ 
+ // Tạo phần tử để hiển thị kết quả đánh giá trong HTML (nếu chưa có)
+ document.querySelectorAll('.review-section').forEach(section => {
+     const character = section.id.split('-')[2]; // Lấy tên nhân vật từ ID
+     if (!document.getElementById(`rating-result-${character}`)) {
+         const resultElement = document.createElement('p');
+         resultElement.id = `rating-result-${character}`;
+         section.appendChild(resultElement);
+     }
+ });
+     
+ </script>
 <style>
     .review-section {
         margin-top: 20px;
@@ -3784,19 +3730,41 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
     </div>
 </div>
 
-       
 <script>
+   
     function rateStar(character, star) {
-        const result = document.getElementById(`rating-result-${character}`);
-        
-        // Hiển thị thông báo đánh giá
-        result.innerText = `Bạn đã đánh giá ${star} sao cho ${character}!`;
+     const result = document.getElementById(`rating-result-${character}`);
+ 
+     if (result) {
+         // Hiển thị thông báo đánh giá
+         result.innerText = `Bạn đã đánh giá ${star} sao cho ${character}!`;
+ 
+         // Sau 3 giây, hiển thị thông báo cảm ơn và ẩn đi sau đó
+         setTimeout(() => {
+             result.innerText = `Cảm ơn bạn đã đánh giá cho ${character}. Mỗi lượt đánh giá của bạn góp phần thay đổi thứ hạng của cô ấy! Chỉ tính lần đầu trong ngày ❤️`;
+ 
+             // Ẩn thông báo sau thêm 2 giây nữa
+             setTimeout(() => {
+                 result.innerText = ''; // Xóa nội dung để ẩn đi
+                 result.style.display = 'none'; // Ẩn phần tử
+             }, 2000);
+         }, 3000);
+     } else {
+         console.error("Không tìm thấy phần tử kết quả đánh giá!");
+     }
+ }
+ 
+ // Tạo phần tử để hiển thị kết quả đánh giá trong HTML (nếu chưa có)
+ document.querySelectorAll('.review-section').forEach(section => {
+     const character = section.id.split('-')[2]; // Lấy tên nhân vật từ ID
+     if (!document.getElementById(`rating-result-${character}`)) {
+         const resultElement = document.createElement('p');
+         resultElement.id = `rating-result-${character}`;
+         section.appendChild(resultElement);
+     }
+ });
+     
 
-        // Sau 3 giây, hiển thị thông báo cảm ơn
-        setTimeout(() => {
-            result.innerText = `Cảm ơn bạn đã đánh giá cho ${character}. Mỗi lượt đánh giá của bạn góp phần thay đổi thứ hạng của cô ấy ! Chỉ tính lần đầu trong ngày ❤️ `;
-        }, 3000);
-    }
 </script>
 
 <style>
@@ -3980,17 +3948,39 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
 
        
 <script>
-    function rateStar(character, star) {
-        const result = document.getElementById(`rating-result-${character}`);
-        
+   
+   function rateStar(character, star) {
+    const result = document.getElementById(`rating-result-${character}`);
+
+    if (result) {
         // Hiển thị thông báo đánh giá
         result.innerText = `Bạn đã đánh giá ${star} sao cho ${character}!`;
 
-        // Sau 3 giây, hiển thị thông báo cảm ơn
+        // Sau 3 giây, hiển thị thông báo cảm ơn và ẩn đi sau đó
         setTimeout(() => {
-            result.innerText = `Cảm ơn bạn đã đánh giá cho ${character}. Mỗi lượt đánh giá của bạn góp phần thay đổi thứ hạng của cô ấy ! Chỉ tính lần đầu trong ngày ❤️ `;
+            result.innerText = `Cảm ơn bạn đã đánh giá cho ${character}. Mỗi lượt đánh giá của bạn góp phần thay đổi thứ hạng của cô ấy! Chỉ tính lần đầu trong ngày ❤️`;
+
+            // Ẩn thông báo sau thêm 2 giây nữa
+            setTimeout(() => {
+                result.innerText = ''; // Xóa nội dung để ẩn đi
+                result.style.display = 'none'; // Ẩn phần tử
+            }, 2000);
         }, 3000);
+    } else {
+        console.error("Không tìm thấy phần tử kết quả đánh giá!");
     }
+}
+
+// Tạo phần tử để hiển thị kết quả đánh giá trong HTML (nếu chưa có)
+document.querySelectorAll('.review-section').forEach(section => {
+    const character = section.id.split('-')[2]; // Lấy tên nhân vật từ ID
+    if (!document.getElementById(`rating-result-${character}`)) {
+        const resultElement = document.createElement('p');
+        resultElement.id = `rating-result-${character}`;
+        section.appendChild(resultElement);
+    }
+});
+    
 </script>
 
 <style>
@@ -4071,8 +4061,8 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
   <div id="info-QuynhAnh" style="display: none">
     <h4>Thông tin</h4>
     <div class="info-content">
-      <img src="https://i.ibb.co/tCFwN7b/299479993-589308889524930-7995157958939731064-n.jpg" alt="Image 1" class="info-image" style="height: 250px;">
-      <div class="info-text">
+        <a href="https://i.ibb.co/0hhkDVk/463120465-1066533151802499-8148182830936919702-n.jpg"><img src="https://i.ibb.co/0hhkDVk/463120465-1066533151802499-8148182830936919702-n.jpg" alt="Image 14" style="height: 190px; width: auto;"></a>
+        <div class="info-text">
         <p>
           <i class="fas fa-money-bill-wave"></i>
          
@@ -4182,6 +4172,29 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
     </p>
     <p><i class="fas fa-clock"></i> <strong>Hoạt động:</strong> 24/24</p>
   </div>
+     
+ 
+  <!-- Hình ảnh -->
+  <div id="images-QuynhAnh" style="display: none">
+    <h4>Hình ảnh</h4>
+    <a href="https://i.ibb.co/cCfM8t2/309989643-629711185484700-800178790464316697-n.jpg"><img src="https://i.ibb.co/cCfM8t2/309989643-629711185484700-800178790464316697-n.jpg" alt="Image 1" style="height: 190px; width: auto;"></a>
+<a href="https://i.ibb.co/fvqkdYG/336259995-154577060807678-8601816291592842410-n.jpg"><img src="https://i.ibb.co/fvqkdYG/336259995-154577060807678-8601816291592842410-n.jpg" alt="Image 2" style="height: 190px; width: auto;"></a>
+<a href="https://i.ibb.co/r47Knqx/337389624-587013110135564-3829004120735026130-n.jpg"><img src="https://i.ibb.co/r47Knqx/337389624-587013110135564-3829004120735026130-n.jpg" alt="Image 3" style="height: 190px; width: auto;"></a>
+<a href="https://i.ibb.co/z67jQMC/340931419-776721337030997-2865551987934903214-n.jpg"><img src="https://i.ibb.co/z67jQMC/340931419-776721337030997-2865551987934903214-n.jpg" alt="Image 4" style="height: 190px; width: auto;"></a>
+<a href="https://i.ibb.co/fNm3d5V/367410131-816286566827160-6359684262952889763-n.jpg"><img src="https://i.ibb.co/fNm3d5V/367410131-816286566827160-6359684262952889763-n.jpg" alt="Image 5" style="height: 190px; width: auto;"></a>
+<a href="https://i.ibb.co/42SRH5R/383214997-837770018012148-1280788975135102072-n.jpg"><img src="https://i.ibb.co/42SRH5R/383214997-837770018012148-1280788975135102072-n.jpg" alt="Image 6" style="height: 190px; width: auto;"></a>
+<a href="https://i.ibb.co/cYbqdZc/384235372-839434814512335-2260972901569626098-n.jpg"><img src="https://i.ibb.co/cYbqdZc/384235372-839434814512335-2260972901569626098-n.jpg" alt="Image 7" style="height: 190px; width: auto;"></a>
+<a href="https://i.ibb.co/92FXzHs/387729334-845115860610897-2354261134729548408-n.jpg"><img src="https://i.ibb.co/92FXzHs/387729334-845115860610897-2354261134729548408-n.jpg" alt="Image 8" style="height: 190px; width: auto;"></a>
+<a href="https://i.ibb.co/Ss5ny1N/405306079-871290721326744-7522073540435670885-n.jpg"><img src="https://i.ibb.co/Ss5ny1N/405306079-871290721326744-7522073540435670885-n.jpg" alt="Image 9" style="height: 190px; width: auto;"></a>
+<a href="https://i.ibb.co/MhXrFMZ/441602376-970638008058681-8481165972533691356-n.jpg"><img src="https://i.ibb.co/MhXrFMZ/441602376-970638008058681-8481165972533691356-n.jpg" alt="Image 11" style="height: 190px; width: auto;"></a>
+<a href="https://i.ibb.co/p3sKK5S/454503517-1020509216404893-1431358853470073923-n.jpg"><img src="https://i.ibb.co/p3sKK5S/454503517-1020509216404893-1431358853470073923-n.jpg" alt="Image 12" style="height: 190px; width: auto;"></a>
+<a href="https://i.ibb.co/Jm6jkS1/456315582-1027932035662611-7804666417740511200-n.jpg"><img src="https://i.ibb.co/Jm6jkS1/456315582-1027932035662611-7804666417740511200-n.jpg" alt="Image 13" style="height: 190px; width: auto;"></a>
+<a href="https://i.ibb.co/0hhkDVk/463120465-1066533151802499-8148182830936919702-n.jpg"><img src="https://i.ibb.co/0hhkDVk/463120465-1066533151802499-8148182830936919702-n.jpg" alt="Image 14" style="height: 190px; width: auto;"></a>
+    
+    
+  
+  </div>
+
 
   <div id="review-container-QuynhAnh" class="review-section">
     <h4>Đánh giá của bạn cho Quỳnh Anh</h4>
@@ -4193,30 +4206,40 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
       <span class="star" onclick="rateStar('QuynhAnh', 5)">&#9733;</span>
     </div>
   </div>
-
-  <!-- Hình ảnh -->
-  <div id="images-QuynhAnh" style="display: none">
-    <h4>Hình ảnh</h4>
-    <a href="https://ibb.co/KjTFxXs"><img src="https://i.ibb.co/KjTFxXs/430029198-946267713512468-5042154628741578756-n.jpg" alt="Image 1" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/CMzrMHz"><img src="https://i.ibb.co/CMzrMHz/378854303-855617289244178-5284751463597591029-n.jpg" alt="Image 2" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/DCXrwLx"><img src="https://i.ibb.co/DCXrwLx/435893748-973112090828030-3658708461828827600-n.jpg" alt="Image 3" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/HxCvHSL"><img src="https://i.ibb.co/HxCvHSL/448578095-1008821667257072-2805937849532685211-n.jpg" alt="Image 4" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/mcnLQcm"><img src="https://i.ibb.co/mcnLQcm/453099935-1034995834639655-2625415353164096910-n.jpg" alt="Image 5" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/c6LntKm"><img src="https://i.ibb.co/c6LntKm/461048233-1070808574391714-6457504351249761695-n.jpg" alt="Image 6" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/3dCf0NY"><img src="https://i.ibb.co/3dCf0NY/461315968-1072265027579402-2095170161509221025-n.jpg" alt="Image 7" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/R99XhXm"><img src="https://i.ibb.co/R99XhXm/465055380-1097488548390383-6204572662205406771-n.jpg" alt="Image 8" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/sHY4sWp"><img src="https://i.ibb.co/sHY4sWp/465004871-1097488598390378-4886516484980949515-n.jpg" alt="Image 9" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/CvWcC5v"><img src="https://i.ibb.co/CvWcC5v/378778004-855617305910843-333745182071302791-n.jpg" alt="Image 10" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/Qjn0ZYv"><img src="https://i.ibb.co/Qjn0ZYv/452104232-1029202725218966-2860286147676872065-n.jpg" alt="Image 11" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/S3ZZRm8"><img src="https://i.ibb.co/S3ZZRm8/452866837-1031653198307252-4040690016312092931-n.jpg" alt="Image 12" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/sJDf3BT"><img src="https://i.ibb.co/sJDf3BT/453433956-1034997097972862-5183529550957858747-n.jpg" alt="Image 13" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/MBCVy8F"><img src="https://i.ibb.co/MBCVy8F/454575777-1041074547365117-1895654296518936209-n.jpg" alt="Image 14" style="height: 190px; width: auto;"></a>
-    <a href="https://ibb.co/W6y4q0g"><img src="https://i.ibb.co/W6y4q0g/461048236-1070808604391711-8132402547166610401-n.jpg" alt="Image 15" style="height: 190px; width: auto;"></a>
-    
-    
-  
-  </div>
-
+  <script>
+   
+    function rateStar(character, star) {
+     const result = document.getElementById(`rating-result-${character}`);
+ 
+     if (result) {
+         // Hiển thị thông báo đánh giá
+         result.innerText = `Bạn đã đánh giá ${star} sao cho ${character}!`;
+ 
+         // Sau 3 giây, hiển thị thông báo cảm ơn và ẩn đi sau đó
+         setTimeout(() => {
+             result.innerText = `Cảm ơn bạn đã đánh giá cho ${character}. Mỗi lượt đánh giá của bạn góp phần thay đổi thứ hạng của cô ấy! Chỉ tính lần đầu trong ngày ❤️`;
+ 
+             // Ẩn thông báo sau thêm 2 giây nữa
+             setTimeout(() => {
+                 result.innerText = ''; // Xóa nội dung để ẩn đi
+                 result.style.display = 'none'; // Ẩn phần tử
+             }, 2000);
+         }, 3000);
+     } else {
+         console.error("Không tìm thấy phần tử kết quả đánh giá!");
+     }
+ }
+ 
+ // Tạo phần tử để hiển thị kết quả đánh giá trong HTML (nếu chưa có)
+ document.querySelectorAll('.review-section').forEach(section => {
+     const character = section.id.split('-')[2]; // Lấy tên nhân vật từ ID
+     if (!document.getElementById(`rating-result-${character}`)) {
+         const resultElement = document.createElement('p');
+         resultElement.id = `rating-result-${character}`;
+         section.appendChild(resultElement);
+     }
+ });
+</script>
   <!-- Số lượt book -->
   <div id="bookings-QuynhAnh" style="display: none">
     <h4>Đặt lịch</h4>
@@ -4231,8 +4254,7 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
     <h4>Giới thiệu</h4>
     <p>
       Quỳnh Anh luôn tạo ra những trải nghiệm đáng nhớ với sự chuyên nghiệp và
-      thân thiện. Cô ấy là một trong những gương mặt nổi bật nhất tại Diamond
-      Club.
+      thân thiện
     </p>
   </div>
 </div>
@@ -4382,7 +4404,41 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
       </div>
       
     </div>
-  
+    <script>
+   
+        function rateStar(character, star) {
+         const result = document.getElementById(`rating-result-${character}`);
+     
+         if (result) {
+             // Hiển thị thông báo đánh giá
+             result.innerText = `Bạn đã đánh giá ${star} sao cho ${character}!`;
+     
+             // Sau 3 giây, hiển thị thông báo cảm ơn và ẩn đi sau đó
+             setTimeout(() => {
+                 result.innerText = `Cảm ơn bạn đã đánh giá cho ${character}. Mỗi lượt đánh giá của bạn góp phần thay đổi thứ hạng của cô ấy! Chỉ tính lần đầu trong ngày ❤️`;
+     
+                 // Ẩn thông báo sau thêm 2 giây nữa
+                 setTimeout(() => {
+                     result.innerText = ''; // Xóa nội dung để ẩn đi
+                     result.style.display = 'none'; // Ẩn phần tử
+                 }, 2000);
+             }, 3000);
+         } else {
+             console.error("Không tìm thấy phần tử kết quả đánh giá!");
+         }
+     }
+     
+     // Tạo phần tử để hiển thị kết quả đánh giá trong HTML (nếu chưa có)
+     document.querySelectorAll('.review-section').forEach(section => {
+         const character = section.id.split('-')[2]; // Lấy tên nhân vật từ ID
+         if (!document.getElementById(`rating-result-${character}`)) {
+             const resultElement = document.createElement('p');
+             resultElement.id = `rating-result-${character}`;
+             section.appendChild(resultElement);
+         }
+     });
+         
+     </script>
     <!-- Hình ảnh -->
     <div id="images-Chang" style="display: none">
       <h4>Hình ảnh</h4>
