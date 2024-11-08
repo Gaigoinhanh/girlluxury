@@ -109,7 +109,7 @@
                 <a href="URL_CỦA_BẠN" target="_blank" style="text-decoration: none;"><span style="font-size: 24px;">👁️</span></a>
             </span>
         </div>
-        <button onclick="checkAccessCode()" style=" box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */ transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; background-color: #1a1a1a; /* Nền đen */ color: #FFD700; /* Chữ vàng */   border: 1px solid #DAA520; /* Viền vàng */ padding: 10px 20px;  border-radius: 5px;    
+        <button onclick="checkAccessCode()" style=" box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */ transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; background-color: #000000; /* Nền đen */ Viền vàng */ padding: 10px 20px;  border-radius: 5px;    
          cursor: pointer;">
             Xác nhận
         </button>
@@ -143,7 +143,7 @@
     .modal-content { background: #FFD700; border: 1px solid #DAA520; /* Viền vàng */ padding: 20px; border-radius: 8px; text-align: center; width: 300px; }
     .spinner-container { display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; width: 100%; }
     .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #ff0000; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin-bottom: 10px; }
-    .spinner-text { color: #FFD700; /* Chữ vàng */ font-size: 14px; font-weight: bold; }
+    .spinner-text { color: #51ff00; /* Chữ vàng */ font-size: 14px; font-weight: bold; }
     .progress-bar { width: 100%;     border: 1px solid #DAA520; /* Viền vàng */
  background-color: #f3f3f3; height: 5px; margin-top: 10px; }
     .progress { width: 0%; height: 100%; background-color: #ff0000; animation: progressBar 2s ease-in-out infinite; }
@@ -159,7 +159,7 @@
 </style>
 
 <script>
-const correctAccessCode = "AYSHB204"; // Đặt mã truy cập hợp lệ
+const correctAccessCode = "ayshb204"; // Đặt mã truy cập hợp lệ
 
 // Hàm kiểm tra mã truy cập
 function checkAccessCode() {
@@ -258,23 +258,23 @@ window.onload = function() {
 
     <style>
         #accessCodeDisplay {
-            position: fixed;
-top: 20px;
-right: 20px;
-background: rgba(0, 255, 0, 0.5); /* Màu xanh lá cây với độ trong suốt */
-padding: 4px 8px;
-border-radius: 5px;
-display: none; /* Ẩn mặc định */
-z-index: 1000; /* Đảm bảo nổi bật */
-color: #000; /* Màu chữ */
-border: 1px solid #000000; /* Viền màu đen */
-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
-animation: blink 1s infinite; /* Hiệu ứng nhấp nháy */
+    position: fixed;
+    top: 20px;
+    border: 1px solid #000000; /* Viền vàng */
+    right: 20px;
+    background: #ffffff;a(255, 0, 0, 0.8); /* Màu vàng với độ trong suốt */
+    padding: 4px 8px;
+    border-radius: 5px;
+    display: none; /* Ẩn mặc định */
+    z-index: 1000; /* Đảm bảo nổi bật */
+    color: #000; /* Màu chữ */
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
 
 }
         body {
             font-family: 'Poppins', sans-serif;
-            background:  #ffffff;
+            background:  #4f4f4f;
             justify-content: center;
             align-items: center;
     padding: 0;
@@ -380,19 +380,12 @@ h1 {
     color: #C0C0C0; /* Thay màu theo ý muốn */
     border-radius: 10px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Đổ bóng cho tiêu đề */
+
+  
     text-transform: uppercase;
     letter-spacing: 3px;
-    margin-bottom: 20px;
 
-/* Keyframes cho hiệu ứng nhấp nháy */
-@keyframes blink {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.5;
-    }
-}
+    margin-bottom: 20px;
 }
  @keyframes fadeIn {
             0% {
@@ -821,9 +814,11 @@ h1 {
         <!-- Gói Thường -->
         <div class="package">
             <h2>Gói Thường - 100,000 원</h2>
-            <img src="https://i.ibb.co/sjMdsM1/ngua-thai-500x500.jpg" alt="Gói thường"style="height: 100px; width: auto;">
             <p><strong>Thời gian:</strong> 90 phút</p>
-            <p><strong>Dịch vụ:</strong> Tắm chung thư giãn, massage nhẹ nhàng, HJ và BJ. Quan hệ 2 lần</p>
+ <img src="https://i.ibb.co/vsDwM4G/ngua-thai-500x500-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">            <p><strong>Thời gian:</strong> 90 phút</p>
+            <p><strong>Dịch vụ:</strong> <p>Tắm chung thư giãn,massage nhẹ nhàng</p>
+                <p> HJ và BJ chuyên nghiệp</p> 
+                <p>Quan hệ 2 lần</p>
             <p><em>Gói Thường là sự lựa chọn lý tưởng cho lần đầu trải nghiệm</em></p>
         </div>
 
@@ -831,34 +826,50 @@ h1 {
         <div class="package">
             <h2>Gói VIP - 145,000 원</h2>
             <img src="https://i.ibb.co/yg6830F/keo-sam-hamer-tang-cuong-sinh-ly-1-vien-jpg-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">
+            <img src="https://i.ibb.co/98401Xz/Sin-Su-nuoc-chinh-hang-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">
+            <img src="https://i.ibb.co/Q6DN0M4/Untitled-design-35-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">
             <p><strong>Thời gian:</strong> 180 phút</p>
-            <p><strong>Dịch vụ:</strong> Quay phim trải nghiệm, massage kết hợp, HJ và BJ với kỹ thuật nóng/lạnh. Quan hệ 3 lần</p>
+            <p><strong>Dịch vụ:</strong><p>Massage kết hợp,HJ và BJ với kỹ thuật nóng/lạnh</p> 
+            <p>Quan hệ 3 lần</p> 
+            <p>Đặc biệt,hỗ trợ công cụ quay lại khoảnh khắc ân ái 30 phút</p>
             <p><em>Gói VIP nâng cao trải nghiệm với những khoảnh khắc đặc biệt</em></p>
         </div>
 
         <!-- Gói Luxury -->
         <div class="package">
             <h2>Gói Luxury - 335,000 원</h2>
+            <img src="https://i.ibb.co/yg6830F/keo-sam-hamer-tang-cuong-sinh-ly-1-vien-jpg-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">
+            <img src="https://i.ibb.co/vsDwM4G/ngua-thai-500x500-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">            
             <img src="https://i.ibb.co/98401Xz/Sin-Su-nuoc-chinh-hang-removebg-preview.png" alt="Gói Luxury"style="height: 100px; width: auto;">
+            <img src="https://i.ibb.co/Q6DN0M4/Untitled-design-35-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">
             <p><strong>Thời gian:</strong> 16 giờ</p>
-            <p><strong>Dịch vụ:</strong> Tắm chung, sử dụng đồ chơi cao cấp, massage kỹ thuật Nuru với dầu đặc biệt, HJ, BJ, xuất vào miệng, Chơi some. Quan hệ không giới hạn</p>
+            <p><strong>Dịch vụ:</strong> <p>Tắm chung, sử dụng đồ chơi cao cấp</p>
+            <p>Massage kỹ thuật Nuru với dầu đặc biệt</p> 
+            <p>HJ và BJ,xuất vào miệng kèm chơi some</p> 
+            <p>Quan hệ không giới hạn</p> 
+            <p>Hỗ trợ công cụ quay lại khoảnh khắc ân ái toàn gói dịch vụ</p>
             <p><em>Trải nghiệm đỉnh cao của sự xa hoa và tinh tế với gói Luxury</em></p>
         </div>
 
         <!-- Gói VIP Tour -->
         <div class="package">
             <h2>Gói VIP Tour - 1,900,000 원</h2>
-            <img src="https://i.ibb.co/7p2xqKX/Bcs-durex-invisible-Extra-thin-extra-sensitive-hop-3-cai1-removebg-preview.png" alt="Gói VIP Tour"style="height: 100px; width: auto;">
-           <img src="https://i.ibb.co/yg6830F/keo-sam-hamer-tang-cuong-sinh-ly-1-vien-jpg-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">
+            <img src="https://i.ibb.co/Q6DN0M4/Untitled-design-35-removebg-preview.png" alt="Gói VIP Tour"style="height: 100px; width: auto;">
+           <img src="https://i.ibb.co/vsDwM4G/ngua-thai-500x500-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">
            <img src="https://i.ibb.co/98401Xz/Sin-Su-nuoc-chinh-hang-removebg-preview.png" alt="Gói Luxury"style="height: 100px; width: auto;">
+           <img src="https://i.ibb.co/yg6830F/keo-sam-hamer-tang-cuong-sinh-ly-1-vien-jpg-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">
            <p><strong>Thời gian:</strong> 3 ngày</p>
-            <p><strong>Dịch vụ:</strong> Tận hưởng dịch vụ toàn diện bao gồm tất cả các gói trên, với sự chăm sóc tận tình chu đáo hơn cả người yêu. Đảm bảo sự hài lòng tuyệt đối và những kỷ niệm không thể quên</p>
-            <p><em>Gói VIP Tour dành cho những khách hàng tìm kiếm sự kết hợp giữa dịch vụ cao cấp và sự gắn bó lâu dài</em></p>
+            <p><strong>Dịch vụ:</strong><p>Tận hưởng toàn diện bao gồm tất cả các gói dịch vụ trên</p> 
+            <p>Với sự phục vụ tận tình chu đáo hơn cả người yêu</p> 
+            <p>Cam kết mang lại sự hài lòng tuyệt đối và những kỷ niệm không thể quên</p> 
+            <p>Đặc biệt quay lại khoảnh khắc làm tình đổi gió Public</p>
+            <p><em>Gói VIP Tour dành cho những khách hàng tìm kiếm sự kết hợp giữa dịch vụ cao cấp và sự gắn bó lâu dài  </em></p>
         </div>
 
         <!-- Khuyến mãi đặc biệt -->
         <div class="package promo-package">
             <h2>Khuyến mãi đặc biệt</h2>
+            <img src="https://i.ibb.co/Q6DN0M4/Untitled-design-35-removebg-preview.png" alt="Image 1" style="height: 200px; width: 150px;">
             <img src="https://i.ibb.co/5xnBnZT/Untitled-design-34.png" alt="Image 1" style="height: 200px; width: 150px;">
             <img src="https://i.ibb.co/PcBrZqH/Untitled-design-33.png" alt="Image 2" style="height: 200px; width: 150px;">
             <img src="https://i.ibb.co/JxkW3Dd/Untitled-design-32.png" alt="Image 3" style="height: 200px; width: 150px;">
@@ -866,7 +877,7 @@ h1 {
             <img src="https://i.ibb.co/zJfm74N/reup-bao-vy-2k3-cuc-pham-gai-xinh-trang-treo-body-cuc-nuot-3230131-original.jpg" alt="Image 5" style="height: 200px; width: 150px;">
             <img src="https://i.ibb.co/tz34g6N/reup-bao-vy-2k3-cuc-pham-gai-xinh-trang-treo-body-cuc-nuot-3230130-original.jpg" alt="Image 6" style="height: 200px; width: 150px;">
             <p><strong>Chi tiết:</strong> Tất cả các gói có quà tặng kèm theo nếu khách hàng có nhu cầu. Khách hàng có thể chọn cosplay theo mã số trang phục</p>
-            <p><em>Khách hàng sử dụng dịch vụ lần thứ 2 trở đi có quyền lựa chọn quà tặng kèm theo tùy ý</em></p>
+            <p><em>Đặc biệt gói VIP trở lên sẽ được hỗ trợ công cụ quay phim ghi lại khoảnh khắc ân ái cùng các bé</em></p>
         </div>
     </div>
 </div>
@@ -1967,7 +1978,7 @@ function closeNotification() {
         padding: 20px;
         border-radius: 8px;
         width: 250px; /* Điều chỉnh chiều rộng phù hợp */
-        color: #C0C0C0;  /* Chữ vàng */
+        color: #ffffff;  /* Chữ vàng */
     border: 1px solid #C0C0C0; /* Viền vàng */
         display: flex;
         flex-direction: column;
@@ -5292,7 +5303,7 @@ body {
 
 button {
    
-    color: #FFD700; /* Màu chữ vàng */
+    color: #FFD700; /* Chữ vàng */
     border: 1px solid #ffffff; /* Viền vàng kim */
     background-color: #ffffff;
     padding: 10px 20px;
@@ -5304,7 +5315,7 @@ button {
 }
 button:hover {
     background-color: #ffffff; /* Màu nền khi hover */
-    color: #000000; /* Màu chữ khi hover */
+    color: #00ff2a; /* Màu chữ khi hover */
     transform: scale(1.05); /* Hiệu ứng phóng to nhẹ khi hover */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8); /* Hiệu ứng đổ bóng đậm */
 }
@@ -5647,7 +5658,7 @@ console.log(region, type); // In giá trị của region và type
               
         }
              #clock:hover {
-                color: #ffffff;
+                color: #000000;
                 background-color: #ffecd7; /* Màu nền khi hover */
       transform: scale(1.05); /* Phóng to nhẹ khi hover */
 
@@ -5656,7 +5667,7 @@ console.log(region, type); // In giá trị của region và type
 
 #timezone {
     font-size: 16px;
-    color: #ffffff; /* Chữ trắng */
+    color: #000000; /* Chữ trắng */
     text-align: center;
     font-family: 'Poppins", sans-serif;
     margin-top: 5px;
