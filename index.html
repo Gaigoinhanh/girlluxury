@@ -1,167 +1,4 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bảng giá</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">    <style>
-        /* CSS styles */
-        #pricing-table {
-            margin: 10px; /* Tăng khoảng cách giữa các nút */
-    padding: 10px 20px;
-    background-color: #000000; /* Nền đen */
-    color: #ffffff; /* Chữ vàng */
-    border: 2px solid #DAA520; /* Viền vàng */
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
-    border: 2px solid #DAA520; /* Viền vàng */
-    background-color: #1a1a1a; /* Nền đen */
-        }
-        .info-button {
-    background-color: #000000; /* Màu nền đen */
-    color: #FFD700; /* Màu chữ vàng */
-    padding: 10px 20px;
-    border-radius: 20px;
-    border: 1px solid #DAA520; /* Viền vàng */
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
-}
-
-.accordion-item {
-            margin-bottom: 10px;
-            border: 1px solid #DAA520;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-.info-button:hover {
-    background-color: #09ff00; /* Màu nền khi hover */
-    color: #000000; /* Màu chữ khi hover */
-    transform: scale(1.05); /* Hiệu ứng phóng to nhẹ khi hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8); /* Hiệu ứng đổ bóng đậm */
-}
-        .menu-item {
-    background-color: #4CAF50; /* Màu nền xanh lá */
-    color: white; /* Màu chữ */
-    padding: 10px 20px; /* Khoảng cách trong nút */
-    border-radius: 5px; /* Góc bo tròn */
-    display: inline-block; /* Hiển thị dưới dạng khối nội tuyến */
-    cursor: pointer; /* Con trỏ khi hover */
-    transition: background-color 0.3s; /* Hiệu ứng chuyển đổi màu */
-}
-
-.menu-item:hover {
-    background-color: #45a049; /* Màu nền khi hover */
-}
-
-        .accordion-item {
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-
-        .accordion-header {
-            padding: 15px;
-            background-color: #1a1a1a;
-            color: #FFD700;
-            cursor: pointer;
-        }
-
-        .accordion-content {
-            padding: 15px;
-            display: none;
-            background-color: #1a1a1a;
-            color: #000;
-        }
-    </style>
-</head>
-<body>
-   
-    <button id="togglePriceButton">Bảng Giá</button>
-    <!-- Bảng giá dịch vụ -->
-    <div id="pricing-table">
-        <h4 style="text-align: center; font-weight: bold; color: #FFD700;">✨ Bảng giá dịch vụ - Trải nghiệm sự đặc biệt ✨</h4>
-        <div class="accordion">
-            <!-- Gói Thường -->
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion('regular-package')">
-                    <i class="fas fa-box"></i> Gói Thường ( 90 Phút )- 100,000 원
-                </div>
-                <div class="accordion-content" id="regular-package">
-                    <p><strong>Thời gian:</strong> 90 phút</p>
-                    <p><strong>Dịch vụ:</strong> Tắm chung thư giãn, massage nhẹ nhàng, HJ và BJ. Quan hệ tối đa 2 lần.</p>
-                    <p><em>Mô tả:</em> Gói Thường là sự lựa chọn lý tưởng cho lần đầu trải nghiệm, mang lại cảm giác thư giãn và sảng khoái. Hoàn hảo cho những khách hàng tìm kiếm một không gian nhẹ nhàng, thoải mái.</p>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion('vip-package')">
-                    <i class="fas fa-crown"></i> Gói VIP ( 180 Phút ) - 145,000 원
-                </div>
-                <div class="accordion-content" id="vip-package">
-                    <p><strong>Thời gian:</strong> 180 phút</p>
-                    <p><strong>Dịch vụ:</strong> Quay phim trải nghiệm, massage kết hợp cosplay theo yêu cầu, HJ và BJ với kỹ thuật nóng/lạnh. Quan hệ 3 lần.</p>
-                    <p><em>Mô tả:</em> Gói VIP nâng cao trải nghiệm của bạn với những khoảnh khắc đặc biệt và cá nhân hóa dịch vụ. Mang đến cảm giác mới lạ, độc đáo và chuyên nghiệp.</p>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion('luxury-package')">
-                    <i class="fas fa-gem"></i> Gói Luxury ( 16 tiếng ) - 335,000 원
-                </div>
-                <div class="accordion-content" id="luxury-package">
-                    <p><strong>Thời gian:</strong> 16 giờ</p>
-                    <p><strong>Dịch vụ:</strong> Tắm chung công cộng, sử dụng đồ chơi cao cấp, massage kỹ thuật Nuru với dầu đặc biệt, HJ, BJ và các kỹ thuật chuyên sâu khác. Quan hệ không giới hạn.</p>
-                    <p><em>Mô tả:</em> Trải nghiệm đỉnh cao của sự xa hoa và tinh tế với gói Luxury. Dành cho những ai mong muốn tận hưởng sự phục vụ suốt cả ngày trong không gian đặc biệt và phong cách vượt trội.</p>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion('vip-tour-package')">
-                    <i class="fas fa-globe"></i> Gói VIP Tour ( 3 ngày ) - 1,900,000 원
-                </div>
-                <div class="accordion-content" id="vip-tour-package">
-                    <p><strong>Thời gian:</strong> 3 ngày</p>
-                    <p><strong>Dịch vụ:</strong> Tận hưởng dịch vụ toàn diện, sự chăm sóc thân thiết và đồng hành trong mọi hoạt động. Đảm bảo sự hài lòng tuyệt đối và những kỷ niệm không thể quên.</p>
-                    <p><em>Mô tả:</em> Gói VIP Tour được thiết kế dành cho những khách hàng tìm kiếm sự kết hợp giữa dịch vụ cao cấp và sự gắn bó lâu dài. Biến những ngày thường trở thành kỳ nghỉ dưỡng với sự phục vụ tận tâm và phong cách tinh tế.</p>
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-      
-        function toggleAccordion(id) {
-            const content = document.getElementById(id);
-            content.style.display = (content.style.display === 'none' || content.style.display === '') ? 'block' : 'none';
-        }
-
-        let currentIndex = 0;
-const images = document.querySelectorAll('.carousel-image');
-
-function showImage(index) {
-    images.forEach((img, i) => {
-        img.classList.remove('active');
-        if (i === index) {
-            img.classList.add('active');
-        }
-    });
-}
-
-function nextImage() {
-    showImage(currentIndex);
-    currentIndex = (currentIndex + 1) % images.length; // Chạy hết 10 ảnh rồi lặp lại từ ảnh đầu tiên
-}
-
-// Tốc độ chuyển ảnh (3000ms = 3 giây)
-setInterval(nextImage, 3000); 
-    </script>
-</body>
-</html>
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -267,7 +104,7 @@ setInterval(nextImage, 3000);
 
         <h4>Nhập mã vùng khu vực do LUXURY GIRL BOOKING  cấp vì lí do bảo mật và lợi ích của khách hàng </h4>
         <div style="position: relative; width: 100%;">
-            <input type="password" id="accessCodeInput" placeholder="Nhập mã tại đây" style="width: calc(100% - 40px); padding: 10px; margin-bottom: 10px;  border-radius: 10px; border: 1px solid #DAA520; /* Viền vàng kim */">
+            <input type="password" id="accessCodeInput" placeholder="Nhập mã tại đây" style="width: calc(100% - 40px); padding: 10px; margin-bottom: 10px;  border-radius: 10px; /* Viền vàng kim */">
             <span id="togglePassword" onclick="togglePasswordVisibility()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
                 <a href="URL_CỦA_BẠN" target="_blank" style="text-decoration: none;"><span style="font-size: 24px;">👁️</span></a>
             </span>
@@ -322,7 +159,7 @@ setInterval(nextImage, 3000);
 </style>
 
 <script>
-const correctAccessCode = "3AK21S"; // Đặt mã truy cập hợp lệ
+const correctAccessCode = "AYSHB"; // Đặt mã truy cập hợp lệ
 
 // Hàm kiểm tra mã truy cập
 function checkAccessCode() {
@@ -421,23 +258,23 @@ window.onload = function() {
 
     <style>
         #accessCodeDisplay {
-    position: fixed;
-    top: 20px;
-    border: 1px solid #000000; /* Viền vàng */
-    right: 20px;
-    background: #DAA520;a(255, 0, 0, 0.8); /* Màu vàng với độ trong suốt */
-    padding: 4px 8px;
-    border-radius: 5px;
-    display: none; /* Ẩn mặc định */
-    z-index: 1000; /* Đảm bảo nổi bật */
-    color: #000; /* Màu chữ */
-
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
+            position: fixed;
+top: 20px;
+right: 20px;
+background: rgba(0, 255, 0, 0.5); /* Màu xanh lá cây với độ trong suốt */
+padding: 4px 8px;
+border-radius: 5px;
+display: none; /* Ẩn mặc định */
+z-index: 1000; /* Đảm bảo nổi bật */
+color: #000; /* Màu chữ */
+border: 1px solid #000000; /* Viền màu đen */
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
+animation: blink 1s infinite; /* Hiệu ứng nhấp nháy */
 
 }
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ff7e5f, #feb47b);/* Màu nền chính hồng pastel nhạt */
+            background:  #4f4f4f;
             justify-content: center;
             align-items: center;
     padding: 0;
@@ -447,28 +284,22 @@ window.onload = function() {
         }
 
         h2 {
-           
+            border: 1px solid #ffffff; /* Viền vàng */
             padding: 10px 20px;
           font-size: 20px;
-          transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
-    border: 2px solid #DAA520; /* Viền vàng */
+    
     background-color: #000000; /* Nền đen */
-    color: #DAA520; 
+    color: #ffffff; 
     border-radius: 10px;
-}
-        
 
-h2:hover {
-    background-color: #09ff00; /* Màu nền khi hover */
-    color: #000000; /* Màu chữ khi hover */
 }
 
         .info-message {
-        color: #FFD700; /* Màu chữ chính */
+        color: #ffffff; /* Màu chữ chính */
     }
     .contact-button {
-        color: #1eff00; /* Màu chữ cho liên kết */
+        color: #ffe600; /* Màu chữ cho liên kết */
         font-weight: 700; /* Đậm chữ */
     }
     .info-message p {
@@ -512,7 +343,6 @@ h2:hover {
             width: 80%;
             margin: 0 auto;
             padding: 20px;
-            background-color: linear-gradient(135deg, #ff7e5f, #feb47b); /* Màu nền chính */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             color: #221414; /* Màu chữ tối */
         }
@@ -533,7 +363,7 @@ h2:hover {
 
             .title {
     display: inline-block; /* Để logo và tiêu đề trên cùng dòng */
-    font-size: 20px; /* Kích thước tiêu đề */
+    font-size: 25px; /* Kích thước tiêu đề */
     font-weight: bold;
     color: #000000; /* Màu hồng đậm cho tiêu đề */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Đổ bóng cho tiêu đề */
@@ -547,16 +377,22 @@ h1 {
     font-weight: bold;
     text-align: center;
     /* Thay đổi màu sắc ở đây */
-    color: #DAA520; /* Thay màu theo ý muốn */
+    color: #C0C0C0; /* Thay màu theo ý muốn */
     border-radius: 10px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Đổ bóng cho tiêu đề */
-
-  
     text-transform: uppercase;
     letter-spacing: 3px;
-
     margin-bottom: 20px;
-    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+
+/* Keyframes cho hiệu ứng nhấp nháy */
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
 }
  @keyframes fadeIn {
             0% {
@@ -590,7 +426,6 @@ h1 {
             background-color: #000000;
             padding: 5px;
             border-radius: 5px;
-            margin-bottom: 20px;
             color: #FFD700; /* Màu chữ trắng */
             box-shadow: 0 4px 8px #000000;
             border: 1px solid #000000; /* Viền cam nhạt */
@@ -599,15 +434,13 @@ h1 {
             color: #ffffff;
             cursor: pointer;
             font-size: 16px;
-            transition: color 0.3s ease;
             font-weight: 700;
             font-family: 'Poppins', sans-serif;
             border-radius: 5px;
         }
 
-        .menu-item:hover {
-            color: #ffffff;
-        }
+       
+    
         .content {
             display: none;
         }
@@ -620,19 +453,19 @@ h1 {
             flex-wrap: wrap;
         }
         .region-btn {
-    background-color: #1a1a1a;/* Màu nền đen */
-    color: #FFD700; /* Màu chữ vàng */
-    display: flex
+    background-color: #000000;/* Màu nền đen */
+    color: #ffffff; /* Màu chữ vàng */
+    display: flex;
+    border: 1px solid #fffefc; /* Viền vàng */
     margin-top: 10px;
-    margin-bottom: 15px;
     cursor: pointer;
     padding: 5px 10px; /* Tùy chỉnh khoảng cách bên trong */
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    border: none; /* Bỏ viền */
     border-radius: 10px;
+    font-weight: bold;
 }
         .region-btn:hover {
-            background-color: #09ff00; /* Màu nền khi hover */
+            background-color: #ffffff; /* Màu nền khi hover */
     color: #000000; /* Màu chữ khi hover */
         }
         .detail-info {
@@ -660,7 +493,8 @@ h1 {
     box-shadow: 0 4px 8px #000000;
   }
 .info-button:hover {
-    background-color: #09ff00; /* Màu nền khi hover */
+    background-color: #ffffff; /* Màu nền khi hover */
+    color: #000000;
     transform: scale(1.05); /* Phóng to nhẹ khi hover */
 }
 .info-button i {
@@ -726,7 +560,6 @@ h1 {
             box-shadow: 0 4px 8px #000000;
             color: #ffffff; /* Màu chữ sáng */
             border: 2px solid #000000; /* Viền cam nhạt */
-            transition: background-color 0.3s ease, transform 0.3s ease; /* Hiệu ứng chuyển đổi */
         }
 
         .header {
@@ -833,8 +666,55 @@ h1 {
 }
 
 
+.menu {
+        display: flex;
+        padding: 10px;
+        background-color: #000000;
+        padding: 10px;
+        border-radius: 8px;
+        color: white;
+    }
+
+    .menu-item {
+        cursor: pointer;
+        padding: 5px 10px;
+        color: #ffffff;
+    }
+
+    
 
 
+    .package-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        padding: 10px; /* Giảm padding tổng thể */
+}
+.package {
+    padding: 5px; /* Giảm padding cho mỗi gói */
+    margin-bottom: 10px; /* Giảm khoảng cách giữa các gói */
+}
+    #pricing-table .package {
+        background-color: #000000;
+        color: #ffffff;
+        border: 1px solid #000000; /* Viền vàng */
+        border-radius: 10px;
+        text-align: center;
+       
+    }
+
+    #pricing-table .package h2 {
+        margin-bottom: 10px;
+
+    }
+
+    .promo-image {
+        width: 80px;
+        height: auto;
+        margin-bottom: 15px;
+        border-radius: 5px;
+    }
     </style>
 </head>
 <body>
@@ -911,7 +791,7 @@ h1 {
 </div>
 
 
-   <!-- Menu -->
+<!-- Menu -->
 <div class="menu">
     <div class="menu-item" data-target="region-section">
         <i class="fas fa-city"></i> Khu vực
@@ -919,22 +799,86 @@ h1 {
     <div class="menu-item" data-target="my-region-section">
         <i class="fas fa-map-marker-alt"></i> Gần đây
     </div>
-   <div class="menu-item" onclick="togglePricingTable()">
-    <i class="fas fa-dollar-sign"></i> Bảng giá
-
+    <div class="menu-item" onclick="togglePricingTable()">
+        <i class="fas fa-dollar-sign"></i> Bảng giá
     </div>
     <div class="menu-item" data-target="image-section">
-      <i class="fas fa-image"></i> Ảnh sex
+        <i class="fas fa-image"></i> Ảnh 18+
     </div>
-
-    <!-- Nút Phim 18+ -->
     <div class="menu-item" onclick="toggleSubmenu()">
-      <i class="fas fa-film"></i> Phim 18+
+        <i class="fas fa-film"></i> Phim 18+
     </div>
     <div class="menu-item" data-target="support-section">
-      <i class="fas fa-life-ring"></i> Hỗ trợ
+        <i class="fas fa-life-ring"></i> Hỗ trợ
     </div>
 </div>
+
+<!-- Bảng giá -->
+<div id="pricing-table" style="display: none;  background-color: #1a1a1a; color: #FFD700; border-radius: 10px;">
+    <h4 style="text-align: center;">✨ Bảng giá dịch vụ - Trải nghiệm sự đặc biệt ✨</h4>
+    
+    <div class="package-container">
+        <!-- Gói Thường -->
+        <div class="package">
+            <h2>Gói Thường - 100,000 원</h2>
+            <img src="https://i.ibb.co/7p2xqKX/Bcs-durex-invisible-Extra-thin-extra-sensitive-hop-3-cai1-removebg-preview.png" alt="Gói thường"style="height: 100px; width: auto;">
+            <p><strong>Thời gian:</strong> 90 phút</p>
+            <p><strong>Dịch vụ:</strong> Tắm chung thư giãn, massage nhẹ nhàng, HJ và BJ. Quan hệ 2 lần</p>
+            <p><em>Gói Thường là sự lựa chọn lý tưởng cho lần đầu trải nghiệm</em></p>
+        </div>
+
+        <!-- Gói VIP -->
+        <div class="package">
+            <h2>Gói VIP - 145,000 원</h2>
+            <img src="https://i.ibb.co/yg6830F/keo-sam-hamer-tang-cuong-sinh-ly-1-vien-jpg-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">
+            <p><strong>Thời gian:</strong> 180 phút</p>
+            <p><strong>Dịch vụ:</strong> Quay phim trải nghiệm, massage kết hợp, HJ và BJ với kỹ thuật nóng/lạnh. Quan hệ 3 lần</p>
+            <p><em>Gói VIP nâng cao trải nghiệm với những khoảnh khắc đặc biệt</em></p>
+        </div>
+
+        <!-- Gói Luxury -->
+        <div class="package">
+            <h2>Gói Luxury - 335,000 원</h2>
+            <img src="https://i.ibb.co/98401Xz/Sin-Su-nuoc-chinh-hang-removebg-preview.png" alt="Gói Luxury"style="height: 100px; width: auto;">
+            <p><strong>Thời gian:</strong> 16 giờ</p>
+            <p><strong>Dịch vụ:</strong> Tắm chung, sử dụng đồ chơi cao cấp, massage kỹ thuật Nuru với dầu đặc biệt, HJ, BJ, xuất vào miệng, Chơi some. Quan hệ không giới hạn</p>
+            <p><em>Trải nghiệm đỉnh cao của sự xa hoa và tinh tế với gói Luxury</em></p>
+        </div>
+
+        <!-- Gói VIP Tour -->
+        <div class="package">
+            <h2>Gói VIP Tour - 1,900,000 원</h2>
+            <img src="https://i.ibb.co/7p2xqKX/Bcs-durex-invisible-Extra-thin-extra-sensitive-hop-3-cai1-removebg-preview.png" alt="Gói VIP Tour"style="height: 100px; width: auto;">
+           <img src="https://i.ibb.co/yg6830F/keo-sam-hamer-tang-cuong-sinh-ly-1-vien-jpg-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">
+           <img src="https://i.ibb.co/98401Xz/Sin-Su-nuoc-chinh-hang-removebg-preview.png" alt="Gói Luxury"style="height: 100px; width: auto;">
+           <p><strong>Thời gian:</strong> 3 ngày</p>
+            <p><strong>Dịch vụ:</strong> Tận hưởng dịch vụ toàn diện bao gồm tất cả các gói trên, với sự chăm sóc tận tình chu đáo hơn cả người yêu. Đảm bảo sự hài lòng tuyệt đối và những kỷ niệm không thể quên</p>
+            <p><em>Gói VIP Tour dành cho những khách hàng tìm kiếm sự kết hợp giữa dịch vụ cao cấp và sự gắn bó lâu dài</em></p>
+        </div>
+
+        <!-- Khuyến mãi đặc biệt -->
+        <div class="package promo-package">
+            <h2>Khuyến mãi đặc biệt</h2>
+            <img src="https://i.ibb.co/5xnBnZT/Untitled-design-34.png" alt="Image 1" style="height: 200px; width: 150px;">
+            <img src="https://i.ibb.co/PcBrZqH/Untitled-design-33.png" alt="Image 2" style="height: 200px; width: 150px;">
+            <img src="https://i.ibb.co/JxkW3Dd/Untitled-design-32.png" alt="Image 3" style="height: 200px; width: 150px;">
+            <img src="https://i.ibb.co/NTZ2yJS/photo-2024-11-08-17-50-13.jpg" alt="Image 4" style="height: 200px; width: 150px;">
+            <img src="https://i.ibb.co/zJfm74N/reup-bao-vy-2k3-cuc-pham-gai-xinh-trang-treo-body-cuc-nuot-3230131-original.jpg" alt="Image 5" style="height: 200px; width: 150px;">
+            <img src="https://i.ibb.co/tz34g6N/reup-bao-vy-2k3-cuc-pham-gai-xinh-trang-treo-body-cuc-nuot-3230130-original.jpg" alt="Image 6" style="height: 200px; width: 150px;">
+            <p><strong>Chi tiết:</strong> Tất cả các gói có quà tặng kèm theo nếu khách hàng có nhu cầu. Khách hàng có thể chọn cosplay theo mã số trang phục</p>
+            <p><em>Khách hàng sử dụng dịch vụ lần thứ 2 trở đi có quyền lựa chọn quà tặng kèm theo tùy ý</em></p>
+        </div>
+    </div>
+</div>
+    </div>
+
+    <script>
+        function togglePricingTable() {
+            const pricingTable = document.getElementById('pricing-table');
+            pricingTable.style.display = pricingTable.style.display === 'none' ? 'block' : 'none';
+        }
+</script>
+
 
  <!-- 4 nút phim 18+ hiển thị sau khi nhấn vào Phim 18+ -->
  <div id="submenu-phim-18" class="submenu" style="display:none;">
@@ -995,22 +939,18 @@ h1 {
 <style>
     /* Điều chỉnh kích thước các nút menu */
     .menu-item {
-        background-color: #1a1a1a; /* Màu nền đen */
-    color: #FFD700; /* Màu chữ vàng */
-     /* Viền vàng kim */
-    padding: 5px 10px;
-    border-radius: 0px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
+        font-size: 15px; /* Kích thước chữ của menu */
+        padding: 5px 5px; /* Khoảng cách bên trong nút */
+        margin: 0 5px; /* Khoảng cách giữa các mục menu */
+        font-weight: 750; /* Chữ đậm nhưng nhẹ hơn */
+        font-weight: 600; /* Chữ đậm nhưng nhẹ hơn */
+        transition: background-color 0.3s ease, transform 0.3s ease; /* Hiệu ứng mượt khi hover */
 }
     
   
     .menu-item:hover {
-        background-color: #00ff0d; /* Màu nền khi hover */
+        background-color: #ffffff; /* Màu nền khi hover */
         color: #000000; /* Màu chữ vàng */
-    transform: scale(1.05); /* Phóng to nhẹ khi hover */
     }
     
   a {
@@ -2027,13 +1967,12 @@ function closeNotification() {
         padding: 20px;
         border-radius: 8px;
         width: 250px; /* Điều chỉnh chiều rộng phù hợp */
-        color: #DAA520;  /* Chữ vàng */
-    border: 1px solid #DAA520; /* Viền vàng */
+        color: #C0C0C0;  /* Chữ vàng */
+    border: 1px solid #C0C0C0; /* Viền vàng */
         display: flex;
         flex-direction: column;
         gap: 15px;
         transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 10px rgba(161, 88, 88, 0.6); /* Hiệu ứng đổ bóng */
     margin-top:-30px;
     }
        
@@ -2188,10 +2127,14 @@ function closeNotification() {
                       </div>
                   </div>
 
-          
-                  <h4>Giới thiệu</h4>
+
+                    <h4>Giới thiệu</h4>
                   <p>
-                    July là một cô gái đầy quyến rũ và ngọt ngào, với vẻ ngoài tươi tắn và nụ cười dịu dàng. Cô ấy mang trong mình sự trẻ trung, phong cách và tính cách thân thiện, khiến mọi cuộc trò chuyện với cô đều trở nên thoải mái và thú vị. Với thân hình cân đối và vẻ đẹp tự nhiên, July chắc chắn sẽ khiến bạn không thể quên.
+                    <p>Em gái nuột nà,đẹp lung linh tuổi Teen</p> 
+                        <p>Mặt xinh như tiểu thư , body sịn 100% ko thẩm mỹ</p> 
+                            <p>Thơm phưc tự nhiên</p>
+                                <p>Phải đích mục sở thị thì mới biết</p>
+                                    <p>Đến với bé để cảm nhận cuộc đời nhé !          
                 </p>
                 <p><i class="fas fa-birthday-cake"></i> <strong>Năm sinh:</strong> 2001</p>
                 <p><i class="fas fa-ruler-vertical"></i> <strong>Cao (cm):</strong> 163</p>
@@ -2342,14 +2285,14 @@ function closeNotification() {
                             }
                             .info-button {
     background-color: #1a1a1a; /* Màu nền đen */
-    color: #FFD700; /* Màu chữ vàng */
+    color: #ffffff; /* Màu chữ vàng */
     padding: 10px 20px;
     border-radius: 20px;
     font-weight: bold;
     cursor: pointer;
 }
 .info-button:hover {
-    background-color: #ff6600; /* Màu nền khi hover */
+    background-color: #ffffff; /* Màu nền khi hover */
     color: #1a1a1a; /* Màu chữ khi hover */
     transform: scale(1.05); /* Hiệu ứng phóng to nhẹ khi hover */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8); /* Hiệu ứng đổ bóng đậm */
@@ -2427,9 +2370,14 @@ function closeNotification() {
 
                               
                     
+                      
                   <h4>Giới thiệu</h4>
                   <p>
-                    Yumi là một cô gái trẻ trung, xinh đẹp và đầy bí ẩn. Với vẻ ngoài ngọt ngào nhưng cũng đầy cuốn hút, Yumi luôn mang đến sự mới mẻ và quyến rũ trong từng ánh nhìn. Cô có phong cách tinh tế và cử chỉ duyên dáng, luôn biết cách làm cho khách hàng cảm thấy thoải mái và mê đắm từ giây phút đầu tiên.
+                    Bé sở hữu thân hình căng mọng,mịn màng ko tì vết</p>
+                <p>Gương mặt đậm chất dâm dục của bé sẽ làm các anh cuồng loạn</p>
+            <p>Một làn da mượt mà trắng bóc và mịn như em bé</p> 
+        <p>Quá nhiều trò chơi khoái cảm khi ở cạnh bé này</p>
+    <p>Hàng chuẩn chất lượng cao !
                 </p>
                 <p><i class="fas fa-birthday-cake"></i> <strong>Năm sinh:</strong> 2001</p>
                 <p><i class="fas fa-ruler-vertical"></i> <strong>Cao (cm):</strong> 160</p>
@@ -2649,8 +2597,15 @@ function closeNotification() {
 
       <h4>Giới thiệu</h4>
       <p>
-          Hà Huyền là cô gái mang vẻ đẹp thanh lịch và quyến rũ. Với đôi mắt hút hồn và nụ cười dịu dàng, cô luôn biết cách thu hút mọi ánh nhìn. Sự tự tin và cá tính mạnh mẽ của Hà Huyền chắc chắn sẽ mang đến cho bạn những trải nghiệm thú vị và không thể quên.
-      </p>
+        <h4>Giới thiệu</h4>
+        <p>
+      Gặp em ấy là chỉ cảm thấy yêu thôi</p> 
+  <p>Xinh xắn dễ thương không chịu được</p> 
+  <p>Em ấy sở hữu một làn da trắng ngần không tỳ vết</p>
+  <p>Khuôn mặt xinh đẹp không góc chết</p>
+  <p>Ngực to, eo thon thả không mỡ thừa,mông to cong cớn cực dâm</p>
+  <p> Người con gái mà ai cũng cần phải gặp một lần
+        </p>
       <p><i class="fas fa-birthday-cake"></i> <strong>Năm sinh:</strong> 2003</p>
       <p><i class="fas fa-ruler-vertical"></i> <strong>Cao (cm):</strong> 162</p>
       <p><i class="fas fa-weight-hanging"></i> <strong>Nặng (kg):</strong> 49</p>
@@ -2839,14 +2794,15 @@ function closeNotification() {
                   </div>
 
         
-                <h4>Giới thiệu</h4>
-                <p>
-            
-Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cảm chiều khách
-- Gương mặt khả ái xinh xắn chuẩn baby và nhí nhảnh. Đôi môi hồng luôn nở nụ cười xinh. Bé ngây thơ trong sáng vừa bước chân vào con đường tơ lụa.
-- Thân hình cực ngon lành, với toàn bộ body hàng real nhé anh em. 
-Đặc biệt đẹp nhất vòng 1 và vòng 4. Tròn căng và khin khít.
-- Ngon lành với anh nào thích gu teen xinh, dáng đẹp, mình mong được sự ủng hộ từ các anh  để bé có cơ hội phục vụ cho các anh nhé
+               
+                  <h4>Giới thiệu</h4>
+                  <p>
+  Body nóng bỏng,giọng nói nhẹ nhàng êm ái,tình cảm chiều khách</p>
+  <p>Gương mặt khả ái xinh xắn chuẩn baby và nhí nhảnh</p>
+  <p>Đôi môi hồng luôn nở nụ cười xinh.Bé ngây thơ trong sáng vừa bước chân vào con đường tơ lụa</p>
+  <p>Thân hình cực ngon lành,với toàn bộ body hàng real nhé</p>
+  <p>Đặc biệt đẹp nhất vòng 1 và vòng 4 tròn căng và khin khít
+  <p>Ngon lành với ai gu teen xinh,dáng đẹp
                 </p>
                 <p><i class="fas fa-birthday-cake"></i> <strong>Năm sinh:</strong> 2003</p>
                 <p><i class="fas fa-ruler-vertical"></i> <strong>Cao (cm):</strong> 162</p>
@@ -3050,7 +3006,11 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
                     <div id="bio-AMY" style="display: block;">
                         <h4>Giới thiệu</h4>
                         <p>
-                           Amy là một người phụ nữ quyến rũ, trưởng thành và đầy nhiệt huyết. Với vẻ ngoài tươi trẻ, cùng sự tinh tế và nụ cười mê hoặc, cô luôn khiến người đối diện phải say mê ngay từ lần đầu gặp gỡ. Amy có một nét duyên dáng tự nhiên, pha lẫn sự ngọt ngào nhưng đầy táo bạo trong từng cử chỉ và lời nói.
+                            <h4>Giới thiệu</h4>
+                            <p>
+                                Em cực xinh cực dâm vú mông cực to chỉ cần một lần tiếp xúc sẽ là một ấn tượng sâu đậm</p>
+                            <p>Vẻ đẹp tự nhiên có sức hút làm người khác mê mẩn,gương mặt xinh,hồn nhiên và thánh thiện,rất khả ái và dễ mến</p>
+                        <p>Cộng thêm cách nói chuyện rất khéo léo giọng nói nhẹ nhàng ngọt ngào cho ta cảm giác rất thật lòng cũng là những điểm đáng mến từ em
     </p>
     <p><i class="fas fa-birthday-cake"></i> <strong>Năm sinh:</strong> 2000</p>
     <p><i class="fas fa-ruler-vertical"></i> <strong>Cao (cm):</strong> 1620</p>
@@ -3255,9 +3215,11 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
         </div>
         <h4>Giới thiệu</h4>
         <p>
-            Em có một dáng người mềm mại muốn ôm mãi không thôi. Gương mặt dễ thương, ngây thơ đáng yêu cực, ngực to và trắng, đầu ti hồng hào nghịch khá thích. Còn bím thì non tơ được cắt tỉa gọn gàng, để nhúm lông rất đẹp mắt gợi tình, hàng này vét đã lắm các anh ạ, thơm tho, nước ra lênh láng, tiếng rên bẽn lẽn đáng yêu, khoản này chắc các anh thích nhất rồi phải không.
-            
-            Kết: em còn chút ngại ngùng khi nói chuyện, nhưng thái độ lúc lâm trận rất nhiệt tình, chịu khó học hỏi, phối hợp các tư thế.
+            Bé có một dáng người mềm mại muốn ôm mãi không thôi</p>  
+        <p>Gương mặt dễ thương, ngây thơ đáng yêu , ngực to và trắng, đầu ti hồng hào nghịch khá thích</p> 
+    <p>Hàng này vét đã lắm ạ, thơm tho, nước ra lênh láng, tiếng rên bẽn lẽn đáng yêu</p> 
+<p>Khoản này chắc các anh trai thích nhất rồi</p> 
+            <p> Kết : Bé còn chút ngại ngùng khi nói chuyện, nhưng thái độ lúc lâm trận rất nhiệt tình, chịu khó học hỏi, phối hợp các tư thế
         </p>
         <p><i class="fas fa-birthday-cake"></i> <strong>Năm sinh:</strong> 2000</p>
         <p><i class="fas fa-ruler-vertical"></i> <strong>Cao (cm):</strong> 163</p>
@@ -3485,7 +3447,9 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
           
                   <h4>Giới thiệu</h4>
                   <p>
-                    Mina là một cô gái sở hữu vẻ đẹp hiện đại và trẻ trung. Với nụ cười tươi tắn và phong thái tự tin, Mina mang đến cho người đối diện cảm giác thoải mái và dễ chịu. Cô luôn biết cách tạo ra bầu không khí thân thiện và lôi cuốn, khiến mỗi lần gặp gỡ đều trở nên đáng nhớ.
+                    Bé mới vào nghề có chất giọng nhẹ nhàng êm ái ngọt liệm nghe giọng bé nói chuyện the thẻ tạo thêm cảm giác hưng phấn cho thằng nhỏ dâng trào hứng nứng lên bất ngờ
+                <p>Phong cách ăn mặc trẻ trung tạo cảm giác ấn tượng với bé</p>
+            <p>Và chuyện làm tình bé mới làm nên cái cơ bản sung sướng ấn tượng khó quên về bé
                 </p>
                 <p><i class="fas fa-birthday-cake"></i> <strong>Năm sinh:</strong> 2002</p>
                 <p><i class="fas fa-ruler-vertical"></i> <strong>Cao (cm):</strong> 163</p>
@@ -3703,7 +3667,10 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
             <div id="bio-LUCY" style="display: block;">
                 <h4>Giới thiệu</h4>
                 <p>
-                    Lucy là một cô gái trẻ trung, năng động và đầy cuốn hút. Với vẻ đẹp tinh tế và nét duyên ngầm, cô luôn để lại ấn tượng mạnh mẽ cho những ai từng gặp gỡ. Lucy sở hữu phong cách nhẹ nhàng, nhưng cũng rất táo bạo, tạo cảm giác hứng khởi ngay từ ánh nhìn đầu tiên.
+                  Bé rất ngon trong tầm giá với kỹ năng làm tình tuyệt vời,bài bản êm đềm và sâu lắng</p>
+                  <p>Hàng tiếp rượu đẹp quyến rũ và sang chảnh</p>
+                    <p>Ngoài body chuẩn không cần chỉnh bé nó còn trên cả tuyệt vời ở khoản giao tiếp ăn nói lịch sự</p> 
+                        <p>Thái độ rất yêu luôn nhẹ nhàng, ngoan ngoãn, nhiệt tình và tình cảm...!
                 </p>
                 <p><i class="fas fa-birthday-cake"></i> <strong>Năm sinh:</strong> 2002</p>
                 <p><i class="fas fa-ruler-vertical"></i> <strong>Cao (cm):</strong> 164</p>
@@ -3919,9 +3886,13 @@ Anh nào thích body nóng bỏng, giọng nói nhẹ nhàng êm ái, tình cả
                   </div>
 
                   <div id="bio-SHISHI" style="display: block;">
-        <h4>Giới thiệu</h4>
-        <p>
-            Shishi là một cô gái mang trong mình vẻ đẹp ngọt ngào và quyến rũ. Với đôi mắt long lanh và nụ cười tỏa nắng, Shishi dễ dàng chinh phục bất cứ ai ngay từ lần gặp đầu tiên. Phong cách của cô nàng vừa thanh lịch, vừa mạnh mẽ, luôn khiến người đối diện không thể rời mắt.
+                    <h4>Giới thiệu</h4>
+                    <p>
+                        Nếu kiếm tìm một hotgirl sở hữu body đẹp chuẩn từng cm như thế này có lẽ sẽ phải chờ dài dài mới tìm được</p>
+                    <p>Và những ai được lên giường với bé chắc chắn cũng sẽ có kết luận giống như nhau</p>
+                <p>Một bé tuyệt vời mà phải rất lâu mới lại sản sinh ra được</p>
+            <p>Sở hữu chiều cao lí tưởng cùng đôi chân dài như kiếm nhật,một bộ ngực quá ngon,mông cong và tròn hết mức</p>
+            <p>Ai yêu thích cái đẹp đắm say này chỉ cần lên giường một lần thôi thì chắc chắn đã nghiền luôn rồi
         </p>
         <p><i class="fas fa-birthday-cake"></i> <strong>Năm sinh:</strong> 2002</p>
         <p><i class="fas fa-ruler-vertical"></i> <strong>Cao (cm):</strong> 163</p>
@@ -4149,12 +4120,13 @@ document.querySelectorAll('.review-section').forEach(section => {
       </div>
     </div>
 
-    <h4>Giới thiệu</h4>
     <p>
-      Quỳnh Anh là một cô gái trẻ trung và tràn đầy sức sống, với nụ cười rạng
-      rỡ và phong cách thời trang độc đáo. Cô ấy không chỉ xinh đẹp mà còn rất
-      thông minh và vui vẻ, luôn biết cách tạo ra không khí thân thiện và dễ
-      chịu cho mọi người xung quanh.
+        Bé như một món quà của tạo hóa,đẹp ko chê được điểm nào</p>
+    <p>Body chuẩn đét,có thể đưa em vào đắng cấp chân dài 1m63</p>
+<p>Ko một chút mỡ thừa,eo ót đâu ra đấy,3 vòng không chê vào đâu được,hàng sịn 100%</p>
+        <p>Ngực đẹp tuyệt hảo,tạo hóa vẽ cho bé cặp bưởi ko ai có thể chê</p>
+        <p>Eo thắt đáy lưng ongong,mông tròn căng mấy,mịn màng thơm phức</p>
+    <p>Thái độ thì khỏi bàn,ngoan hiền dễ thương,nai tơ ngơ ngác,gọi dạ bảo vâng,thân thiện 
     </p>
     <p><i class="fas fa-birthday-cake"></i> <strong>Năm sinh:</strong> 2002</p>
     <p><i class="fas fa-ruler-vertical"></i> <strong>Cao (cm):</strong> 164</p>
@@ -4380,7 +4352,10 @@ document.querySelectorAll('.review-section').forEach(section => {
   
       <h4>Giới thiệu</h4>
       <p>
-        Chang là một cô gái trẻ trung và tràn đầy sức sống, với nụ cười rạng rỡ và phong cách thời trang độc đáo. Cô ấy không chỉ xinh đẹp mà còn rất thông minh và vui vẻ, luôn biết cách tạo ra không khí thân thiện và dễ chịu cho mọi người xung quanh.
+        Gương mặt yêu kiều, xinh xắn,bộ ngực căng tròn,hừng hực sức sống tuổi thanh xuân</p>
+    <p>Vú to,mông mẩy và đầy đam mê,cảm xúc khi làm tình</p>
+        <p>Hãy thử nếm thử hương vị của ái tình với một hot gơ tuyệt vời này sẽ có một cảm giác cực kỳ thư giãn</p> 
+        <p>Cái cảm giác vụng trộm và hừng hực lửa đam mê bên một người tình yêu chiều mình hết mực 
       </p>
       <p><i class="fas fa-birthday-cake"></i> <strong>Năm sinh:</strong> 2000</p>
       <p><i class="fas fa-ruler-vertical"></i> <strong>Cao (cm):</strong> 165</p>
@@ -4570,14 +4545,13 @@ document.querySelectorAll('.review-section').forEach(section => {
             font-size: 20px;
             ransition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
-    border: 2px solid #DAA520; /* Viền vàng */
+    border: 2px solid #ffffff; /* Viền vàng */
             padding: 10px; /* Khoảng cách trong */
             background-color: #000000; /* Nền đen */ /* Nền đen */ /* Màu nền nút cam đậm */
             text-align: center; /* Căn giữa tiêu đề */
             animation: glowing 1.5s infinite; /* Hiệu ứng phát sáng */
-            transition: background-color 0.3s ease, transform 0.3s ease; /* Hiệu ứng chuyển đổi */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
-            color: #DAA520; 
+            color: #ffffff; 
             border-radius: 10px;
         }
 
@@ -4595,7 +4569,7 @@ document.querySelectorAll('.review-section').forEach(section => {
 }
 
 #hoa-khoi-section h2:hover {
-    background-color: #33ff00; /* Màu nền khi hover */
+    background-color: #ffffff; /* Màu nền khi hover */
     color: #000000; /* Màu chữ khi hover */
 }
 
@@ -4646,8 +4620,7 @@ document.querySelectorAll('.review-section').forEach(section => {
     text-align: center;
     position: relative;
     top: -70px;
-    border: 2px solid #000000; /* Viền cam nhạt */
-    border: 1px solid #DAA520; /* Viền vàng */
+    border: 1px solid #C0C0C0; /* Viền vàng */
     border-radius: 20px;
     font-weight: bold;
     background-color: #1a1a1a; /* Nền đen */
@@ -4820,7 +4793,7 @@ border-radius: 5px; /* Bo góc ảnh */
 }
 
 #send-btn:hover {
-    background-color: #ff3d00; /* Màu nền khi hover */
+    background-color: #ffffff; /* Màu nền khi hover */
 }
 
 .message {
@@ -4839,8 +4812,8 @@ border-radius: 5px; /* Bo góc ảnh */
     #toggle-chat-btn {
       padding: 10px;
       background-color: #ff3d00; /* Màu nền khi hover */
-      color: white;
-      border: 1px solid #000000; /* Viền cam nhạt */
+      color: #000000;
+      border: 1px solid #C0C0C0; /* Viền cam nhạt */
       cursor: pointer;
       margin-top: 20px;
       border-radius: 5px;
@@ -4852,11 +4825,10 @@ border-radius: 5px; /* Bo góc ảnh */
     .statistics-widget h4 {
     margin: 0 0 10px 0;
     font-size: 16px;
-    color: #FFD700; /* Chữ vàng */
+    color: #C0C0C0; /* Chữ vàng */
     border-radius: 20px;
     
 
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Hiệu ứng chuyển đổi */
 }
 
 .statistics-widget ul {
@@ -4885,7 +4857,7 @@ border-radius: 5px; /* Bo góc ảnh */
 <!-- Mục Được Yêu Thích Nhất  -->
 <div class="container">
     <div id="hoa-khoi-section">
-        <h2>FEED BACK 💋</h2>
+        <h2>XẾP HẠNG HÀNG TUẦN 💋</h2>
         <div class="slider">
             <div class="slider-images-wrapper">
             <div class="slider-images">
@@ -5216,11 +5188,9 @@ border-radius: 5px; /* Bo góc ảnh */
       border-radius: 5px;
       width: 90%;
       margin: 0 auto;
-     
-      transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
-      
-      color: #DAA520;/* Màu chữ trắng */
+    border: 1px solid #ffffff; /* Viền vàng */
+      color: #ffffff;/* Màu chữ trắng */
     }
 
     #chat-sex-section input {
@@ -5228,14 +5198,14 @@ border-radius: 5px; /* Bo góc ảnh */
       padding: 10px;
       margin-bottom: 10px;
       border-radius: 5px;
-      border: 1px solid #DAA520; /* Viền vàng */
+      border: 1px solid #ffffff; /* Viền vàng */
     }
 
     #chat-sex-section button {
       padding: 11px;
-      background-color: #1a1a1a; /* Màu nền đen */
+      background-color: #000000; /* Màu nền đen */
     color: #ffffff; /* Màu chữ trắng */
-    border: 1px solid #DAA520; /* Viền vàng */
+    border: 1px solid #ffffff; /* Viền vàng */
       border-radius: 5px;
       cursor: pointer;
      
@@ -5243,7 +5213,8 @@ border-radius: 5px; /* Bo góc ảnh */
     }
 
     #chat-sex-section button:hover {
-        background-color: #09ff00; /* Màu nền khi hover */
+        background-color: #ffffff; /* Màu nền khi hover */
+        color: #000000;
     transform: scale(1.05); /* Phóng to nhẹ khi hover */
     }
 
@@ -5254,10 +5225,9 @@ border-radius: 5px; /* Bo góc ảnh */
       padding: 10px;
       background-color: #1a1a1a; /* Nền đen */
 
-      color: #DAA520; /* Màu chữ trắng */
+      color: #C0C0C0; /* Màu chữ trắng */
       text-align: center;
       border-radius: 5px;
-      transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
     
     }
@@ -5285,7 +5255,7 @@ border-radius: 5px; /* Bo góc ảnh */
 /* Toàn bộ trang */
 body {
     font-family: 'Poppins', sans-serif; /* Phông chữ hiện đại */
-    background-color: #000000; /* Màu nền nút cam đậm */
+    background-color:  #c6c9ba; /* Màu nền nút cam đậm */
     color: #ffffff; /* Màu chữ trắng */
     margin: 0;
     padding: 0;
@@ -5295,14 +5265,14 @@ body {
 }
 
 /* Tiêu đề nổi bật */
-, h3 {
-    font-size: 10px; /* Kích thước chữ */
+ h3 {
+    font-size: 20px; /* Kích thước chữ */
     font-family: "Poppins", sans-serif;       
     font-weight: 700;
     color: #000000;
     text-transform: uppercase; /* Chữ in hoa */
     letter-spacing: 2px; /* Khoảng cách giữa các chữ */
-     border-radius: -10px; /* Bo tròn góc nút */ 
+     border-radius: 10px; /* Bo tròn góc nút */ 
      top: -70px; /* Căn lên đầu */
 }
 
@@ -5323,17 +5293,17 @@ body {
 button {
    
     color: #FFD700; /* Màu chữ vàng */
-    border: 1px solid #DAA520; /* Viền vàng kim */
-    background-color: #1a1a1a;
+    border: 1px solid #ffffff; /* Viền vàng kim */
+    background-color: #ffffff;
     padding: 10px 20px;
     border-radius: 20px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
+    
 }
 button:hover {
-    background-color: #00ff88; /* Màu nền khi hover */
+    background-color: #ffffff; /* Màu nền khi hover */
     color: #000000; /* Màu chữ khi hover */
     transform: scale(1.05); /* Hiệu ứng phóng to nhẹ khi hover */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8); /* Hiệu ứng đổ bóng đậm */
@@ -5345,22 +5315,16 @@ button:hover {
     padding: 40px;
     border-radius: 20px;
     color: #ffffff; /* Chữ trắng */
-    margin-bottom: 30px;
-    transition: transform 0.3s ease;
+   
     box-shadow: 0 4px 8px #000000;
     margin-top: 10px
 }
 
-.container:hover {
-    transform: scale(1.05);
-}
-
-/* Đoạn văn */
 /* Đoạn văn */
 p {
     font-size: 15px;
     color: #ffffff; /* Màu trắng dễ đọc */
-    
+    font-weight: bold;
 }
 
 /* Liên kết với hiệu ứng */
@@ -5381,13 +5345,12 @@ img {
     width: 100%;
     height: auto;
     border-radius: 10px;
-    box-shadow: 0 4px 8px #000000;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 img:hover {
     transform: scale(1.05); /* Phóng to nhẹ khi hover */
-    background-color: #ff3d00; /* Màu nền khi hover */
+    
 }
 
 
@@ -5396,7 +5359,7 @@ img:hover {
     margin-top: -50px; /* Điều chỉnh giá trị này theo nhu cầu */
     font-size: 14px;
     font-weight: 700;
-    color: #DAA520;
+    color: #C0C0C0;
     margin-bottom: 20px;
     text-align: center;
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
@@ -5404,7 +5367,7 @@ img:hover {
 
 .breadcrumb a {
     margin-top: -50px; /* Điều chỉnh giá trị này theo nhu cầu */
-    color: #DAA520;
+    color: #C0C0C0;
     text-decoration: none;
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
@@ -5452,13 +5415,12 @@ img:hover {
     /* Nút ẩn/hiện khung chat sex */
     #toggle-chat-btn {
       display: block;
-      "margin-top: 10px
-      background-color: #ffffff;
-      color: #DAA520; /* Màu chữ trắng */
-      border: 1px solid #DAA520; /* Viền cam nhạt */
+      margin-top: 10px
+      color: #000000; /* Màu chữ trắng */
+      border: 1px solid #000000; /* Viền vàng */
       border-radius: 5px;
       cursor: pointer;
-      background-color: #000000; /* Màu nền nút cam đậm */
+      background-color: #ffffff; /* Màu nền nút cam đậm */
     }
 
     .fixed-logo {
@@ -5488,7 +5450,7 @@ img:hover {
         height: 200px;
         object-fit: cover;
         border-radius: 5px;
-        border: 1px solid #DAA520; /* Viền vàng */
+        border: 1px solid #ffffff; /* Viền vàng */
 }
 
 body {
@@ -5501,19 +5463,18 @@ body {
 
 .container {
     width: 90%; /* Thu gọn nội dung trang */
-    margin: 0 auto;
     padding: 20px;
     background-color: #1a1a1a; /* Nền đen */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
-
+    margin-top: 20px
     color: #ffffff; /* Chữ trắng */
-    border: 1px solid #DAA520; /* Viền vàng */
+    border: 1px solid #ffffff; /* Viền vàng */
 
 }
 
 
     #toggle-chat-btn:hover {
-        background-color: #ff3d00; /* Màu nền khi hover */
+        background-color: #ffffff; /* Màu nền khi hover */
       border: 2px solid #000000; /* Viền cam nhạt */
     }
   </style>
@@ -5529,8 +5490,8 @@ body {
     <h2>Chat sex (섹스 채팅)</h2>
     <input type="text" id="user-input" placeholder="Nhập đối tác muốn chat..." />
     <button id="user-submit-btn">OK</button>
-    <p style="color: #FFD700;  border: 1px solid #DAA520; /* Viền vàng */ text-align: center;  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */ padding: 10px;     background-color: #1a1a1a; /* Nền đen */
+    <p style="color: #ffffff;  border: 1px solid #ffffff; /* Viền vàng */ text-align: center;  
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */ padding: 10px; background-color: #1a1a1a; /* Nền đen */
  border-radius: 5px;">
         Chat sex với các đối tác của Web. Member có thể tham gia chat sex trực tiếp với các bé của hệ thống,hoặc đối tác của Web mình mong muốn 💎 
     </p>
@@ -5670,26 +5631,24 @@ console.log(region, type); // In giá trị của region và type
     
             #clock {
             font-size: 15px;
-           
             text-align: center;
             font-family: "Poppins", sans-serif;    
-            background-color: #1a1a1a; /* Nền đen */
-    color: #FFD700; /* Chữ vàng */
+            color: #ffffff; /* Chữ vàng */
             padding: 10px;
             border-radius: 5px;
-            box-shadow: 0 4px 8px #000000;
             position: fixed;  /* Giữ đồng hồ cố định */
             top: 25px;        /* Căn cách lề trên */
             left: 20px;       /* Căn cách lề trái */
             z-index: 9999; 
-            border: 1px solid #DAA520; /* Viền vàng */
+            border: 1px solid #C0C0C0; /* Viền vàng */
             font-weight: 700;
             transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
               
         }
              #clock:hover {
-                background-color: #2bff00; /* Màu nền khi hover */
+                color: #ffffff;
+                background-color: #ffecd7; /* Màu nền khi hover */
       transform: scale(1.05); /* Phóng to nhẹ khi hover */
 
 
@@ -5701,9 +5660,9 @@ console.log(region, type); // In giá trị của region và type
     text-align: center;
     font-family: 'Poppins", sans-serif;
     margin-top: 5px;
-    font-weight: 700;
+    font-weight: bold;
      border-radius: 5px;
-      background-color: #000000; /* Màu nền nút cam đậm */
+    
         }
     </style>
 </head>
@@ -5750,7 +5709,7 @@ document.getElementById('timezone').innerHTML = "Múi giờ: Asia/Seoul";
      <style>  
 .copyright-section {
   width: 380px;
-  border: 1px solid #DAA520; /* Viền vàng */
+  border: 1px solid #ffffff; /* Viền vàng */
   background-color: #1a1a1a; /* Nền đen */
   border-radius: 10px; /* Bo tròn góc nút */ 
   color: #FFD700; /* Chữ vàng */
