@@ -93,6 +93,7 @@
 </script>
 </body>
 </html>
+
 <div id="accessCodeModal" class="modal" style="display: flex;">
     <div class="modal-overlay"></div>
     <div class="modal-content">
@@ -105,8 +106,8 @@
         <h4>Nhập mã vùng khu vực do LUXURY GIRL BOOKING  cấp vì lí do bảo mật và lợi ích của khách hàng </h4>
         <div style="position: relative; width: 100%;">
             <input type="password" id="accessCodeInput" placeholder="Nhập mã tại đây" style="width: calc(100% - 40px); padding: 10px; margin-bottom: 10px;  border-radius: 10px; /* Viền vàng kim */">
-            <span id="togglePassword" onclick="togglePasswordVisibility()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
-                <a href="URL_CỦA_BẠN" target="_blank" style="text-decoration: none;"><span style="font-size: 24px;">👁️</span></a>
+           
+              
             </span>
         </div>
         <button onclick="checkAccessCode()" style=" box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */ transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; background-color: #000000; /* Nền đen */ Viền vàng */ padding: 10px 20px;  border-radius: 5px;    
@@ -137,14 +138,16 @@
 </div>
 
 <div id="accessCodeDisplay"></div>
+    
 
 <style>
     .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; }
     .modal-content { background: #FFD700; border: 1px solid #DAA520; /* Viền vàng */ padding: 20px; border-radius: 8px; text-align: center; width: 300px; }
     .spinner-container { display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; width: 100%; }
-    .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #ff0000; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin-bottom: 10px; }
-    .spinner-text { color: #51ff00; /* Chữ vàng */ font-size: 14px; font-weight: bold; }
-    .progress-bar { width: 100%;     border: 1px solid #DAA520; /* Viền vàng */
+    .spinner { border: 4px solid #00ff62; border-top: 4px solid #ff0000; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin-bottom: 10px; }
+    .spinner-text { color: #1100ff; /* Màu xanh lá đậm */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); font-size: 14px; font-weight: bold; }
+    .progress-bar { width: 100%; border: 1px solid #DAA520; /* Viền vàng */
  background-color: #f3f3f3; height: 5px; margin-top: 10px; }
     .progress { width: 0%; height: 100%; background-color: #ff0000; animation: progressBar 2s ease-in-out infinite; }
     @keyframes spin { 100% { transform: rotate(360deg); } }
@@ -159,7 +162,7 @@
 </style>
 
 <script>
-const correctAccessCode = "HTL432"; // Đặt mã truy cập hợp lệ
+const correctAccessCode = "HML432"; // Đặt mã truy cập hợp lệ
 
 // Hàm kiểm tra mã truy cập
 function checkAccessCode() {
@@ -180,7 +183,7 @@ function checkAccessCode() {
             closeModal('accessCodeModal');
             requestLocation();
 
-            alert("Đã kiểm tra thành công. Các bé gần nhất cho bạn đã được đề xuất");
+            alert("Đã kiểm tra thành công. Các bé gần nhất cho bạn đã được đề xuất. Mỗi mã vùng sẽ chỉ cập nhật chính xác cho lần đầu tiên ! ");
         } else {
             alert("Mã truy cập không chính xác. Vui lòng thử lại hoặc liên hệ hỗ trợ.");
         }
@@ -258,23 +261,23 @@ window.onload = function() {
 
     <style>
         #accessCodeDisplay {
-    position: fixed;
-    top: 20px;
-    border: 1px solid #000000; /* Viền vàng */
-    right: 20px;
-    background: #ffffff;a(255, 0, 0, 0.8); /* Màu vàng với độ trong suốt */
-    padding: 4px 8px;
-    border-radius: 5px;
-    display: none; /* Ẩn mặc định */
-    z-index: 1000; /* Đảm bảo nổi bật */
-    color: #000; /* Màu chữ */
-
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
+            position: fixed;
+top: 20px;
+right: 20px;
+background: rgba(0, 255, 0, 0.5); /* Màu xanh lá cây với độ trong suốt */
+padding: 4px 8px;
+border-radius: 5px;
+display: none; /* Ẩn mặc định */
+z-index: 1000; /* Đảm bảo nổi bật */
+color: #000; /* Màu chữ */
+border: 1px solid #000000; /* Viền màu đen */
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
+animation: blink 1s infinite; /* Hiệu ứng nhấp nháy */
 
 }
         body {
             font-family: 'Poppins', sans-serif;
-            background:  #4f4f4f;
+            background:  #ffffff;
             justify-content: center;
             align-items: center;
     padding: 0;
@@ -289,14 +292,15 @@ window.onload = function() {
           font-size: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
     
-    background-color: #000000; /* Nền đen */
-    color: #ffffff; 
+    background: linear-gradient(135deg, #f7a7c5, #d14d83); /* Nền hồng gradient */
+    color: #000000; 
     border-radius: 10px;
 
 }
 
         .info-message {
-        color: #ffffff; /* Màu chữ chính */
+            color: #000000; /* Màu chữ đen */
+
     }
     .contact-button {
         color: #ffe600; /* Màu chữ cho liên kết */
@@ -372,20 +376,29 @@ window.onload = function() {
         
 h1 {
     display: inline-block;
-    font-family: 'Poppins', sans-serif;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    /* Thay đổi màu sắc ở đây */
-    color: #C0C0C0; /* Thay màu theo ý muốn */
-    border-radius: 10px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Đổ bóng cho tiêu đề */
-
+    font-family: 'Poppins', sans-serif; /* Chọn font chữ */
+    font-size: 20px; /* Kích thước chữ */
+    font-weight: bold; /* Chữ đậm */
+    text-align: center; /* Căn giữa tiêu đề */
+    color: #000000; /* Chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Đổ bóng cho chữ */
+    background: linear-gradient(45deg, #FF6FB1, #FF7F7F); /* Nền hồng gradient */
+    border-radius: 10px; /* Bo góc nền */
+    padding: 20px; /* Khoảng cách giữa chữ và viền */
   
     text-transform: uppercase;
     letter-spacing: 3px;
-
     margin-bottom: 20px;
+
+/* Keyframes cho hiệu ứng nhấp nháy */
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
 }
  @keyframes fadeIn {
             0% {
@@ -416,12 +429,13 @@ h1 {
         .menu {
             display: flex;
             justify-content: space-around;
-            background-color: #000000;
+            
             padding: 5px;
             border-radius: 5px;
-            color: #FFD700; /* Màu chữ trắng */
-            box-shadow: 0 4px 8px #000000;
-            border: 1px solid #000000; /* Viền cam nhạt */
+            color: #000000; /* Chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Đổ bóng cho chữ */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Hiệu ứng chuyển động mượt mà */
+          
         }
          .menu-item {
             color: #ffffff;
@@ -446,26 +460,29 @@ h1 {
             flex-wrap: wrap;
         }
         .region-btn {
-    background-color: #000000;/* Màu nền đen */
-    color: #ffffff; /* Màu chữ vàng */
+            background: linear-gradient(135deg, #f7a7c5, #d14d83); /* Nền hồng gradient */
+            color: #000000; /* Chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Đổ bóng cho chữ */
     display: flex;
     border: 1px solid #fffefc; /* Viền vàng */
     margin-top: 10px;
     cursor: pointer;
     padding: 5px 10px; /* Tùy chỉnh khoảng cách bên trong */
-    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Hiệu ứng chuyển động mượt mà */
     border-radius: 10px;
     font-weight: bold;
 }
         .region-btn:hover {
             background-color: #ffffff; /* Màu nền khi hover */
     color: #000000; /* Màu chữ khi hover */
+    transform: scale(1.1); /* Phóng to nút 10% */
         }
         .detail-info {
             display: none; /* Ẩn thông tin chi tiết ban đầu */
             background-color: #000000; /* Màu nền nút cam đậm */
             color: #fafafa;
             border-radius: 5px;
+
             margin-top: 20px;
         }
         .button-container {
@@ -474,7 +491,8 @@ h1 {
 
 .info-button {
     background-color: #000000;
-    color: #fafafa;
+    color: #000000; /* Chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Đổ bóng cho chữ */
     padding: 5px 10px; /* Điều chỉnh padding để thay đổi kích thước nút */
     border-radius: 5px;
     margin: 1px;
@@ -483,11 +501,12 @@ h1 {
     font-size: 12px; /* Điều chỉnh kích thước chữ */
     width: 110px; /* Điều chỉnh chiều rộng của nút */
     height: 40px; /* Điều chỉnh chiều cao của nút */
-    box-shadow: 0 4px 8px #000000;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Hiệu ứng chuyển động mượt mà */
   }
 .info-button:hover {
     background-color: #ffffff; /* Màu nền khi hover */
-    color: #000000;
+    color: #000000; /* Chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Đổ bóng cho chữ */
     transform: scale(1.05); /* Phóng to nhẹ khi hover */
 }
 .info-button i {
@@ -497,7 +516,8 @@ h1 {
         .submit-btn {
     padding: 5px 10px;
     background-color: #000000; /* Màu nền nút cam đậm */
-    color: #ffffff; /* Màu chữ trắng */
+    color: #000000; /* Chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Đổ bóng cho chữ */
     border: none;
      margin-top: -50px;
     border-radius: 5px;
@@ -534,7 +554,7 @@ h1 {
 
     <style>
         body {
-            background-color: linear-gradient(135deg, #ff7e5f, #feb47b); /* Màu nền chính */
+            background: linear-gradient(45deg, #ff7eb9, #ff65a3); /* Nền hồng gradient */
             color: #ffffff; /* Màu chữ tối để dễ đọc trên nền sáng */
             margin: 0;
             padding: -10px;
@@ -549,9 +569,10 @@ h1 {
             margin-top: -50px;
             margin: 0 auto;
             padding: -30px;
-            background-color: #000000; /* Màu nền nút cam đậm */
+            background: linear-gradient(45deg, #ff7eb9, #ff65a3); /* Nền hồng gradient */
             box-shadow: 0 4px 8px #000000;
-            color: #ffffff; /* Màu chữ sáng */
+            color: #000000; /* Chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Đổ bóng cho chữ */
             border: 2px solid #000000; /* Viền cam nhạt */
         }
 
@@ -580,7 +601,7 @@ h1 {
             height: 200px;
             width: auto;
             margin-right: 10px;
-            border: 2px solid #DAA520; /* Viền vàng */
+            border: 2px solid linear-gradient(135deg, #ff6ec7, #ff3ac1); /* Nền gradient hồng */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
             flex-shrink: 0; /* Đảm bảo ảnh không co lại */
         }
@@ -618,7 +639,7 @@ h1 {
     border-radius: 12px;
     font-weight: bold;
     font-size: 13px; /* Kích thước chữ */
-    background-color: #000000; /* Màu nền */
+    background: linear-gradient(45deg, #ff7eb9, #ff65a3); /* Nền hồng gradient */
     color: #ffffff; /* Màu chữ */
     border: 2px solid #000000; /* Viền */
     width: 220px; /* Chiều rộng */
@@ -642,14 +663,16 @@ h1 {
 .success-notification {
     display: flex;
     align-items: center;
-    background-color: #000000;
-    color: #ffffff; /* Màu chữ trắng */
-    border: 2px solid #000000; /* Viền cam nhạt */
-    border-radius: 8px;
+    background: linear-gradient(135deg, #f7a7c5, #d14d83); /* Nền hồng gradient */
+
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
+    border: 2px solid #C0C0C0; /* Viền bạc */
+    border-radius: 5px; /* Bo góc cho viền */
+  
     margin-top: 20px;
     font-weight: bold;
     font-size: 13px;
-    box-shadow: 0 4px 8px #000000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Thêm bóng nhẹ cho khối */
 }
 
 .success-notification img {
@@ -662,16 +685,18 @@ h1 {
 .menu {
         display: flex;
         padding: 10px;
-        background-color: #000000;
         padding: 10px;
         border-radius: 8px;
-        color: white;
+        color: #000000; /* Chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Đổ bóng cho chữ */
     }
 
     .menu-item {
         cursor: pointer;
         padding: 5px 10px;
-        color: #ffffff;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
+
+    border-radius: 5px; /* Bo góc cho viền */
     }
 
     
@@ -689,12 +714,14 @@ h1 {
     margin-bottom: 10px; /* Giảm khoảng cách giữa các gói */
 }
     #pricing-table .package {
-        background-color: #000000;
-        color: #ffffff;
-        border: 1px solid #000000; /* Viền vàng */
+        background: linear-gradient(135deg, #f7a7c5, #d14d83); /* Nền hồng gradient */
+        color: #000000; /* Chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Đổ bóng cho chữ */
         border-radius: 10px;
+         border: 2px solid #ffffff; /* Viền bạc */
         text-align: center;
-       
+        font-weight: bold;
+        transition: transform 0.3s ease, background-color 0.3s ease; /* Hiệu ứng chuyển động mượt mà */
     }
 
     #pricing-table .package h2 {
@@ -807,81 +834,80 @@ h1 {
 </div>
 
 <!-- Bảng giá -->
-<div id="pricing-table" style="display: none;  background-color: #1a1a1a; color: #FFD700; border-radius: 10px;">
+<div id="pricing-table" style="display: none;  background-color: #C0C0C0 color: #FFD700; border-radius: 10px;">
     <h4 style="text-align: center;">✨ Bảng giá dịch vụ - Trải nghiệm sự đặc biệt ✨</h4>
     
     <div class="package-container">
-        <!-- Gói Thường -->
-        <div class="package">
-            <h2>Gói Thường - 100,000 원</h2>
-            <p><strong>Thời gian:</strong> 90 phút</p>
- <img src="https://i.ibb.co/vsDwM4G/ngua-thai-500x500-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">            <p><strong>Thời gian:</strong> 90 phút</p>
-            <p><strong>Dịch vụ:</strong> <p>Tắm chung thư giãn,massage nhẹ nhàng</p>
-                <p> HJ và BJ chuyên nghiệp</p> 
-                <p>Quan hệ 2 lần</p>
-            <p><em>Gói Thường là sự lựa chọn lý tưởng cho lần đầu trải nghiệm</em></p>
-        </div>
+      <!-- Gói Thường -->
+      <div class="package">
+        <h2>Gói Thường - 100,000 원</h2>
+        <p><strong>Thời gian:</strong> 90 phút</p>
+<img src="https://i.ibb.co/vsDwM4G/ngua-thai-500x500-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">            <p><strong>Thời gian:</strong> 90 phút</p>
+        <p><strong>Dịch vụ:</strong> <p>Tắm chung thư giãn,massage nhẹ nhàng</p>
+            <p> HJ và BJ chuyên nghiệp</p> 
+            <p>Quan hệ 2 lần</p>
+        <p><em>Gói Thường là sự lựa chọn lý tưởng cho lần đầu trải nghiệm</em></p>
+    </div>
 
-        <!-- Gói VIP -->
-        <div class="package">
-            <h2>Gói VIP - 145,000 원</h2>
-            <img src="https://i.ibb.co/yg6830F/keo-sam-hamer-tang-cuong-sinh-ly-1-vien-jpg-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">
-            <img src="https://i.ibb.co/98401Xz/Sin-Su-nuoc-chinh-hang-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">
-            <img src="https://i.ibb.co/Q6DN0M4/Untitled-design-35-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">
-            <p><strong>Thời gian:</strong> 180 phút</p>
-            <p><strong>Dịch vụ:</strong><p>Massage kết hợp,HJ và BJ với kỹ thuật nóng/lạnh</p> 
-            <p>Quan hệ 3 lần</p> 
-            <p>Đặc biệt,hỗ trợ công cụ quay lại khoảnh khắc ân ái 30 phút</p>
-            <p><em>Gói VIP nâng cao trải nghiệm với những khoảnh khắc đặc biệt</em></p>
-        </div>
+    <!-- Gói VIP -->
+    <div class="package">
+        <h2>Gói VIP - 145,000 원</h2>
+        <img src="https://i.ibb.co/yg6830F/keo-sam-hamer-tang-cuong-sinh-ly-1-vien-jpg-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">
+        <img src="https://i.ibb.co/98401Xz/Sin-Su-nuoc-chinh-hang-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">
+        <img src="https://i.ibb.co/Np0XnMR/Untitled-design-36-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">
+        <p><strong>Thời gian:</strong> 180 phút</p>
+        <p><strong>Dịch vụ:</strong><p>Massage kết hợp,HJ và BJ với kỹ thuật nóng/lạnh</p> 
+        <p>Quan hệ 3 lần</p> 
+        <p>Đặc biệt,hỗ trợ công cụ quay lại khoảnh khắc ân ái 30 phút</p>
+        <p><em>Gói VIP nâng cao trải nghiệm với những khoảnh khắc đặc biệt</em></p>
+    </div>
 
-        <!-- Gói Luxury -->
-        <div class="package">
-            <h2>Gói Luxury - 335,000 원</h2>
-            <img src="https://i.ibb.co/yg6830F/keo-sam-hamer-tang-cuong-sinh-ly-1-vien-jpg-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">
-            <img src="https://i.ibb.co/vsDwM4G/ngua-thai-500x500-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">            
-            <img src="https://i.ibb.co/98401Xz/Sin-Su-nuoc-chinh-hang-removebg-preview.png" alt="Gói Luxury"style="height: 100px; width: auto;">
-            <img src="https://i.ibb.co/Q6DN0M4/Untitled-design-35-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">
-            <p><strong>Thời gian:</strong> 16 giờ</p>
-            <p><strong>Dịch vụ:</strong> <p>Tắm chung, sử dụng đồ chơi cao cấp</p>
-            <p>Massage kỹ thuật Nuru với dầu đặc biệt</p> 
-            <p>HJ và BJ,xuất vào miệng kèm chơi some</p> 
-            <p>Quan hệ không giới hạn</p> 
-            <p>Hỗ trợ công cụ quay lại khoảnh khắc ân ái toàn gói dịch vụ</p>
-            <p><em>Trải nghiệm đỉnh cao của sự xa hoa và tinh tế với gói Luxury</em></p>
-        </div>
+    <!-- Gói Luxury -->
+    <div class="package">
+        <h2>Gói Luxury - 335,000 원</h2>
+        <img src="https://i.ibb.co/yg6830F/keo-sam-hamer-tang-cuong-sinh-ly-1-vien-jpg-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">
+        <img src="https://i.ibb.co/vsDwM4G/ngua-thai-500x500-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">            
+        <img src="https://i.ibb.co/98401Xz/Sin-Su-nuoc-chinh-hang-removebg-preview.png" alt="Gói Luxury"style="height: 100px; width: auto;">
+        <img src="https://i.ibb.co/Np0XnMR/Untitled-design-36-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">
+        <p><strong>Thời gian:</strong> 16 giờ</p>
+        <p><strong>Dịch vụ:</strong> <p>Tắm chung, sử dụng đồ chơi cao cấp</p>
+        <p>Massage kỹ thuật Nuru với dầu đặc biệt</p> 
+        <p>HJ và BJ,xuất vào miệng kèm chơi some</p> 
+        <p>Quan hệ không giới hạn</p> 
+        <p>Hỗ trợ công cụ quay lại khoảnh khắc ân ái toàn gói dịch vụ</p>
+        <p><em>Trải nghiệm đỉnh cao của sự xa hoa và tinh tế với gói Luxury</em></p>
+    </div>
 
-        <!-- Gói VIP Tour -->
-        <div class="package">
-            <h2>Gói VIP Tour - 1,900,000 원</h2>
-            <img src="https://i.ibb.co/Q6DN0M4/Untitled-design-35-removebg-preview.png" alt="Gói VIP Tour"style="height: 100px; width: auto;">
-           <img src="https://i.ibb.co/vsDwM4G/ngua-thai-500x500-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">
-           <img src="https://i.ibb.co/98401Xz/Sin-Su-nuoc-chinh-hang-removebg-preview.png" alt="Gói Luxury"style="height: 100px; width: auto;">
-           <img src="https://i.ibb.co/yg6830F/keo-sam-hamer-tang-cuong-sinh-ly-1-vien-jpg-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">
-           <p><strong>Thời gian:</strong> 3 ngày</p>
-            <p><strong>Dịch vụ:</strong><p>Tận hưởng toàn diện bao gồm tất cả các gói dịch vụ trên</p> 
-            <p>Với sự phục vụ tận tình chu đáo hơn cả người yêu</p> 
-            <p>Cam kết mang lại sự hài lòng tuyệt đối và những kỷ niệm không thể quên</p> 
-            <p>Đặc biệt quay lại khoảnh khắc làm tình đổi gió Public</p>
-            <p><em>Gói VIP Tour dành cho những khách hàng tìm kiếm sự kết hợp giữa dịch vụ cao cấp và sự gắn bó lâu dài  </em></p>
-        </div>
+    <!-- Gói VIP Tour -->
+    <div class="package">
+        <h2>Gói VIP Tour - 1,900,000 원</h2>
+        <img src="https://i.ibb.co/Np0XnMR/Untitled-design-36-removebg-preview.png" alt="Gói VIP Tour"style="height: 100px; width: auto;">
+       <img src="https://i.ibb.co/vsDwM4G/ngua-thai-500x500-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">
+       <img src="https://i.ibb.co/98401Xz/Sin-Su-nuoc-chinh-hang-removebg-preview.png" alt="Gói Luxury"style="height: 100px; width: auto;">
+       <img src="https://i.ibb.co/yg6830F/keo-sam-hamer-tang-cuong-sinh-ly-1-vien-jpg-removebg-preview.png" alt="Gói VIP"style="height: 100px; width: auto;">
+       <p><strong>Thời gian:</strong> 3 ngày</p>
+        <p><strong>Dịch vụ:</strong><p>Tận hưởng toàn diện bao gồm tất cả các gói dịch vụ trên</p> 
+        <p>Với sự phục vụ tận tình chu đáo hơn cả người yêu</p> 
+        <p>Cam kết mang lại sự hài lòng tuyệt đối và những kỷ niệm không thể quên</p> 
+        <p>Đặc biệt quay lại khoảnh khắc làm tình đổi gió Public</p>
+        <p><em>Gói VIP Tour dành cho những khách hàng tìm kiếm sự kết hợp giữa dịch vụ cao cấp và sự gắn bó lâu dài  </em></p>
+    </div>
 
-        <!-- Khuyến mãi đặc biệt -->
-        <div class="package promo-package">
-            <h2>Khuyến mãi đặc biệt</h2>
-            <img src="https://i.ibb.co/Q6DN0M4/Untitled-design-35-removebg-preview.png" alt="Image 1" style="height: 200px; width: 150px;">
-            <img src="https://i.ibb.co/5xnBnZT/Untitled-design-34.png" alt="Image 1" style="height: 200px; width: 150px;">
-            <img src="https://i.ibb.co/PcBrZqH/Untitled-design-33.png" alt="Image 2" style="height: 200px; width: 150px;">
-            <img src="https://i.ibb.co/JxkW3Dd/Untitled-design-32.png" alt="Image 3" style="height: 200px; width: 150px;">
-            <img src="https://i.ibb.co/NTZ2yJS/photo-2024-11-08-17-50-13.jpg" alt="Image 4" style="height: 200px; width: 150px;">
-            <img src="https://i.ibb.co/zJfm74N/reup-bao-vy-2k3-cuc-pham-gai-xinh-trang-treo-body-cuc-nuot-3230131-original.jpg" alt="Image 5" style="height: 200px; width: 150px;">
-            <img src="https://i.ibb.co/tz34g6N/reup-bao-vy-2k3-cuc-pham-gai-xinh-trang-treo-body-cuc-nuot-3230130-original.jpg" alt="Image 6" style="height: 200px; width: 150px;">
-            <p><strong>Chi tiết:</strong> Tất cả các gói có quà tặng kèm theo nếu khách hàng có nhu cầu. Khách hàng có thể chọn cosplay theo mã số trang phục</p>
-            <p><em>Đặc biệt gói VIP trở lên sẽ được hỗ trợ công cụ quay phim ghi lại khoảnh khắc ân ái cùng các bé</em></p>
-        </div>
+    <!-- Khuyến mãi đặc biệt -->
+    <div class="package promo-package">
+        <h2>Khuyến mãi đặc biệt</h2>
+        <img src="https://i.ibb.co/5xnBnZT/Untitled-design-34.png" alt="Image 1" style="height: 200px; width: 150px;">
+        <img src="https://i.ibb.co/PcBrZqH/Untitled-design-33.png" alt="Image 2" style="height: 200px; width: 150px;">
+        <img src="https://i.ibb.co/JxkW3Dd/Untitled-design-32.png" alt="Image 3" style="height: 200px; width: 150px;">
+        <img src="https://i.ibb.co/NTZ2yJS/photo-2024-11-08-17-50-13.jpg" alt="Image 4" style="height: 200px; width: 150px;">
+        <img src="https://i.ibb.co/zJfm74N/reup-bao-vy-2k3-cuc-pham-gai-xinh-trang-treo-body-cuc-nuot-3230131-original.jpg" alt="Image 5" style="height: 200px; width: 150px;">
+        <img src="https://i.ibb.co/tz34g6N/reup-bao-vy-2k3-cuc-pham-gai-xinh-trang-treo-body-cuc-nuot-3230130-original.jpg" alt="Image 6" style="height: 200px; width: 150px;">
+        <p><strong>Chi tiết:</strong> Tất cả các gói có quà tặng kèm theo nếu khách hàng có nhu cầu. Khách hàng có thể chọn cosplay theo mã số trang phục</p>
+        <p><em>Đặc biệt gói VIP trở lên sẽ được hỗ trợ công cụ quay phim ghi lại khoảnh khắc ân ái cùng các bé</em></p>
     </div>
 </div>
-    </div>
+</div>
+</div>
 
     <script>
         function togglePricingTable() {
@@ -926,22 +952,21 @@ h1 {
 .phim-btn {
     font-size: 13px;
     padding: 5px 9px;
-    background-color: #000000; /* Màu nền nút cam đậm */
-    color: #ffffff; /* Màu chữ trắng */
-    border: none;
+    background: linear-gradient(135deg, #f7a7c5, #d14d83); /* Nền hồng gradient */
+    color: #000000; /* Chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Đổ bóng cho chữ */
     border-radius: 5px;
     font-weight: 750; /* Chữ đậm nhưng nhẹ hơn */
     cursor: pointer;
     flex-basis: 22%; /* Chiều rộng mỗi nút */
     text-align: center;
     box-sizing: border-box;
-    border: 2px solid #000000; /* Viền cam nhạt */
+    border: 2px solid #C0C0C0; /* Viền bạc */
     transition: background-color 0.3s ease, transform 0.3s ease; /* Hiệu ứng chuyển đổi */
-    box-shadow: 0 4px 8px #000000;
 }
 
 .phim-btn:hover {
-    background-color: #ff3d00; /* Màu nền khi hover */
+    background-color: #ffffff; /* Màu nền khi hover */
     transform: scale(1.05); /* Phóng to nhẹ khi hover */
 }
 </style>
@@ -950,17 +975,20 @@ h1 {
 <style>
     /* Điều chỉnh kích thước các nút menu */
     .menu-item {
+        color: #000000; /* Màu chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
+        background: linear-gradient(135deg, #f7a7c5, #d14d83); /* Nền hồng gradient */
         font-size: 15px; /* Kích thước chữ của menu */
         padding: 5px 5px; /* Khoảng cách bên trong nút */
         margin: 0 5px; /* Khoảng cách giữa các mục menu */
-        font-weight: 750; /* Chữ đậm nhưng nhẹ hơn */
-        font-weight: 600; /* Chữ đậm nhưng nhẹ hơn */
+        border: 2px solid #ffffff; /* Viền bạc */
+        font-weight: 700; /* Chữ đậm nhưng nhẹ hơn */
         transition: background-color 0.3s ease, transform 0.3s ease; /* Hiệu ứng mượt khi hover */
 }
     
   
     .menu-item:hover {
-        background-color: #ffffff; /* Màu nền khi hover */
+        background-color: #ffaaaa; /* Màu nền khi hover */
         color: #000000; /* Màu chữ vàng */
     }
     
@@ -972,19 +1000,19 @@ h1 {
     display: block; /* Để các nút xếp dọc */
     padding: 5px 10px;
     margin: 10px 0;
-    background-color: #000000; /* Màu nền nút cam đậm */
-    color: #ffffff; /* Màu chữ trắng */
+    background: linear-gradient(135deg, #ff6ec7, #ff3ac1); /* Nền gradient hồng */
+    color: #000000; /* Chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Đổ bóng cho chữ */
     text-decoration: none;
     width: 150px;
     border-radius: 5px;
     text-align: center;
     transition: background-color 0.3s ease, transform 0.3s ease; /* Hiệu ứng chuyển đổi */
-    box-shadow: 0 4px 8px #000000;
-    border: 2px solid #000000; /* Viền cam nhạt */
+    border: 2px solid #ffffff; /* Viền bạc */
 }
 
 .support-button:hover {
-    background-color: #ff3d00; /* Màu nền khi hover */
+    background-color: #ffffff; /* Màu nền khi hover */
     transform: scale(1.05); /* Phóng to nhẹ khi hover */
 }
 
@@ -1711,7 +1739,7 @@ h1 {
         padding: 6px 12px; /* Khoảng cách trong nút */
         background-color: #000000; /* Màu nền của nút (hồng đậm) */
         color: #ffffff; /* Màu chữ */
-        border: 2px solid #000000; /* Viền cam nhạt */
+        border: 1px solid #ffffff; /* Viền cam nhạt */
         font-weight: 750; /* Chữ đậm nhưng nhẹ hơn */
         border-radius: 5px; /* Bo góc cho nút */
         margin: 2px 1px; /* Khoảng cách giữa các nút */
@@ -1720,7 +1748,7 @@ h1 {
     }
 
     .image-btn:hover {
-        background-color: #ff3d00; /* Màu nền khi hover */
+        background-color: #ffffff; /* Màu nền khi hover */
     transform: scale(1.05); /* Phóng to nhẹ khi hover */
 }
         
@@ -1958,10 +1986,10 @@ function closeNotification() {
 
 <style>
      #bookingInfoModal .modal-content label {
-        font-family: 'Roboto', sans-serif; /* Thay đổi thành font khác nếu cần */
+        font-family: 'Poppins", sans-serif; /* Thay đổi thành font khác nếu cần */
         font-size: 15px;
-        font-weight: 10
-        color: #ffffff; /* Màu chữ */
+        color: #000000; /* Màu chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
     }
     /*  
     CSS cơ bản cho modal và thông báo thành công */
@@ -1974,15 +2002,17 @@ function closeNotification() {
         align-items: center;
     }
     .modal-content {
-        background-color: #000000; /* Nền đen */
+        background: linear-gradient(135deg, #ffb3c6, #ff6ec7); /* Nền hồng nhạt */
         padding: 20px;
-        border-radius: 8px;
+        border-radius: 10px;
         width: 250px; /* Điều chỉnh chiều rộng phù hợp */
-        color: #ffffff;  /* Chữ vàng */
-    border: 1px solid #C0C0C0; /* Viền vàng */
+        color: #000000; /* Màu chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
+    border: 1px solid #000000; /* Viền vàng */
         display: flex;
         flex-direction: column;
         gap: 15px;
+        font-weight: bold;
         transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
     margin-top:-30px;
     }
@@ -2295,16 +2325,21 @@ function closeNotification() {
                                 font-weight: bold;
                             }
                             .info-button {
-    background-color: #1a1a1a; /* Màu nền đen */
-    color: #ffffff; /* Màu chữ vàng */
-    padding: 10px 20px;
+    color: #000000; /* Màu chữ vàng */
+    padding: 11px 22px;
     border-radius: 20px;
+    border: 2px solid #ffffff; /* Viền bạc */
     font-weight: bold;
+    display: inline-flex;
+    align-items: center;
     cursor: pointer;
+    justify-content: center; /* Đảm bảo chữ căn giữa cả theo chiều ngang và dọc */
+    text-align: center; /* Căn giữa chữ */
+    font-size: 13px;
 }
 .info-button:hover {
-    background-color: #ffffff; /* Màu nền khi hover */
-    color: #1a1a1a; /* Màu chữ khi hover */
+    background-color: #000000; /* Màu nền khi hover */
+    color: #ffffff; /* Màu chữ khi hover */
     transform: scale(1.05); /* Hiệu ứng phóng to nhẹ khi hover */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8); /* Hiệu ứng đổ bóng đậm */
 }
@@ -2606,8 +2641,7 @@ function closeNotification() {
           </div>
       </div>
 
-      <h4>Giới thiệu</h4>
-      <p>
+    
         <h4>Giới thiệu</h4>
         <p>
       Gặp em ấy là chỉ cảm thấy yêu thôi</p> 
@@ -3523,13 +3557,15 @@ function closeNotification() {
     .review-section {
         margin-top: 20px;
         padding: 10px;
-        background-color: #1a1a1a;
-        color: #ffffff;
-        border-radius: 5px;
+        background: linear-gradient(135deg, #ffb3d9, #ff99cc); /* Nền hồng nhạt */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
+       
+    border: 1px solid #C0C0C0; /* Viền bạc */
+    border-radius: 5px;
     }
     .stars {
         font-size: 20px;
-        color: #ffcc00;
+        color: #000000;
     }
     .star {
         cursor: pointer;
@@ -3978,12 +4014,13 @@ document.querySelectorAll('.review-section').forEach(section => {
     .review-section {
     margin-top: 20px;
     padding: 10px;
-    color: #DAA520;
+    color: #000000;
     border-radius: 5px;
-  
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
     max-width: 100%; /* Giới hạn chiều rộng */
     overflow: hidden; /* Ngăn nội dung bị tràn ra ngoài */
     box-sizing: border-box; /* Đảm bảo padding không làm thay đổi chiều rộng */
+    border: 1px solid #ffffff; /* Viền màu đen */
 }
 </style>
 
@@ -4276,20 +4313,22 @@ document.querySelectorAll('.review-section').forEach(section => {
               /* styles.css */
               .location-info {
                   font-size: 17px;
-                  color: #00ff00; /* Màu xanh lá */
+                  color: #ff0000; /* Màu xanh lá */
                   font-weight: bold;
               }
               .info-image { 
                   height: 250px; 
               }
               .button-container, .detail-info { 
-                background-color: #1a1a1a; /* Màu nền đen */
-    color: #FFD700; /* Màu chữ vàng */
+                background: #3f3f3f;
+                color: #ffffff; /* Màu chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
         padding: 10px 20px;
     border-radius: 20px;
-    font-weight: bold;
-    cursor: pointer;
+  
 
+    cursor: pointer;
+    
 
 
 }
@@ -4538,7 +4577,8 @@ document.querySelectorAll('.review-section').forEach(section => {
             padding: 0;
             background-color: #000000; /* Màu nền nút cam đậm */
             box-shadow: 0 4px 8px #000000;
-            color: #ffffff; /* Màu chữ trắng */
+            color: #000000; /* Màu chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
         }
         
         /* Căn chỉnh container chính */
@@ -4555,14 +4595,13 @@ document.querySelectorAll('.review-section').forEach(section => {
         #hoa-khoi-section h2 {
             font-size: 20px;
             ransition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
-    border: 2px solid #ffffff; /* Viền vàng */
             padding: 10px; /* Khoảng cách trong */
-            background-color: #000000; /* Nền đen */ /* Nền đen */ /* Màu nền nút cam đậm */
             text-align: center; /* Căn giữa tiêu đề */
             animation: glowing 1.5s infinite; /* Hiệu ứng phát sáng */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
-            color: #ffffff; 
+           
+            color: #000000; /* Màu chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
+
             border-radius: 10px;
         }
 
@@ -4581,7 +4620,8 @@ document.querySelectorAll('.review-section').forEach(section => {
 
 #hoa-khoi-section h2:hover {
     background-color: #ffffff; /* Màu nền khi hover */
-    color: #000000; /* Màu chữ khi hover */
+    color: #000000; /* Màu chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
 }
 
 .sub-title {
@@ -4609,12 +4649,12 @@ document.querySelectorAll('.review-section').forEach(section => {
 #chat-input {
     width: 80%;
     padding: 10px;
-    border: 1px solid #ff3d00; /* Viền hồng nhạt */
+    border: 2px solid #C0C0C0; /* Viền bạc */
 }
 
 #send-btn {
     padding: 10px;
-    background-color: #ff3d00; /* Màu nền khi hover */
+    background: linear-gradient(135deg, #ff6ec7, #ff1493); /* Nền hồng gradient */
     color: #ffffff; /* Màu chữ trắng */
     border: none;
     border-radius: 5px;
@@ -4622,21 +4662,21 @@ document.querySelectorAll('.review-section').forEach(section => {
 }
 
 .statistics-widget {
-    background-color: #000000; /* Màu nền nút cam đậm */
+    background: linear-gradient(135deg, #f7a7c5, #d14d83); /* Nền hồng gradient */
     padding: 10px;
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
+   
     width: 100px;
     margin: 10px auto;
     text-align: center;
     position: relative;
     top: -70px;
-    border: 1px solid #C0C0C0; /* Viền vàng */
+    border: 2px solid #ffffff; /* Viền bạc */
     border-radius: 20px;
     font-weight: bold;
     background-color: #1a1a1a; /* Nền đen */
     cursor: pointer;
-
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
     
 }
 
@@ -4661,9 +4701,9 @@ document.querySelectorAll('.review-section').forEach(section => {
 }
 
 .statistics-widget strong {
-    background-color: #1a1a1a; /* Nền đen */
-    color: #00ff22; /* Chữ vàng */
 
+    color: #00ff22; /* Chữ vàng */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
     border-radius: 20px;
 }
 
@@ -4822,7 +4862,7 @@ border-radius: 5px; /* Bo góc ảnh */
 
     #toggle-chat-btn {
       padding: 10px;
-      background-color: #ff3d00; /* Màu nền khi hover */
+      background: linear-gradient(135deg, #f7a7c5, #d14d83); /* Nền hồng gradient */
       color: #000000;
       border: 1px solid #C0C0C0; /* Viền cam nhạt */
       cursor: pointer;
@@ -4831,12 +4871,13 @@ border-radius: 5px; /* Bo góc ảnh */
     }
 
     #toggle-chat-btn:hover {
-      background-color: #000000;
+        background: linear-gradient(135deg, #f7a7c5, #d14d83); /* Nền hồng gradient */
     }
     .statistics-widget h4 {
     margin: 0 0 10px 0;
     font-size: 16px;
-    color: #C0C0C0; /* Chữ vàng */
+    color: #000000; /* Chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Đổ bóng cho chữ */
     border-radius: 20px;
     
 
@@ -5214,8 +5255,9 @@ border-radius: 5px; /* Bo góc ảnh */
 
     #chat-sex-section button {
       padding: 11px;
-      background-color: #000000; /* Màu nền đen */
-    color: #ffffff; /* Màu chữ trắng */
+      background: linear-gradient(135deg, #f7a7c5, #d14d83); /* Nền hồng gradient */
+      color: #000000; /* Màu chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
     border: 1px solid #ffffff; /* Viền vàng */
       border-radius: 5px;
       cursor: pointer;
@@ -5234,9 +5276,10 @@ border-radius: 5px; /* Bo góc ảnh */
       display: none;
       margin-top: 10px;
       padding: 10px;
-      background-color: #1a1a1a; /* Nền đen */
+    
 
-      color: #C0C0C0; /* Màu chữ trắng */
+      color: #000000; /* Màu chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
       text-align: center;
       border-radius: 5px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
@@ -5245,12 +5288,13 @@ border-radius: 5px; /* Bo góc ảnh */
 
     /* Liên kết Telegram trong thông báo */
     #telegram-link {
-      color: #ffffff;
+        color: #000000; /* Màu chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
       text-decoration: underline;
     
-    border: 2px solid #000000; /* Viền cam nhạt */
+      border: 2px solid #C0C0C0; /* Viền bạc */
     transition: background-color 0.3s ease, transform 0.3s ease; /* Hiệu ứng chuyển đổi */
-    box-shadow: 0 4px 8px #000000;
+
     }
 
     /* Điều chỉnh kích thước cho tất cả các hình ảnh trong phần thông tin */
@@ -5267,7 +5311,7 @@ border-radius: 5px; /* Bo góc ảnh */
 body {
     font-family: 'Poppins', sans-serif; /* Phông chữ hiện đại */
     background-color:  #c6c9ba; /* Màu nền nút cam đậm */
-    color: #ffffff; /* Màu chữ trắng */
+    color: #000000; /* Màu chữ trắng */
     margin: 0;
     padding: 0;
     line-height: 1.6;
@@ -5280,7 +5324,7 @@ body {
     font-size: 20px; /* Kích thước chữ */
     font-family: "Poppins", sans-serif;       
     font-weight: 700;
-    color: #000000;
+    color: #ffffff;
     text-transform: uppercase; /* Chữ in hoa */
     letter-spacing: 2px; /* Khoảng cách giữa các chữ */
      border-radius: 10px; /* Bo tròn góc nút */ 
@@ -5303,9 +5347,10 @@ body {
 
 button {
    
-    color: #FFD700; /* Chữ vàng */
-    border: 1px solid #ffffff; /* Viền vàng kim */
-    background-color: #ffffff;
+    color: #000000; /* Màu chữ vàng */
+    border: 2px solid #ffffff; /* Viền vàng kim */
+    background: linear-gradient(135deg, #ff6ec7, #ff1493); /* Nền hồng gradient */
+
     padding: 10px 20px;
     border-radius: 20px;
     font-weight: bold;
@@ -5314,28 +5359,20 @@ button {
     
 }
 button:hover {
-    background-color: #ffffff; /* Màu nền khi hover */
-    color: #00ff2a; /* Màu chữ khi hover */
+    background-color: #000000; /* Màu nền khi hover */
+    color: #ffffff; /* Màu chữ khi hover */
     transform: scale(1.05); /* Hiệu ứng phóng to nhẹ khi hover */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8); /* Hiệu ứng đổ bóng đậm */
 }
 
 /* Hộp thông tin */
 .container {
-    background-color: #000000; /* Màu nền nút cam đậm */
+    background-color: #C0C0C0 /* Màu nền nút cam đậm */
     padding: 40px;
     border-radius: 20px;
-    color: #ffffff; /* Chữ trắng */
-   
-    box-shadow: 0 4px 8px #000000;
+    color: #000000; /* Màu chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
     margin-top: 10px
-}
-
-/* Đoạn văn */
-p {
-    font-size: 15px;
-    color: #ffffff; /* Màu trắng dễ đọc */
-    font-weight: bold;
 }
 
 /* Liên kết với hiệu ứng */
@@ -5357,10 +5394,14 @@ img {
     height: auto;
     border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #ffffff; /* Viền bạc */
+     
 }
 
 img:hover {
     transform: scale(1.05); /* Phóng to nhẹ khi hover */
+    
+
     
 }
 
@@ -5370,7 +5411,8 @@ img:hover {
     margin-top: -50px; /* Điều chỉnh giá trị này theo nhu cầu */
     font-size: 14px;
     font-weight: 700;
-    color: #C0C0C0;
+    color: #000000; /* Màu chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
     margin-bottom: 20px;
     text-align: center;
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
@@ -5378,7 +5420,8 @@ img:hover {
 
 .breadcrumb a {
     margin-top: -50px; /* Điều chỉnh giá trị này theo nhu cầu */
-    color: #C0C0C0;
+    color: #000000; /* Màu chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
     text-decoration: none;
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
@@ -5428,7 +5471,7 @@ img:hover {
       display: block;
       margin-top: 10px
       color: #000000; /* Màu chữ trắng */
-      border: 1px solid #000000; /* Viền vàng */
+    
       border-radius: 5px;
       cursor: pointer;
       background-color: #ffffff; /* Màu nền nút cam đậm */
@@ -5461,13 +5504,13 @@ img:hover {
         height: 200px;
         object-fit: cover;
         border-radius: 5px;
-        border: 1px solid #ffffff; /* Viền vàng */
+        border: 2px solid #ffffff; /* Viền bạc */
 }
 
 body {
     font-family: 'Poppins", sans-serif;
     background-color: #000000; /* Màu nền nút cam đậm */
-    border: 2px solid #000000; /* Viền cam nhạt */
+    border: 2px solid #ffffff; /* Viền bạc */
     margin: 0;
     padding: 0 3%; /* Điều chỉnh padding hai bên cho cả trang */
 }
@@ -5475,8 +5518,7 @@ body {
 .container {
     width: 90%; /* Thu gọn nội dung trang */
     padding: 20px;
-    background-color: #1a1a1a; /* Nền đen */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
+    background: linear-gradient(135deg, #f7a7c5, #d14d83); /* Nền hồng gradient */
     margin-top: 20px
     color: #ffffff; /* Chữ trắng */
     border: 1px solid #ffffff; /* Viền vàng */
@@ -5486,7 +5528,7 @@ body {
 
     #toggle-chat-btn:hover {
         background-color: #ffffff; /* Màu nền khi hover */
-      border: 2px solid #000000; /* Viền cam nhạt */
+        
     }
   </style>
 </head>
@@ -5501,8 +5543,8 @@ body {
     <h2>Chat sex (섹스 채팅)</h2>
     <input type="text" id="user-input" placeholder="Nhập đối tác muốn chat..." />
     <button id="user-submit-btn">OK</button>
-    <p style="color: #ffffff;  border: 1px solid #ffffff; /* Viền vàng */ text-align: center;  
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */ padding: 10px; background-color: #1a1a1a; /* Nền đen */
+    <p style="color: #000000;  border: 2px solid #C0C0C0; /* Viền bạc */ text-align: center;  
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Thêm bóng nhẹ cho khối */ padding: 10px;   background: linear-gradient(135deg, #f7a7c5, #d14d83); /* Nền hồng gradient */
  border-radius: 5px;">
         Chat sex với các đối tác của Web. Member có thể tham gia chat sex trực tiếp với các bé của hệ thống,hoặc đối tác của Web mình mong muốn 💎 
     </p>
@@ -5644,22 +5686,23 @@ console.log(region, type); // In giá trị của region và type
             font-size: 15px;
             text-align: center;
             font-family: "Poppins", sans-serif;    
-            color: #ffffff; /* Chữ vàng */
+            color: #2bff00; /* Màu chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
             padding: 10px;
             border-radius: 5px;
             position: fixed;  /* Giữ đồng hồ cố định */
             top: 25px;        /* Căn cách lề trên */
             left: 20px;       /* Căn cách lề trái */
             z-index: 9999; 
-            border: 1px solid #C0C0C0; /* Viền vàng */
+            border: 3px solid #C0C0C0; /* Viền vàng */
             font-weight: 700;
             transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
               
         }
              #clock:hover {
-                color: #000000;
-                background-color: #ffecd7; /* Màu nền khi hover */
+                color: #ff0000; /* Màu chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
+              
       transform: scale(1.05); /* Phóng to nhẹ khi hover */
 
 
@@ -5667,11 +5710,11 @@ console.log(region, type); // In giá trị của region và type
 
 #timezone {
     font-size: 16px;
-    color: #000000; /* Chữ trắng */
+    color: #ff0000/* Màu chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
     text-align: center;
     font-family: 'Poppins", sans-serif;
     margin-top: 5px;
-    font-weight: bold;
      border-radius: 5px;
     
         }
@@ -5720,14 +5763,13 @@ document.getElementById('timezone').innerHTML = "Múi giờ: Asia/Seoul";
      <style>  
 .copyright-section {
   width: 380px;
-  border: 1px solid #ffffff; /* Viền vàng */
-  background-color: #1a1a1a; /* Nền đen */
   border-radius: 10px; /* Bo tròn góc nút */ 
-  color: #FFD700; /* Chữ vàng */
+  color: #000000; /* Màu chữ đen */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
 
     text-align: center; /* Canh giữa nội dung */
     padding: 10px; /* Khoảng cách trong khung */
-    font-size: 7px; /* Kích thước chữ nhỏ vừa */
+    font-size: 15px; /* Kích thước chữ nhỏ vừa */
     margin-top: 20px; /* Khoảng cách phía trên */
     font-family: 'Poppins", sans-serif; /* Đặt font đơn giản */
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
