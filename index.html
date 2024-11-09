@@ -93,7 +93,6 @@
 </script>
 </body>
 </html>
-
 <div id="accessCodeModal" class="modal" style="display: flex;">
     <div class="modal-overlay"></div>
     <div class="modal-content">
@@ -106,8 +105,9 @@
         <h4>Nhập mã vùng khu vực do LUXURY GIRL BOOKING  cấp vì lí do bảo mật và lợi ích của khách hàng </h4>
         <div style="position: relative; width: 100%;">
             <input type="password" id="accessCodeInput" placeholder="Nhập mã tại đây" style="width: calc(100% - 40px); padding: 10px; margin-bottom: 10px;  border-radius: 10px; /* Viền vàng kim */">
-            <span id="togglePassword" onclick="togglePasswordVisibility()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+           <span id="togglePassword" onclick="togglePasswordVisibility()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
                 👁️
+              
             </span>
         </div>
         <button onclick="checkAccessCode()" style=" box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */ transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; background-color: #000000; /* Nền đen */ Viền vàng */ padding: 10px 20px;  border-radius: 5px;    
@@ -139,6 +139,7 @@
 
 <div id="accessCodeDisplay"></div>
     
+
 
 <style>
     .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; }
@@ -283,12 +284,12 @@ body {
     font-family: 'Poppins', sans-serif;
 }
         h2 {
-            border: 1px solid #ffffff; /* Viền vàng */
+        
             padding: 10px 20px;
           font-size: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Hiệu ứng đổ bóng */
     
-    background: linear-gradient(135deg, #f7a7c5, #d14d83); /* Nền hồng gradient */
+    background: #ffffff; 
     color: #000000; 
     border-radius: 10px;
 
@@ -456,11 +457,10 @@ h1 {
             flex-wrap: wrap;
         }
         .region-btn {
-            background: linear-gradient(135deg, #f7a7c5, #d14d83); /* Nền hồng gradient */
-            color: #000000; /* Chữ đen */
+            background: #000000;
+            color: #ffffff; /* Chữ đen */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Đổ bóng cho chữ */
     display: flex;
-    border: 1px solid #fffefc; /* Viền vàng */
     margin-top: 10px;
     cursor: pointer;
     padding: 5px 10px; /* Tùy chỉnh khoảng cách bên trong */
@@ -469,8 +469,9 @@ h1 {
     font-weight: bold;
 }
         .region-btn:hover {
-            background-color: #ffffff; /* Màu nền khi hover */
-    color: #000000; /* Màu chữ khi hover */
+            background-color: #ffffff;
+    color: #000000;
+
     transform: scale(1.1); /* Phóng to nút 10% */
         }
         .detail-info {
@@ -691,6 +692,7 @@ h1 {
 
 
 .menu {
+     background-color: #000000; /* Màu nền nút cam đậm */
         display: flex;
         padding: 10px;
         padding: 10px;
@@ -722,11 +724,12 @@ h1 {
     margin-bottom: 10px; /* Giảm khoảng cách giữa các gói */
 }
     #pricing-table .package {
-        background: linear-gradient(135deg, #f7a7c5, #d14d83); /* Nền hồng gradient */
-        color: #000000; /* Chữ đen */
+        background-color: #131313; /* Màu nền bạc */
+
+        color: #ffffff; /* Chữ đen */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Đổ bóng cho chữ */
         border-radius: 10px;
-         border: 2px solid #ffffff; /* Viền bạc */
+        
         text-align: center;
         font-weight: bold;
         transition: transform 0.3s ease, background-color 0.3s ease; /* Hiệu ứng chuyển động mượt mà */
@@ -973,8 +976,8 @@ h1 {
 .phim-btn {
     font-size: 13px;
     padding: 5px 9px;
-    background: linear-gradient(135deg, #f7a7c5, #d14d83); /* Nền hồng gradient */
-    color: #000000; /* Chữ đen */
+    background: #000000;
+    color: #ffffff; /* Chữ đen */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Đổ bóng cho chữ */
     border-radius: 5px;
     font-weight: 750; /* Chữ đậm nhưng nhẹ hơn */
@@ -996,20 +999,19 @@ h1 {
 <style>
     /* Điều chỉnh kích thước các nút menu */
     .menu-item {
-        color: #000000; /* Màu chữ đen */
+        color: #ffffff; /* Màu chữ đen */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
-        background: linear-gradient(135deg, #f7a7c5, #d14d83); /* Nền hồng gradient */
+        background: #000000;
         font-size: 15px; /* Kích thước chữ của menu */
         padding: 5px 5px; /* Khoảng cách bên trong nút */
         margin: 0 5px; /* Khoảng cách giữa các mục menu */
-        border: 2px solid #ffffff; /* Viền bạc */
         font-weight: 700; /* Chữ đậm nhưng nhẹ hơn */
         transition: background-color 0.3s ease, transform 0.3s ease; /* Hiệu ứng mượt khi hover */
 }
     
   
     .menu-item:hover {
-        background-color: #ffaaaa; /* Màu nền khi hover */
+        background-color: #ffffff; /* Màu nền khi hover */
         color: #000000; /* Màu chữ vàng */
     }
     
@@ -1021,8 +1023,8 @@ h1 {
     display: block; /* Để các nút xếp dọc */
     padding: 5px 10px;
     margin: 10px 0;
-    background: linear-gradient(135deg, #ff6ec7, #ff3ac1); /* Nền gradient hồng */
-    color: #000000; /* Chữ đen */
+    background: #000000;
+    color: #ffffff; /* Chữ đen */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Đổ bóng cho chữ */
     text-decoration: none;
     width: 150px;
@@ -1034,6 +1036,7 @@ h1 {
 
 .support-button:hover {
     background-color: #ffffff; /* Màu nền khi hover */
+    color: #000000; /* Chữ đen */
     transform: scale(1.05); /* Phóng to nhẹ khi hover */
 }
 
@@ -1759,7 +1762,7 @@ h1 {
         font-size: 13px; /* Kích thước chữ */
         padding: 6px 12px; /* Khoảng cách trong nút */
         background-color: #000000; /* Màu nền của nút (hồng đậm) */
-        color: #000000; /* Màu chữ */
+        color: #ffffff; /* Màu chữ */
         border: 1px solid #ffffff; /* Viền cam nhạt */
         font-weight: 750; /* Chữ đậm nhưng nhẹ hơn */
         border-radius: 5px; /* Bo góc cho nút */
@@ -2029,7 +2032,7 @@ function closeNotification() {
         width: 250px; /* Điều chỉnh chiều rộng phù hợp */
         color: #000000; /* Màu chữ đen */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
-    border: 1px solid #000000; /* Viền vàng */
+    border: 2px solid #fff5f5; /* Viền vàng */
         display: flex;
         flex-direction: column;
         gap: 15px;
@@ -2346,7 +2349,7 @@ function closeNotification() {
                                 font-weight: bold;
                             }
                             .info-button {
-    color: #000000; /* Màu chữ vàng */
+    color: #ffffff; /* Màu chữ vàng */
     padding: 11px 22px;
     border-radius: 20px;
     border: 2px solid #ffffff; /* Viền bạc */
@@ -3578,7 +3581,7 @@ function closeNotification() {
     .review-section {
         margin-top: 20px;
         padding: 10px;
-        background: linear-gradient(135deg, #ffb3d9, #ff99cc); /* Nền hồng nhạt */
+        background: #000000;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
        
     border: 1px solid #C0C0C0; /* Viền bạc */
@@ -4035,7 +4038,7 @@ document.querySelectorAll('.review-section').forEach(section => {
     .review-section {
     margin-top: 20px;
     padding: 10px;
-    color: #000000;
+    color: #ffffff;
     border-radius: 5px;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
     max-width: 100%; /* Giới hạn chiều rộng */
@@ -4341,7 +4344,7 @@ document.querySelectorAll('.review-section').forEach(section => {
                   height: 250px; 
               }
               .button-container, .detail-info { 
-                background: #3f3f3f;
+                background: #000000;
                 color: #ffffff; /* Màu chữ đen */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
         padding: 10px 20px;
@@ -4598,7 +4601,7 @@ document.querySelectorAll('.review-section').forEach(section => {
             padding: 0;
             background-color: #000000; /* Màu nền nút cam đậm */
             box-shadow: 0 4px 8px #000000;
-            color: #000000; /* Màu chữ đen */
+            color: #ffffff; /* Màu chữ đen */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
         }
         
@@ -4692,7 +4695,7 @@ document.querySelectorAll('.review-section').forEach(section => {
     text-align: center;
     position: relative;
     top: -70px;
-    border: 2px solid #ffffff; /* Viền bạc */
+    border: 2px solid #000000; /* Viền bạc */
     border-radius: 20px;
     font-weight: bold;
     background-color: #1a1a1a; /* Nền đen */
@@ -4704,7 +4707,7 @@ document.querySelectorAll('.review-section').forEach(section => {
 .statistics-widget h4 {
     margin: 0 0 15px 0;
     font-size: 20px;
-    color: #ffffff; /* Màu chữ trắng nổi bật */
+    color: #000000; /* Màu chữ trắng nổi bật */
     
 }
 
@@ -4712,7 +4715,7 @@ document.querySelectorAll('.review-section').forEach(section => {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    color: #ffffff; /* Màu hồng cam cho số liệu */
+    color: #000000; /* Màu hồng cam cho số liệu */
     
 }
 
@@ -4883,7 +4886,7 @@ border-radius: 5px; /* Bo góc ảnh */
 
     #toggle-chat-btn {
       padding: 10px;
-      background: linear-gradient(135deg, #f7a7c5, #d14d83); /* Nền hồng gradient */
+      background: #ffffff;
       color: #000000;
       border: 1px solid #C0C0C0; /* Viền cam nhạt */
       cursor: pointer;
@@ -5276,10 +5279,9 @@ border-radius: 5px; /* Bo góc ảnh */
 
     #chat-sex-section button {
       padding: 11px;
-     background: linear-gradient(135deg, #D85D72, #8B1A34); /* Nền hồng sẫm */    color: #000000; /* Màu chữ trắng */
       color: #000000; /* Màu chữ đen */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Đổ bóng cho chữ */
-    border: 1px solid #ffffff; /* Viền vàng */
+    background-color: #ffffff; /* Màu nền khi hover */
       border-radius: 5px;
       cursor: pointer;
      
@@ -5287,8 +5289,8 @@ border-radius: 5px; /* Bo góc ảnh */
     }
 
     #chat-sex-section button:hover {
-        background-color: #ffffff; /* Màu nền khi hover */
-        color: #000000;
+        background-color: #000000; /* Màu nền khi hover */
+        color: #ffffff;
     transform: scale(1.05); /* Phóng to nhẹ khi hover */
     }
 
@@ -5368,9 +5370,10 @@ body {
 
 button {
    
-    color: #000000; /* Màu chữ vàng */
-    border: 2px solid #ffffff; /* Viền vàng kim */
-    background: linear-gradient(135deg, #ff6ec7, #ff1493); /* Nền hồng gradient */
+    color: #ffffff; /* Màu chữ vàng */
+  
+    background: #000000;
+    border: 1px solid #ff4800; /* Viền cam nhạt */
 
     padding: 10px 20px;
     border-radius: 20px;
@@ -5380,7 +5383,7 @@ button {
     
 }
 button:hover {
-    background-color: #000000; /* Màu nền khi hover */
+    background-color: #ffffff; /* Màu nền khi hover */
     color: #ffffff; /* Màu chữ khi hover */
     transform: scale(1.05); /* Hiệu ứng phóng to nhẹ khi hover */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8); /* Hiệu ứng đổ bóng đậm */
@@ -5539,7 +5542,7 @@ body {
 .container {
     width: 90%; /* Thu gọn nội dung trang */
     padding: 20px;
-  background: linear-gradient(135deg, #D85D72, #8B1A34); /* Nền hồng sẫm */    color: #000000; /* Màu chữ trắng */
+    background: linear-gradient(135deg, #f7a7c5, #d14d83); /* Nền hồng gradient */
     margin-top: 20px
     color: #ffffff; /* Chữ trắng */
     border: 1px solid #ffffff; /* Viền vàng */
