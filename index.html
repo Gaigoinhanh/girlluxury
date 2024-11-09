@@ -577,13 +577,14 @@ h1 {
             padding: 10px;
         }
 
-      /* Container chứa slider */
-.banner-container {
-    width: 100%;
-    height: 300px; /* Chiều cao banner */
-    overflow: hidden; /* Ẩn các ảnh ngoài phạm vi */
-    position: relative;
-}
+        .banner-container {
+          margin-top: -30px;
+            overflow: hidden;
+            background-color: linear-gradient(135deg, #ff7e5f, #feb47b);
+            height: 300px;
+             width: auto;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Hiệu ứng chuyển đổi */
+        }
 
         .banner {
             display: flex;
@@ -614,13 +615,6 @@ h1 {
     display: flex; /* Để các ảnh chạy theo chiều ngang */
     transition: transform 0.5s ease; /* Thêm hiệu ứng chuyển động */
 }
-
-/* Slider chứa các ảnh */
-.slider {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
 
 .banner-slide img {
     width: 100%; /* Đảm bảo mỗi ảnh chiếm toàn bộ chiều rộng của container */
@@ -5421,7 +5415,7 @@ img {
     height: auto;
     border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-   
+  
      
 }
 
