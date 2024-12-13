@@ -86,6 +86,18 @@
             margin-left: 10px;
             cursor: pointer;
         }
+        .underline {
+  text-decoration: underline;
+  text-decoration-color: #ffffff; /* Màu gạch dưới */
+  text-decoration-thickness: 2px; /* Độ dày của gạch dưới */
+  text-underline-offset: 3px;     /* Khoảng cách giữa chữ và gạch dưới */
+}
+
+/* Hiệu ứng hover để làm nổi bật liên kết */
+.highlight-link:hover .underline {
+  text-decoration-color: #0077ff; /* Đổi màu gạch dưới khi hover */
+}
+
     </style>
 </head>
 <body>
@@ -134,8 +146,12 @@
   <span>Lấy mã vùng khu vực để truy cập qua ADMIN
   </span>
   <span>
-  <a href="https://t.me/slbquynhhuong" target="_blank">Hỗ trợ TELEGRAM</a> hoặc
-  <a href="https://web.facebook.com/SupportGirlLuxury/" target="_blank">Hỗ trợ FACEBOOK.</a> </span>
+   
+<p>
+  <a href="https://t.me/telegram_support" class="highlight-link">Hỗ trợ <span class="underline">TELEGRAM</span></a> hoặc
+  <a href="https://facebook.com/facebook_support" class="highlight-link">Hỗ trợ <span class="underline">FACEBOOK</span></a>
+</p>
+    
         </div>
     </div>
 </div>
